@@ -1,3 +1,5 @@
+> **CORRECTION (Nov 25):** Parts A and B below were built from news headlines only and contain timeline errors. The script now uses Dhruv Rathee's transcript as the main research base: first NYT report Oct 29, 2026; NYT second report Nov 11; Reuters third report Nov 12; resignation Nov 12; board refusal Nov 17; unanimous return vote Nov 22; CIA and DOJ have not confirmed the spy claim; Rubio memo (May 2026) reportedly the origin of the spy label; MegaSpeed ~$5B chips (The Information). See narration-tts.txt.
+
 # Research Brief — Nvidia CEO Scandal + The Economist "World Ahead 2027" Cover
 
 Compiled: Nov 25, 2026
