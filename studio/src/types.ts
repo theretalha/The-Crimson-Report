@@ -36,5 +36,8 @@ type Base = {
   source?: string; // source line bottom-left
   seconds: number; // how long the scene stays on screen
   speak?: number; // seconds of actual speech (captions finish by then)
+  fx?: 'reveal' | 'twist'; // sound design: riser → drop-out → big hit exactly on this scene
+  line?: number; // narration line this scene belongs to (used to find the pause before it)
+  part?: number; // which visual of that line (0 = first)
   note?: string; // retention technique (only shown in the annotated version)
 };

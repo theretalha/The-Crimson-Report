@@ -169,6 +169,20 @@ const CHAPTERS: [number, string, Mood][] = [
 
 const KEY = /^(nvidia|nvidia's|china|china's|chinese|jensen|jensen's|alice|megaspeed|megaspeed's|cia|trump|rubio|rubio's|spy|spy\?|chips|chip|sealed|billion|million|weapons|ai|white|house|board|resigned|back|petition|twist|legend|confirmed|proven|conflict|manipulation|forecast|comments)[.,?!"]*$/i;
 
+// Big moments that get riser → drop-out → hit in the audio mix: [kind, part of the line (default 0)]
+const FX: Record<number, ['reveal' | 'twist', number?]> = {
+  3: ['reveal'],      // "STILL SEALED."
+  9: ['reveal'],      // "…get it back."
+  41: ['reveal'],     // ×90
+  43: ['reveal', 1],  // $5B+
+  44: ['reveal', 1],  // 500 chips missing
+  48: ['reveal'],     // "That American was Jensen Huang."
+  66: ['reveal'],     // "TEN DAYS."
+  69: ['twist'],      // "NOBODY HAS PROVEN IT."
+  78: ['twist'],      // "HERE'S THE TWIST."
+  94: ['twist'],      // "NO ONE HAS BEEN ACCUSED."
+};
+
 type Line = {text: string; start: number; speechEnd: number; next: number};
 
 export const buildEp003 = (): Scene[] => {
@@ -200,6 +214,9 @@ export const buildEp003 = (): Scene[] => {
         highlight: p.highlight ?? words.filter((w) => KEY.test(w) || /\d/.test(w)),
         seconds: pEnd - pStart,
         speak: share + (k === 0 ? line.start - start : 0),
+        line: i,
+        part: k,
+        fx: FX[i] && (FX[i][1] ?? 0) === k ? FX[i][0] : undefined,
       } as Scene);
       cursor += share;
     });

@@ -16,7 +16,7 @@ export const Root: React.FC = () => (
       fps={FPS} width={H} height={W} defaultProps={{scenes: SHORT_001}} />
     {/* EP 003: full long video, synced to the TTS audio */}
     <Composition id="EP003-Nvidia" component={Episode} durationInFrames={totalFrames(EP003)}
-      fps={FPS} width={W} height={H} defaultProps={{scenes: EP003, audio: 'audio/ep003.wav'}} />
+      fps={FPS} width={W} height={H} defaultProps={{scenes: EP003, audio: 'audio/ep003-mix.wav', sfx: false}} />
     {/* Long video: 1920x1080 */}
     <Composition id="EP002-Hook" component={Episode} durationInFrames={totalFrames(EP002_HOOK)}
       fps={FPS} width={W} height={H} defaultProps={{scenes: EP002_HOOK}} />

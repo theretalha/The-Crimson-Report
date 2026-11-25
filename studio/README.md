@@ -28,3 +28,14 @@ Moods: context (black) · danger (crimson) · facts (off-white)
 5. Render: `npx remotion render src/index.ts EP003-Nvidia out/EP003.mp4`
 
 Templates: title · icon · quote · stat · split · cards · map (pins/highlight) · timeline · headline · document · photos · newspaper · tweet
+
+## Sound design (offline mix, v2)
+The audio is mixed outside Remotion so it can be heard in seconds and tuned without re-rendering video.
+1. `npx tsx tools/export-cues.ts out/ep003-cues.json` (scene timeline from the video code)
+2. `python3 tools/mix_audio.py --voice public/audio/ep003.wav --cues out/ep003-cues.json --timing src/data/ep003-timing.json --out out/ep003-mix.wav`
+3. Master to -14 LUFS (two-pass `loudnorm`), copy to `public/audio/ep003-mix.wav`. The `EP003-Nvidia` composition plays that file (`sfx: false`).
+   To change the sound only: remix, then `ffmpeg -i old.mp4 -i master.wav -map 0:v -map 1:a -c:v copy -c:a aac out.mp4` (no video re-render).
+
+Knobs: `--bed-offset` (dB, bed vs voice; default -3) and `--hits-offset` (dB, all effects).
+All sounds are synthesised in `tools/sfx_kit.py` (nothing sampled). Mark big moments with `FX` in the episode data file
+(`reveal` / `twist` = riser, drop-out, hit). `python3 tools/mix_audio.py` prints a report: bed vs voice, event counts, peaks.
