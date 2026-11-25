@@ -76,9 +76,16 @@ export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, p
 
       {annotate && scene.note && <Note text={scene.note} />}
 
-      {/* cinematic finish: film grain, vignette, light leak at chapter changes */}
-      <AbsoluteFill style={{backgroundImage: `url(${staticFile('tex/grain.png')})`, backgroundSize: '512px 512px',
-        backgroundPosition: `${(f * 37) % 512}px ${(f * 53) % 512}px`, mixBlendMode: 'overlay', opacity: 0.2, pointerEvents: 'none'}} />
+      {/* real surfaces: scuffed concrete on dark scenes, paper fibre on cream scenes (CC0 textures from the Remotion kit) */}
+      {scene.mood === 'facts' ? (
+        <AbsoluteFill style={{backgroundImage: `url(${staticFile('tex/fibre.jpg')})`, backgroundSize: 'cover', mixBlendMode: 'multiply', opacity: 0.11, pointerEvents: 'none'}} />
+      ) : (
+        <AbsoluteFill style={{backgroundImage: `url(${staticFile('tex/concrete.jpg')})`, backgroundSize: '960px 960px', mixBlendMode: scene.mood === 'danger' ? 'multiply' : 'screen',
+          opacity: scene.mood === 'danger' ? 0.42 : 0.14, pointerEvents: 'none', transform: `scale(${push})`}} />
+      )}
+      {/* cinematic finish: flickering film grain (8 real grain frames), vignette, light leak at chapter changes */}
+      <AbsoluteFill style={{backgroundImage: `url(${staticFile(`tex/g${(Math.floor((startFrame + f) / 2)) % 8}.jpg`)})`, backgroundSize: 'cover',
+        mixBlendMode: 'overlay', opacity: 0.34, pointerEvents: 'none'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.5) 100%)', pointerEvents: 'none'}} />
       {chapterStart && (
         <AbsoluteFill style={{pointerEvents: 'none', mixBlendMode: 'screen', opacity: interpolate(f, [0, 8, 26], [0, 0.55, 0], clamp),
