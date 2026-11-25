@@ -18,3 +18,13 @@ Turns a scene list into a finished video in The Crimson Forecast style.
 ## Templates
 title · icon · quote · stat · split · cards · map
 Moods: context (black) · danger (crimson) · facts (off-white)
+
+## Sync a video to TTS audio (how EP 003 was made)
+1. Generate the narration in Google AI Studio (2 parts) and save the WAVs
+2. Align script lines to the audio:
+   `python3 tools/align.py ../episodes/003-nvidia-ceo-scandal/narration-tts.txt src/data/ep003-timing.json part1.wav part2.wav`
+3. Join the audio into `public/audio/ep003.wav` (ffmpeg concat, 0.6s gap)
+4. Write one visual spec per line in `src/data/ep003.ts` (an array = several visuals for one line)
+5. Render: `npx remotion render src/index.ts EP003-Nvidia out/EP003.mp4`
+
+Templates: title · icon · quote · stat · split · cards · map (pins/highlight) · timeline · headline · document · photos · newspaper · tweet

@@ -144,49 +144,97 @@ const Card: React.FC<{n: number; text: string; delay: number; v?: boolean}> = ({
   );
 };
 
-// ---------- MAP: real geography with D3 ----------
+// ---------- MAP: real geography with D3 (pins, highlighted countries, optional arrow) ----------
 const countries = feature(world as any, (world as any).objects.countries) as any;
 
 export const MapT: React.FC<S<'map'>> = ({scene}) => {
   const f = useCurrentFrame();
+  const {fps} = useVideoConfig();
   const m = MOODS[scene.mood];
   const v = useV();
   const Wm = v ? 1000 : 1300, Hm = v ? 760 : 620;
+  const taiwanDefault = !scene.pins && !scene.center;
+  const center = scene.center ?? (v ? [119.6, 24.6] : [120, 25]);
+  const scl = (scene.zoom ?? 1) * (v ? 4200 : 3600);
   const {path, proj} = useMemo(() => {
-    const proj = geoMercator().center(v ? [119.6, 24.6] : [120, 25]).scale(v ? 4200 : 3600).translate([Wm / 2, Hm / 2]);
+    const proj = geoMercator().center(center).scale(scl).translate([Wm / 2, Hm / 2]);
     return {path: geoPath(proj), proj};
-  }, [v, Wm, Hm]);
-  const zoom = interpolate(f, [0, 110], [1.0, 1.18], clamp);
+  }, [center[0], center[1], scl, Wm, Hm]);
+  const zoom = interpolate(f, [0, 150], [1.0, 1.1], clamp);
   const pulse = 0.55 + 0.45 * Math.sin(f / 4);
-  const from = proj([118.1, 24.5])!; // Xiamen, Fujian
-  const to = proj([120.6, 24.0])!; // Taiwan
+  const hl = new Set(scene.highlight ?? (taiwanDefault ? ['158'] : []));
+  const from = proj([118.1, 24.5])!;
+  const to = proj([120.6, 24.0])!;
   const draw = interpolate(f, [18, 50], [0, 1], clamp);
   const mid = [(from[0] + to[0]) / 2, Math.min(from[1], to[1]) - 90];
-  const arrow = `M${from[0]},${from[1]} Q${mid[0]},${mid[1]} ${to[0]},${to[1]}`;
+  const showArrow = scene.arrow ?? taiwanDefault;
 
   return (
     <div style={{position: 'absolute', left: v ? 40 : 560, top: v ? 520 : 230, width: Wm, height: Hm, overflow: 'hidden', borderRadius: 12,
       border: `2px solid ${m.line}`, background: '#0A0C10'}}>
-      <svg width={Wm} height={Hm} style={{transform: `scale(${zoom})`, transformOrigin: `${to[0]}px ${to[1]}px`}}>
-        {countries.features.map((c: any) => {
-          const isTW = c.id === '158';
-          const isCN = c.id === '156';
+      <svg width={Wm} height={Hm} style={{transform: `scale(${zoom})`, transformOrigin: '50% 50%'}}>
+        {countries.features.map((c: any, k: number) => {
+          const on = hl.has(c.id);
           return (
-            <path key={c.id + (c.properties?.name ?? '')} d={path(c) ?? ''}
-              fill={isTW ? C.crimson : isCN ? '#3A3A3A' : '#232323'}
-              stroke={isTW ? '#FF8A8F' : '#555'} strokeWidth={isTW ? 2 : 1}
-              opacity={isTW ? 0.75 + 0.25 * pulse : 1} />
+            <path key={k} d={path(c) ?? ''} fill={on ? C.crimson : c.id === '156' && taiwanDefault ? '#3A3A3A' : '#262626'}
+              stroke={on ? '#FF8A8F' : '#555'} strokeWidth={on ? 2 : 1} opacity={on ? 0.75 + 0.25 * pulse : 1} />
           );
         })}
-        <path d={arrow} fill="none" stroke={C.paper} strokeWidth="5" strokeDasharray="14 10"
-          pathLength={1} style={{strokeDasharray: `${draw} 1`}} />
-        <circle cx={to[0]} cy={to[1]} r={30 + pulse * 30} fill="none" stroke={C.crimson} strokeWidth="4" opacity={1 - pulse * 0.6} />
-        <text x={from[0] - (v ? 300 : 270)} y={from[1] - (v ? 60 : 140)} fontFamily={FONT_HEAD} fontSize="64" fill="#9A9A9A">CHINA</text>
-        <text x={to[0] + (v ? -60 : 70)} y={to[1] + (v ? 230 : 20)} fontFamily={FONT_HEAD} fontSize="56" fill={C.paper}>{scene.label}</text>
-        <text x={mid[0] - 70} y={mid[1] + 10} fontFamily={FONT_MONO} fontWeight="700" fontSize="26" fill={C.paper}
-          opacity={draw}>~100 MI</text>
+        {showArrow && (
+          <>
+            <path d={`M${from[0]},${from[1]} Q${mid[0]},${mid[1]} ${to[0]},${to[1]}`} fill="none" stroke={C.paper} strokeWidth="5"
+              pathLength={1} style={{strokeDasharray: `${draw} 1`}} />
+            <text x={from[0] - 270} y={from[1] - 140} fontFamily={FONT_HEAD} fontSize="64" fill="#9A9A9A">CHINA</text>
+            <text x={mid[0] - 70} y={mid[1] + 10} fontFamily={FONT_MONO} fontWeight="700" fontSize="26" fill={C.paper} opacity={draw}>~100 MI</text>
+          </>
+        )}
+        {taiwanDefault && <text x={to[0] + 70} y={to[1] + 20} fontFamily={FONT_HEAD} fontSize="56" fill={C.paper}>{scene.label ?? 'TAIWAN'}</text>}
+        {(scene.pins ?? []).map((p, i) => {
+          const [x, y] = proj([p.lon, p.lat])!;
+          const s = spring({frame: f - 8 - i * 10, fps, config: {damping: 10}});
+          return (
+            <g key={i} transform={`translate(${x} ${y})`} opacity={Math.min(1, s * 1.5)}>
+              <circle r={18 + pulse * 18} fill="none" stroke={C.crimson} strokeWidth="3" opacity={1 - pulse * 0.6} />
+              <circle r={11 * s} fill={C.crimson} stroke={C.paper} strokeWidth="3" />
+              <rect x="20" y="-22" width={p.label.length * 19 + 24} height="44" fill={C.ink} opacity="0.85" />
+              <text x="32" y="11" fontFamily={FONT_HEAD} fontSize="34" fill={C.paper}>{p.label}</text>
+            </g>
+          );
+        })}
       </svg>
       <div style={{position: 'absolute', left: 16, bottom: 12, fontFamily: FONT_MONO, fontSize: 14, color: '#666'}}>Map: Natural Earth</div>
     </div>
+  );
+};
+
+// ---------- TIMELINE: dates pop in along a line ----------
+export const TimelineT: React.FC<S<'timeline'>> = ({scene}) => {
+  const f = useCurrentFrame();
+  const {fps, durationInFrames} = useVideoConfig();
+  const m = MOODS[scene.mood];
+  const v = useV();
+  const n = scene.points.length;
+  const line = interpolate(f, [4, Math.min(durationInFrames * 0.8, 20 + n * 18)], [0, 1], clamp);
+  const W0 = v ? 900 : 1600, X0 = v ? 90 : 160, Y0 = v ? 900 : 640;
+  return (
+    <AbsoluteFill>
+      <div style={{position: 'absolute', left: X0, top: Y0, width: W0 * line, height: 6, background: C.crimson}} />
+      {scene.points.map((p, i) => {
+        const x = X0 + (n === 1 ? W0 / 2 : (W0 * i) / (n - 1));
+        const s = spring({frame: f - 6 - Math.round((i / Math.max(1, n)) * Math.min(durationInFrames * 0.7, n * 18)), fps, config: {damping: 12}});
+        const up = i % 2 === 0;
+        return (
+          <div key={i} style={{position: 'absolute', left: x, top: Y0 + 3, opacity: Math.min(1, s * 1.5)}}>
+            <div style={{position: 'absolute', left: -16, top: -16, width: 32, height: 32, borderRadius: '50%', background: C.crimson,
+              border: `5px solid ${m.fg}`, transform: `scale(${s})`}} />
+            <div style={{position: 'absolute', left: v ? -150 : -200, width: v ? 300 : 400, textAlign: 'center',
+              top: up ? (v ? -250 : -230) : 40, transform: `translateY(${(1 - s) * (up ? 30 : -30)}px)`}}>
+              <div style={{fontFamily: FONT_HEAD, fontSize: v ? 64 : 72, color: m.fg, lineHeight: 1.05}}>{p.label}</div>
+              {p.sub && <div style={{fontFamily: FONT_BODY, fontWeight: 600, fontSize: v ? 28 : 30, color: m.muted, marginTop: 6}}>{p.sub}</div>}
+            </div>
+          </div>
+        );
+      })}
+    </AbsoluteFill>
   );
 };

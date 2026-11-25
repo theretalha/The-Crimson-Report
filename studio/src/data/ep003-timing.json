@@ -1,0 +1,656 @@
+[
+ {
+  "text": "Late 2024. A data center in Malaysia.",
+  "start": 0.0,
+  "speechEnd": 3.662,
+  "next": 4.981
+ },
+ {
+  "text": "An official from the US Commerce Department is walking through the building when he notices something strange.",
+  "start": 4.981,
+  "speechEnd": 10.46,
+  "next": 11.451
+ },
+ {
+  "text": "Stacks of boxes. Brand-new Nvidia AI chips. Some of the most wanted computer chips on the planet.",
+  "start": 11.451,
+  "speechEnd": 18.016,
+  "next": 19.178
+ },
+ {
+  "text": "And they are still sealed.",
+  "start": 19.178,
+  "speechEnd": 20.32,
+  "next": 21.643
+ },
+ {
+  "text": "If you buy chips this powerful for your own data center, you open them. You plug them in. You use them.",
+  "start": 21.643,
+  "speechEnd": 27.691,
+  "next": 29.046
+ },
+ {
+  "text": "Unless they were never meant to stay there...",
+  "start": 29.046,
+  "speechEnd": 33.225,
+  "next": 33.545
+ },
+ {
+  "text": "According to reports, that one moment helped start an investigation that would reach a mysterious Chinese businesswoman, the White House, and the man running the most important tech company in the world.",
+  "start": 33.545,
+  "speechEnd": 43.251,
+  "next": 44.04
+ },
+ {
+  "text": "Jensen Huang.",
+  "start": 44.04,
+  "speechEnd": 44.7,
+  "next": 46.106
+ },
+ {
+  "text": "Within two years, he would lose his job.",
+  "start": 46.106,
+  "speechEnd": 48.296,
+  "next": 49.17
+ },
+ {
+  "text": "And just ten days later... get it back.",
+  "start": 49.17,
+  "speechEnd": 51.282,
+  "next": 52.593
+ },
+ {
+  "text": "This is the story of how it happened. And why, even now, nobody can say for sure what the truth is.",
+  "start": 52.593,
+  "speechEnd": 58.629,
+  "next": 59.786
+ },
+ {
+  "text": "Let's open the file.",
+  "start": 59.786,
+  "speechEnd": 60.655,
+  "next": 62.251
+ },
+ {
+  "text": "To understand this story, you need to understand one thing.",
+  "start": 62.251,
+  "speechEnd": 65.07,
+  "next": 66.05
+ },
+ {
+  "text": "Every powerful AI system in the world, from chatbots to self-driving cars to military software, needs special chips to train and run.",
+  "start": 66.05,
+  "speechEnd": 74.268,
+  "next": 75.085
+ },
+ {
+  "text": "And the company that makes most of them is Nvidia.",
+  "start": 75.085,
+  "speechEnd": 77.454,
+  "next": 78.711
+ },
+ {
+  "text": "If AI is a war, Nvidia is the company making the weapons. For both sides, if it can.",
+  "start": 78.711,
+  "speechEnd": 84.437,
+  "next": 85.567
+ },
+ {
+  "text": "That's why, in October 2022, the US government banned Nvidia from selling its most advanced chips to China.",
+  "start": 85.567,
+  "speechEnd": 91.834,
+  "next": 92.994
+ },
+ {
+  "text": "Washington's fear is simple. If China gets ahead in AI, its military and surveillance power could grow enormously.",
+  "start": 92.994,
+  "speechEnd": 99.829,
+  "next": 101.157
+ },
+ {
+  "text": "Beijing sees it very differently. To China, these bans are an attempt to hold back its economy and keep America on top.",
+  "start": 101.157,
+  "speechEnd": 108.003,
+  "next": 109.219
+ },
+ {
+  "text": "Donald Trump has put it bluntly: whoever wins AI, wins.",
+  "start": 109.219,
+  "speechEnd": 113.09,
+  "next": 114.238
+ },
+ {
+  "text": "And caught right in the middle of this fight was one man.",
+  "start": 114.238,
+  "speechEnd": 116.868,
+  "next": 118.065
+ },
+ {
+  "text": "Her name, according to reports, is Alice Huang. No relation to Jensen, despite the same surname.",
+  "start": 118.065,
+  "speechEnd": 123.675,
+  "next": 124.672
+ },
+ {
+  "text": "She is a Chinese citizen. And on paper, her career looks impressive.",
+  "start": 124.672,
+  "speechEnd": 128.785,
+  "next": 129.987
+ },
+ {
+  "text": "According to the Washington Post, she worked as a journalist at Chinese state TV, then at major banks, and by around 2015, she was a senior manager at a Shanghai private equity firm. The owner of that firm, Kang Wei, was later described as her husband.",
+  "start": 129.987,
+  "speechEnd": 146.878,
+  "next": 147.878
+ },
+ {
+  "text": "But here's the problem.",
+  "start": 147.878,
+  "speechEnd": 148.833,
+  "next": 149.511
+ },
+ {
+  "text": "Almost none of it can be independently confirmed. No public record of the TV work. No proof of the marriage.",
+  "start": 149.511,
+  "speechEnd": 156.35,
+  "next": 157.108
+ },
+ {
+  "text": "A former top CIA China analyst, Dennis Wilder, said her background looked like a \"legend.\" In spy language, that means a fake identity, built to look real.",
+  "start": 157.108,
+  "speechEnd": 167.261,
+  "next": 168.441
+ },
+ {
+  "text": "So how did she get so close to one of the richest men in the world?",
+  "start": 168.441,
+  "speechEnd": 172.209,
+  "next": 172.75
+ },
+ {
+  "text": "According to the Wall Street Journal, it was her own husband who introduced them. He had known Jensen for years, back when his firm invested in video games and Nvidia was mostly a gaming chip company.",
+  "start": 172.75,
+  "speechEnd": 185.034,
+  "next": 185.55
+ },
+ {
+  "text": "Their first public meeting on record was a dinner in Singapore, in December 2023.",
+  "start": 185.55,
+  "speechEnd": 190.569,
+  "next": 191.599
+ },
+ {
+  "text": "Over the next few years, they were reportedly seen together in Taipei, in Shanghai, at Nvidia offices in America, and at golf resorts in California.",
+  "start": 191.599,
+  "speechEnd": 200.597,
+  "next": 201.51
+ },
+ {
+  "text": "And they weren't exactly hiding. Photos of them together were posted online.",
+  "start": 201.51,
+  "speechEnd": 205.62,
+  "next": 206.639
+ },
+ {
+  "text": "Keep that detail in mind. It will matter later.",
+  "start": 206.639,
+  "speechEnd": 210.12,
+  "next": 210.816
+ },
+ {
+  "text": "While all this was happening, a company connected to Alice was quietly growing.",
+  "start": 210.816,
+  "speechEnd": 214.854,
+  "next": 215.532
+ },
+ {
+  "text": "It was called MegaSpeed.",
+  "start": 215.532,
+  "speechEnd": 217.07,
+  "next": 217.984
+ },
+ {
+  "text": "In March 2023, Alice reportedly bought a company in Singapore and renamed it MegaSpeed.",
+  "start": 217.984,
+  "speechEnd": 223.838,
+  "next": 224.52
+ },
+ {
+  "text": "Eight months later, her name was removed from the list of directors. Ownership moved to a shell company.",
+  "start": 224.52,
+  "speechEnd": 230.355,
+  "next": 231.148
+ },
+ {
+  "text": "And just four days after that, MegaSpeed became an official Nvidia cloud partner, which meant priority access to Nvidia's chips.",
+  "start": 231.148,
+  "speechEnd": 239.162,
+  "next": 240.274
+ },
+ {
+  "text": "Now look at the numbers.",
+  "start": 240.274,
+  "speechEnd": 241.23,
+  "next": 241.701
+ },
+ {
+  "text": "In 2023, MegaSpeed's total assets were reportedly around 33 million dollars.",
+  "start": 241.701,
+  "speechEnd": 248.652,
+  "next": 249.192
+ },
+ {
+  "text": "One year later? Around 3 billion.",
+  "start": 249.192,
+  "speechEnd": 250.231,
+  "next": 250.909
+ },
+ {
+  "text": "That's roughly ninety times bigger, in a single year.",
+  "start": 250.909,
+  "speechEnd": 253.78,
+  "next": 254.37
+ },
+ {
+  "text": "A sister company in Malaysia reportedly bought at least 4.8 billion dollars of advanced AI equipment, almost all of it from Nvidia.",
+  "start": 254.37,
+  "speechEnd": 262.562,
+  "next": 263.26
+ },
+ {
+  "text": "According to an investigation by The Information, Alice used her companies, and her connection to Jensen, to help move at least 5 billion dollars' worth of Nvidia chips to Chinese companies.",
+  "start": 263.26,
+  "speechEnd": 275.618,
+  "next": 276.417
+ },
+ {
+  "text": "And according to Bloomberg, at least 500 chips that MegaSpeed imported could not be found in its data centers at all.",
+  "start": 276.417,
+  "speechEnd": 283.85,
+  "next": 284.876
+ },
+ {
+  "text": "Which brings us back to those sealed boxes in Malaysia...",
+  "start": 284.876,
+  "speechEnd": 287.926,
+  "next": 288.821
+ },
+ {
+  "text": "After that discovery, MegaSpeed came onto the radar of US agencies. Then Alice.",
+  "start": 288.821,
+  "speechEnd": 294.433,
+  "next": 295.202
+ },
+ {
+  "text": "According to reports, when surveillance began, agents found she was close to an American citizen.",
+  "start": 295.202,
+  "speechEnd": 301.012,
+  "next": 301.903
+ },
+ {
+  "text": "That American was Jensen Huang.",
+  "start": 301.903,
+  "speechEnd": 303.737,
+  "next": 304.754
+ },
+ {
+  "text": "In October 2025, US intelligence officials reportedly briefed President Trump about the relationship.",
+  "start": 304.754,
+  "speechEnd": 311.081,
+  "next": 311.921
+ },
+ {
+  "text": "In May 2026, Secretary of State Marco Rubio reportedly warned Trump again, in a memo.",
+  "start": 311.921,
+  "speechEnd": 317.917,
+  "next": 318.724
+ },
+ {
+  "text": "Then, on October 29th, 2026, the New York Times broke the story to the world.",
+  "start": 318.724,
+  "speechEnd": 324.431,
+  "next": 325.251
+ },
+ {
+  "text": "At first, Nvidia and Jensen denied any relationship.",
+  "start": 325.251,
+  "speechEnd": 328.673,
+  "next": 329.46
+ },
+ {
+  "text": "A few days later, Jensen sent a letter to his employees. He admitted he had been unfaithful to his wife. He said he had no excuse.",
+  "start": 329.46,
+  "speechEnd": 337.628,
+  "next": 338.242
+ },
+ {
+  "text": "But the letter didn't mention Alice. And it didn't mention spying.",
+  "start": 338.242,
+  "speechEnd": 342.109,
+  "next": 342.932
+ },
+ {
+  "text": "On November 11th, the New York Times reported that Jensen had also had a relationship with a senior Nvidia executive.",
+  "start": 342.932,
+  "speechEnd": 349.467,
+  "next": 350.181
+ },
+ {
+  "text": "The next day, Reuters reported a third woman.",
+  "start": 350.181,
+  "speechEnd": 352.798,
+  "next": 353.628
+ },
+ {
+  "text": "Nvidia's stock was falling fast.",
+  "start": 353.628,
+  "speechEnd": 355.559,
+  "next": 356.403
+ },
+ {
+  "text": "And on the morning of November 12th, Jensen Huang resigned from everything. CEO. President. The board.",
+  "start": 356.403,
+  "speechEnd": 363.639,
+  "next": 363.96
+ },
+ {
+  "text": "But the story didn't end there.",
+  "start": 364.56,
+  "speechEnd": 366.346,
+  "next": 366.914
+ },
+ {
+  "text": "A petition to bring him back collected more than 18,800 signatures. Big names, including Elon Musk, publicly backed him.",
+  "start": 366.914,
+  "speechEnd": 375.221,
+  "next": 376.048
+ },
+ {
+  "text": "On November 17th, Nvidia's board said clearly: he is not coming back.",
+  "start": 376.048,
+  "speechEnd": 381.448,
+  "next": 382.336
+ },
+ {
+  "text": "Five days later, on November 22nd, the same board voted unanimously to bring him back as CEO, president, and board member.",
+  "start": 382.336,
+  "speechEnd": 389.583,
+  "next": 389.944
+ },
+ {
+  "text": "The board said it had spoken with senior officials in the US government, and was confident his return posed no threat to national security.",
+  "start": 389.944,
+  "speechEnd": 399.04,
+  "next": 399.909
+ },
+ {
+  "text": "Earlier, according to reports, Jensen had told Trump he had no idea Alice might be a spy. And Trump allegedly told him he should stay on as CEO.",
+  "start": 399.909,
+  "speechEnd": 405.379,
+  "next": 405.976
+ },
+ {
+  "text": "Fired on the 12th. Back on the 22nd.",
+  "start": 405.976,
+  "speechEnd": 409.302,
+  "next": 410.132
+ },
+ {
+  "text": "Ten days.",
+  "start": 410.132,
+  "speechEnd": 411.243,
+  "next": 411.811
+ },
+ {
+  "text": "Now here is the part most people are missing.",
+  "start": 411.811,
+  "speechEnd": 414.72,
+  "next": 415.732
+ },
+ {
+  "text": "Is Alice Huang actually a Chinese spy?",
+  "start": 415.732,
+  "speechEnd": 417.857,
+  "next": 418.492
+ },
+ {
+  "text": "The honest answer: nobody has proven it.",
+  "start": 418.492,
+  "speechEnd": 421.193,
+  "next": 422.034
+ },
+ {
+  "text": "The US Attorney General, Todd Blanche, has said the Justice Department has not reached a conclusion on whether she is a spy.",
+  "start": 422.034,
+  "speechEnd": 431.51,
+  "next": 432.229
+ },
+ {
+  "text": "And as of November 19th, the CIA was still saying the intelligence so far could not prove it either way.",
+  "start": 432.229,
+  "speechEnd": 438.176,
+  "next": 439.022
+ },
+ {
+  "text": "Remember those public photos? Some people ask: if she were a trained spy, why would her relationship with the most watched CEO in tech be all over social media?",
+  "start": 439.022,
+  "speechEnd": 448.095,
+  "next": 448.934
+ },
+ {
+  "text": "So where did the spy story come from?",
+  "start": 448.934,
+  "speechEnd": 450.847,
+  "next": 451.784
+ },
+ {
+  "text": "To answer that, you have to look at a fight inside the American government.",
+  "start": 451.784,
+  "speechEnd": 455.539,
+  "next": 456.45
+ },
+ {
+  "text": "On one side: Jensen Huang. He has said publicly, many times, that he wants to sell more chips to China. And with his access to Trump, some restrictions were loosened. Trump even allowed certain chip sales to China, if Nvidia paid the US government a cut of 15 to 25 percent.",
+  "start": 456.45,
+  "speechEnd": 473.187,
+  "next": 474.055
+ },
+ {
+  "text": "On the other side: China hawks like Marco Rubio, who strongly oppose selling chips to China.",
+  "start": 474.055,
+  "speechEnd": 479.494,
+  "next": 480.328
+ },
+ {
+  "text": "According to reports, it was Rubio's memo that first labeled Alice a Chinese spy.",
+  "start": 480.328,
+  "speechEnd": 484.795,
+  "next": 485.586
+ },
+ {
+  "text": "But here's the twist. The CIA report behind that memo reportedly never said she was a spy. That conclusion was Rubio's own assessment.",
+  "start": 485.586,
+  "speechEnd": 494.157,
+  "next": 494.974
+ },
+ {
+  "text": "So was this a real spy case?",
+  "start": 494.974,
+  "speechEnd": 496.776,
+  "next": 497.656
+ },
+ {
+  "text": "Or was a personal scandal turned into a weapon, in a political war over who gets to sell chips to China?",
+  "start": 497.656,
+  "speechEnd": 504.31,
+  "next": 505.555
+ },
+ {
+  "text": "To see this clearly, you have to separate three different issues.",
+  "start": 505.555,
+  "speechEnd": 508.857,
+  "next": 509.744
+ },
+ {
+  "text": "Issue one: conduct.",
+  "start": 509.744,
+  "speechEnd": 511.453,
+  "next": 512.214
+ },
+ {
+  "text": "Jensen admitted he cheated on his wife. But two of the reported relationships were with Nvidia employees. When a CEO has relationships with his own staff, that's a serious question of workplace ethics. That part is not a theory.",
+  "start": 512.214,
+  "speechEnd": 526.254,
+  "next": 527.519
+ },
+ {
+  "text": "Issue two: conflict of interest.",
+  "start": 527.519,
+  "speechEnd": 529.694,
+  "next": 530.517
+ },
+ {
+  "text": "Spy or not, a company linked to the woman he was involved with got Nvidia partner status and billions of dollars in chips. That is a clear conflict of interest, and it deserves a full investigation.",
+  "start": 530.517,
+  "speechEnd": 542.573,
+  "next": 543.538
+ },
+ {
+  "text": "Issue three: the trade war.",
+  "start": 543.538,
+  "speechEnd": 545.244,
+  "next": 546.108
+ },
+ {
+  "text": "And this is where America's double standard shows.",
+  "start": 546.108,
+  "speechEnd": 548.664,
+  "next": 549.391
+ },
+ {
+  "text": "The US constantly tells other countries to open their markets and remove trade barriers. It pressures countries like India to cut tariffs on American goods.",
+  "start": 549.391,
+  "speechEnd": 557.499,
+  "next": 558.252
+ },
+ {
+  "text": "But when it comes to selling its own technology to China, America shuts the door.",
+  "start": 558.252,
+  "speechEnd": 562.595,
+  "next": 563.375
+ },
+ {
+  "text": "Free trade, it seems, only goes one way.",
+  "start": 563.375,
+  "speechEnd": 565.749,
+  "next": 566.683
+ },
+ {
+  "text": "Now, the theory exploding online.",
+  "start": 566.683,
+  "speechEnd": 568.914,
+  "next": 569.776
+ },
+ {
+  "text": "Was this a way to move Nvidia's stock?",
+  "start": 569.776,
+  "speechEnd": 572.034,
+  "next": 572.856
+ },
+ {
+  "text": "The stock fell hard during the scandal, and jumped sharply when Jensen came back. Anyone who bought at the bottom could have made a fortune in days.",
+  "start": 572.856,
+  "speechEnd": 580.884,
+  "next": 581.952
+ },
+ {
+  "text": "But so far, no regulator, no court, and no major outlet has accused anyone of market manipulation.",
+  "start": 581.952,
+  "speechEnd": 588.19,
+  "next": 589.006
+ },
+ {
+  "text": "Big swings like this usually get regulators looking for unusual trades. If they find something, it will be a much bigger story.",
+  "start": 589.006,
+  "speechEnd": 598.346,
+  "next": 598.863
+ },
+ {
+  "text": "And one more open question: exactly who leaked the story, and why at that moment, is still not fully public.",
+  "start": 598.863,
+  "speechEnd": 603.652,
+  "next": 604.626
+ },
+ {
+  "text": "So here is our forecast.",
+  "start": 604.626,
+  "speechEnd": 606.033,
+  "next": 606.988
+ },
+ {
+  "text": "Jensen Huang stays CEO through 2027. The board, Washington, and investors all want him there.",
+  "start": 606.988,
+  "speechEnd": 613.499,
+  "next": 614.333
+ },
+ {
+  "text": "But the fight over chips to China does not go away. It gets louder.",
+  "start": 614.333,
+  "speechEnd": 618.221,
+  "next": 619.095
+ },
+ {
+  "text": "Watch three signals.",
+  "start": 619.095,
+  "speechEnd": 620.369,
+  "next": 621.265
+ },
+ {
+  "text": "One: whether the CIA or the Justice Department ever reaches a final conclusion about Alice Huang.",
+  "start": 621.265,
+  "speechEnd": 627.047,
+  "next": 627.934
+ },
+ {
+  "text": "Two: what happens to MegaSpeed, and whether anyone is charged over the missing chips.",
+  "start": 627.934,
+  "speechEnd": 633.784,
+  "next": 634.593
+ },
+ {
+  "text": "Three: the next decision on chip sales to China. Because whoever wins that fight, Jensen's camp or the hawks, will tell you who really won this scandal.",
+  "start": 634.593,
+  "speechEnd": 642.671,
+  "next": 643.151
+ },
+ {
+  "text": "Now I want to hear from you.",
+  "start": 643.151,
+  "speechEnd": 645.315,
+  "next": 646.732
+ },
+ {
+  "text": "Real spy case, or political weapon?",
+  "start": 646.732,
+  "speechEnd": 647.804,
+  "next": 648.619
+ },
+ {
+  "text": "Tell me your forecast in the comments.",
+  "start": 648.619,
+  "speechEnd": 650.834,
+  "next": 651.801
+ },
+ {
+  "text": "And if you want to see what's coming before it hits the headlines, subscribe to The Crimson Forecast.",
+  "start": 651.801,
+  "speechEnd": 659.13,
+  "next": 660.211
+ },
+ {
+  "text": "This file is closed. See you in the next one.",
+  "start": 660.211,
+  "speechEnd": 662.953,
+  "next": 663.28
+ }
+]

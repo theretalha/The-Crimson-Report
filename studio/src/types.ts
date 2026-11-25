@@ -1,6 +1,10 @@
 import type {Mood} from './theme';
 
-export type IconName = 'pentagon' | 'shelf' | 'crash' | 'phoneChip' | 'folder' | 'admiral' | 'cia';
+export type IconName = 'pentagon' | 'shelf' | 'crash' | 'phoneChip' | 'folder' | 'admiral' | 'cia'
+  | 'servers' | 'boxes' | 'idcard' | 'whitehouse' | 'capitol' | 'chip' | 'chartV' | 'radar' | 'magnifier'
+  | 'photos' | 'petition' | 'scales' | 'letter' | 'doorShut';
+
+export type Pin = {lon: number; lat: number; label: string};
 
 export type Scene =
   | (Base & {template: 'title'; big: string; glitch?: boolean})
@@ -9,9 +13,10 @@ export type Scene =
   | (Base & {template: 'stat'; parts: string[]}) // e.g. ['2021', '+ 6', '= 2027'], last part is highlighted
   | (Base & {template: 'split'; left: string; right: string; sign: string})
   | (Base & {template: 'cards'; cards: string[]})
-  | (Base & {template: 'map'; label: string})
+  | (Base & {template: 'map'; label?: string; center?: [number, number]; zoom?: number; pins?: Pin[]; highlight?: string[]; arrow?: boolean})
+  | (Base & {template: 'timeline'; points: {label: string; sub?: string}[]})
   // Real news clip: screenshot/thumbnail + outlet + real headline. Keep the URL as proof.
-  | (Base & {template: 'headline'; outlet: string; date: string; headline: string; mark: string; image: string; url: string})
+  | (Base & {template: 'headline'; outlet: string; date: string; headline: string; mark: string; image?: string; url: string})
   // Real document/transcript line, e.g. congressional testimony
   | (Base & {template: 'document'; docTitle: string; docMeta: string; quote: string; mark: string; url: string})
   // Real post from X. Fill it in from the actual post only, never invent one.
@@ -30,5 +35,6 @@ type Base = {
   highlight?: string[]; // words to put in the crimson box
   source?: string; // source line bottom-left
   seconds: number; // how long the scene stays on screen
+  speak?: number; // seconds of actual speech (captions finish by then)
   note?: string; // retention technique (only shown in the annotated version)
 };

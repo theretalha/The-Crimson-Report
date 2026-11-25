@@ -39,10 +39,10 @@ const Marked: React.FC<{text: string; mark: string; start: number; color?: strin
 export const HeadlineT: React.FC<S<'headline'>> = ({scene}) => {
   const {f, s, v} = useCardIn();
   const {durationInFrames} = useVideoConfig();
-  const w = v ? 960 : 1100;
+  const w = v ? 960 : 860;
   const zoom = interpolate(f, [0, durationInFrames], [1.0, 1.12]);
   return (
-    <div style={{position: 'absolute', left: '50%', top: v ? 300 : 210, width: w, marginLeft: -w / 2,
+    <div style={{position: 'absolute', left: '50%', top: v ? 300 : 150, width: w, marginLeft: -w / 2,
       transform: `translateY(${(1 - s) * 500}px) rotate(${interpolate(s, [0, 1], [6, -1.5])}deg)`,
       background: C.paper, boxShadow: '0 30px 80px rgba(0,0,0,0.6)', borderRadius: 6, overflow: 'hidden'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', background: C.ink,
@@ -51,7 +51,12 @@ export const HeadlineT: React.FC<S<'headline'>> = ({scene}) => {
         <span style={{color: '#9A958F'}}>{scene.date}</span>
       </div>
       <div style={{position: 'relative', width: w, height: w * 9 / 16, overflow: 'hidden', background: '#000'}}>
-        <Img src={staticFile(scene.image)} style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})`}} />
+        {scene.image ? (
+          <Img src={staticFile(scene.image)} style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})`}} />
+        ) : (
+          <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#141414',
+            fontFamily: FONT_HEAD, fontSize: w / 7, color: '#2c2c2c', transform: `scale(${zoom})`}}>{scene.outlet}</div>
+        )}
         <div style={{position: 'absolute', left: 18, top: 18, background: C.crimson, color: C.white, fontFamily: FONT_MONO,
           fontWeight: 700, fontSize: v ? 22 : 18, padding: '6px 12px', letterSpacing: 2}}>NEWS CLIP</div>
       </div>

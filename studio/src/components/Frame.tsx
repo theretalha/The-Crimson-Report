@@ -105,9 +105,9 @@ const Headline: React.FC<{text: string; sub?: string; fg: string; muted: string;
 // Karaoke captions: phrase shown in chunks, the spoken word sits in a crimson box.
 const Captions: React.FC<{scene: Scene; v: boolean}> = ({scene, v}) => {
   const f = useCurrentFrame();
-  const {durationInFrames} = useVideoConfig();
+  const {durationInFrames, fps} = useVideoConfig();
   const words = scene.caption.split(' ');
-  const speakFrames = durationInFrames * 0.9;
+  const speakFrames = scene.speak ? Math.min(durationInFrames, scene.speak * fps) : durationInFrames * 0.9;
   const active = Math.min(words.length - 1, Math.floor((f / speakFrames) * words.length));
   const CHUNK = v ? 3 : 6;
   const chunkStart = Math.floor(active / CHUNK) * CHUNK;
