@@ -78,7 +78,7 @@ export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, p
 
       {/* real surfaces: scuffed concrete on dark scenes, paper fibre on cream scenes (CC0 textures from the Remotion kit) */}
       {scene.mood === 'facts' ? (
-        <AbsoluteFill style={{backgroundImage: `url(${staticFile('tex/fibre.jpg')})`, backgroundSize: 'cover', mixBlendMode: 'multiply', opacity: 0.11, pointerEvents: 'none'}} />
+        <AbsoluteFill style={{backgroundImage: `url(${staticFile('tex/fibre.jpg')})`, backgroundSize: 'cover', mixBlendMode: 'multiply', opacity: 0.05, pointerEvents: 'none'}} />
       ) : (
         <AbsoluteFill style={{backgroundImage: `url(${staticFile('tex/concrete.jpg')})`, backgroundSize: '960px 960px', mixBlendMode: scene.mood === 'danger' ? 'multiply' : 'screen',
           opacity: scene.mood === 'danger' ? 0.42 : 0.14, pointerEvents: 'none', transform: `scale(${push})`}} />
@@ -86,7 +86,7 @@ export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, p
       {/* cinematic finish: flickering film grain (8 real grain frames), vignette, light leak at chapter changes */}
       <AbsoluteFill style={{backgroundImage: `url(${staticFile(`tex/g${(Math.floor((startFrame + f) / 2)) % 8}.jpg`)})`, backgroundSize: 'cover',
         mixBlendMode: 'overlay', opacity: 0.34, pointerEvents: 'none'}} />
-      <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.5) 100%)', pointerEvents: 'none'}} />
+      <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,' + (scene.mood === 'facts' ? '0.2' : '0.5') + ') 100%)', pointerEvents: 'none'}} />
       {chapterStart && (
         <AbsoluteFill style={{pointerEvents: 'none', mixBlendMode: 'screen', opacity: interpolate(f, [0, 8, 26], [0, 0.55, 0], clamp),
           background: 'linear-gradient(100deg, rgba(0,0,0,0) 0%, rgba(255,70,50,0.8) 46%, rgba(255,190,120,0.5) 54%, rgba(0,0,0,0) 80%)',

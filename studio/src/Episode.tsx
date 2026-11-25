@@ -1,11 +1,14 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
+import {AbsoluteFill, Audio, Sequence, staticFile, useVideoConfig} from 'remotion';
 import {Frame} from './components/Frame';
+import {Probe} from './components/Probe';
 import {Bed, SceneSfx} from './components/Sfx';
 import {CardsT, IconT, MapT, QuoteT, SplitT, StatT, TimelineT, TitleT} from './templates/Templates';
 import {DocumentT, HeadlineT, NewspaperT, PhotosT, TweetT} from './templates/Clips';
 import {ChartT} from './templates/StockChart';
 import {RecipeT} from './templates/Recipes';
+import {EntityMapT} from './templates/EntityMap';
+import {IconPlusT, StatPlusT, TimelineCardsT, TitlePlusT} from './templates/Upgraded';
 import {FPS} from './theme';
 import type {Scene} from './types';
 
@@ -20,17 +23,20 @@ const startFrames = (scenes: Scene[]) => {
 export const totalFrames = (scenes: Scene[]) => startFrames(scenes)[scenes.length];
 
 const Body: React.FC<{scene: Scene}> = ({scene}) => {
+  const {width, height} = useVideoConfig();
+  const land = width > height; // the upgraded templates are for 16:9; Shorts keep the older ones
   switch (scene.template) {
-    case 'title': return <TitleT scene={scene} />;
-    case 'icon': return <IconT scene={scene} />;
+    case 'title': return land ? <TitlePlusT scene={scene} /> : <TitleT scene={scene} />;
+    case 'icon': return land ? <IconPlusT scene={scene} /> : <IconT scene={scene} />;
     case 'quote': return <QuoteT scene={scene} />;
-    case 'stat': return <StatT scene={scene} />;
+    case 'stat': return land ? <StatPlusT scene={scene} /> : <StatT scene={scene} />;
     case 'split': return <SplitT scene={scene} />;
     case 'cards': return <CardsT scene={scene} />;
     case 'map': return <MapT scene={scene} />;
-    case 'timeline': return <TimelineT scene={scene} />;
+    case 'timeline': return land ? <TimelineCardsT scene={scene} /> : <TimelineT scene={scene} />;
     case 'chart': return <ChartT scene={scene} />;
     case 'recipe': return <RecipeT scene={scene} />;
+    case 'entities': return <EntityMapT scene={scene as any} />;
     case 'headline': return <HeadlineT scene={scene} />;
     case 'document': return <DocumentT scene={scene} />;
     case 'tweet': return <TweetT scene={scene} />;
@@ -39,14 +45,15 @@ const Body: React.FC<{scene: Scene}> = ({scene}) => {
   }
 };
 
-export type EpisodeProps = {scenes: Scene[]; annotate?: boolean; audio?: string; sfx?: boolean};
+export type EpisodeProps = {scenes: Scene[]; annotate?: boolean; audio?: string; sfx?: boolean; probe?: boolean};
 
 // Plays scenes back to back. Drop the TTS file in /public and pass its name as `audio`.
-export const Episode: React.FC<EpisodeProps> = ({scenes, annotate, audio, sfx = true}) => {
+export const Episode: React.FC<EpisodeProps> = ({scenes, annotate, audio, sfx = true, probe}) => {
   const starts = startFrames(scenes);
   const total = starts[scenes.length];
   return (
     <AbsoluteFill style={{background: '#000'}}>
+      {probe && <Probe />}
       {audio && <Audio src={staticFile(audio)} />}
       {sfx && audio && <Bed />}
       {scenes.map((s, i) => {

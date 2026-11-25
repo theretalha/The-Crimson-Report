@@ -35,7 +35,7 @@ SR = K.SR
 CR = 200  # control rate for gain curves (Hz)
 FPS = 30
 FAMILY = {"title": "text", "stat": "text", "split": "text", "cards": "text", "icon": "icon", "photos": "photo",
-          "headline": "clip", "document": "clip", "newspaper": "clip", "tweet": "clip", "map": "map", "timeline": "tl", "recipe": "clip", "chart": "tl"}
+          "headline": "clip", "document": "clip", "newspaper": "clip", "tweet": "clip", "map": "map", "timeline": "tl", "recipe": "clip", "chart": "tl", "entities": "tl"}
 PENT = [587.33, 698.46, 880.0, 1046.5, 1174.66]  # D5 F5 A5 C6 D6
 
 
@@ -176,7 +176,7 @@ def main():
         elif tp in ("headline", "document", "newspaper", "tweet"):
             add(T + 2 / FPS, "paper", -18, v=k)
             add(T + 18 / FPS, "marker", -25)
-        elif tp == "stat":
+        elif tp == "stat" and not c.get("events"):
             for i in range(n):
                 at = T + (6 + 14 * i) / FPS
                 if i < n - 1:
@@ -187,7 +187,7 @@ def main():
         elif tp == "cards":
             for i in range(n):
                 add(T + (round(i / n * c["dur"] * FPS * 0.8) + 4) / FPS, "tick", -20, f=PENT[min(i, 4)])
-        elif tp == "timeline":
+        elif tp == "timeline" and not c.get("events"):
             for i in range(n):
                 durf = c["dur"] * FPS
                 add(T + (6 + round(i / max(1, n) * min(durf * 0.7, n * 18))) / FPS, "tick", -20, f=PENT[i % 5])

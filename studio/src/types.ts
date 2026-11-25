@@ -28,6 +28,8 @@ export type Scene =
   | (Base & {template: 'newspaper'; image: string; paper: string; date: string; underline: {x: number; y: number; w: number}[]; credit: string; url: string})
   // Hand-composed scene built from the Remotion kit effects (see templates/Recipes.tsx)
   | (Base & {template: 'recipe'; recipe: string})
+  // Connected hierarchy of people / companies / money (templates/EntityMap.tsx). `at` = the narrated word that triggers it.
+  | (Base & {template: 'entities'; nodes: {id: string; at?: string; dim?: boolean; focus?: boolean}[]; links: {from: string; to: string; label: string; at?: string; dim?: boolean; arc?: number}[]; badge?: {value: number; prefix?: string; suffix?: string; sub?: string; at?: string}; callout?: {kicker: string; text: string; source?: string; at?: string; top?: number}})
   | (Base & {template: 'tweet'; name: string; handle: string; date: string; text: string; mark: string; url: string});
 
 type Base = {

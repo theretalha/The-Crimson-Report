@@ -15,6 +15,7 @@ type Props = {
   main?: string;
   accent?: string;
   plate?: boolean;
+  light?: boolean; // for cream backgrounds
   seed?: number;
 };
 
@@ -27,7 +28,7 @@ const El: React.FC<{el: {t: string; a: Record<string, string>}; p: number; strok
   );
 };
 
-export const ProIcon: React.FC<Props> = ({name, size = 420, delay = 0, draw = 26, main = '#F4F1EA', accent = '#C8141E', plate = true, seed = 0}) => {
+export const ProIcon: React.FC<Props> = ({name, size = 420, delay = 0, draw = 26, main = '#F4F1EA', accent = '#C8141E', plate = true, light = false, seed = 0}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const els = ICONS[name] ?? [];
@@ -46,9 +47,9 @@ export const ProIcon: React.FC<Props> = ({name, size = 420, delay = 0, draw = 26
   return (
     <div style={{position: 'relative', width: S, height: S, transform: `scale(${0.82 + 0.18 * pop}) rotate(${rot}deg)`, opacity: Math.min(1, pop * 2)}}>
       {plate && (
-        <div style={{position: 'absolute', inset: 0, borderRadius: S * 0.09, background: 'linear-gradient(150deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 60%)',
-          border: '2px solid rgba(255,255,255,0.16)', boxShadow: `inset 0 0 ${S * 0.12}px rgba(0,0,0,0.55), 0 ${S * 0.06}px ${S * 0.12}px rgba(0,0,0,0.5)`, overflow: 'hidden'}}>
-          <div style={{position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.20) 1.4px, transparent 1.6px)', backgroundSize: `${S * 0.045}px ${S * 0.045}px`,
+        <div style={{position: 'absolute', inset: 0, borderRadius: S * 0.09, background: light ? 'linear-gradient(150deg, rgba(14,14,14,0.07), rgba(14,14,14,0.02) 60%)' : 'linear-gradient(150deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 60%)',
+          border: light ? '2px solid rgba(14,14,14,0.2)' : '2px solid rgba(255,255,255,0.16)', boxShadow: light ? `inset 0 0 ${S * 0.1}px rgba(0,0,0,0.12), 0 ${S * 0.05}px ${S * 0.1}px rgba(0,0,0,0.18)` : `inset 0 0 ${S * 0.12}px rgba(0,0,0,0.55), 0 ${S * 0.06}px ${S * 0.12}px rgba(0,0,0,0.5)`, overflow: 'hidden'}}>
+          <div style={{position: 'absolute', inset: 0, backgroundImage: light ? 'radial-gradient(rgba(14,14,14,0.22) 1.4px, transparent 1.6px)' : 'radial-gradient(rgba(255,255,255,0.20) 1.4px, transparent 1.6px)', backgroundSize: `${S * 0.045}px ${S * 0.045}px`,
             WebkitMaskImage: 'linear-gradient(135deg, transparent 35%, black 100%)', maskImage: 'linear-gradient(135deg, transparent 35%, black 100%)'}} />
         </div>
       )}
