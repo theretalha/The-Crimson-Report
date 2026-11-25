@@ -138,16 +138,14 @@ def main():
         elif new_chapter:
             L = min(1.6, gap + 0.25)
             if gap >= 0.45:
-                add(h - L, "riser", -17, d=L)
-                dips.append(h)
+                dips.append(h)  # riser removed: owner found it irritating (Nov 25)
             add(h - 0.03, "braam", -8)
             swells.append(h)
             big = True
         if c["fx"]:
             L = min(1.4, gap + 0.3 + (h - T))
             if L >= 0.5 and not (new_chapter and prev):
-                add(h - L, "riser", -16, d=L)
-                dips.append(h)
+                dips.append(h)  # riser removed: owner found it irritating (Nov 25)
             add(h - 0.02, "impact", -7, v=imp_var)
             imp_var += 1
             if c["fx"] == "twist":

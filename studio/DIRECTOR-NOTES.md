@@ -26,6 +26,13 @@ Same list is also saved in Claude memory (feedback notes for this repo).
     Flux is optional and rare: hero moments only (max 1-2 per minute, 4-5 s each, never back-to-back), always with motion and an "illustrative" label.
     Animation, real photos and real data come first. Do not ask for the owner's Cloudflare token unless they ask for Flux.
 
+## Show the action, not the words (Nov 25, 2026)
+9c. When the narration describes an everyday physical action, ANIMATE THE ACTION. Do not write it as text boxes.
+    Example (EP 003, "NORMAL LOGIC"): "you buy chips, you open them, you plug them in" must show a parcel arriving, a hand/lid opening it, the chip lifted out and plugged into a server, a light turning on. It was shown as the words BUY -> OPEN. Wrong.
+    Rule: for every scene ask "what would a person SEE doing this in real life?" and draw that sequence in steps (object -> action -> result), one step per narrated phrase.
+    Words are only small labels beside the drawing. Obvious things must look obvious. Before finishing a scene, check it with a viewer who has not read the script: could they tell what is happening without the caption?
+    Self-check for every scene: if it is only text, boxes and an arrow, redraw it as the real-world scene.
+
 ## Content and voice
 10. Keep the approved Google TTS narration. Do not re-record.
 11. Authentic and balanced, not US-favouring. Verify facts, hedge allegations, never present unproven claims as fact, no sexual detail.
@@ -34,6 +41,7 @@ Same list is also saved in Claude memory (feedback notes for this repo).
 ## Audio
 13. Sound effects must attract the audience and be audible on phone speakers.
 14. No constant hum, fan or machine noise: bed must be evolving, quiet, never static or rhythmic.
+15. No risers (rising whoosh/sweep builds) before hits: owner found them irritating when repeated (heard from 18 s on). Keep clean impacts only.
 
 ## Workflow
-15. Cloud studio builds and renders. Laptop fetches assets the cloud cannot (see ASSETS-TODO.md). Do not publish two competing Nvidia videos.
+16. Cloud studio builds and renders. Laptop fetches assets the cloud cannot (see ASSETS-TODO.md). Do not publish two competing Nvidia videos.

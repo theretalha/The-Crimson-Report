@@ -5,6 +5,7 @@ import {RubberStamp, useStampShake} from '../kit/effects/text/Stamp';
 import {HandArrow} from '../kit/effects/text/HandDrawn';
 import {Typewriter} from '../kit/effects/text/Typewriter';
 import {C as KC, F as KF} from '../kit/theme';
+import {EVERYDAY} from './Everyday';
 
 // "Recipes": hand-composed scenes built from the Remotion kit effects, timed to the narrated words.
 // Each recipe exports its sound events too, so the audio mix lands on the same moments.
@@ -77,7 +78,7 @@ const ban: {Comp: React.FC<{scene: RScene}>; events: (s: RScene) => Ev[]} = {
   },
 };
 
-export const RECIPES: Record<string, typeof ban> = {ban};
+export const RECIPES: Record<string, typeof ban> = {ban, ...(EVERYDAY as any)};
 export const RecipeT: React.FC<{scene: any}> = ({scene}) => {
   const R = RECIPES[scene.recipe];
   return R ? <R.Comp scene={scene} /> : null;

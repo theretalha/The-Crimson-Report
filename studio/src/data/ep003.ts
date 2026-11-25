@@ -39,7 +39,7 @@ const SPECS: (Spec | Spec[])[] = [
   /*1*/ src(I('servers', 'A DATA CENTER.', 'Malaysia'), 'According to reports'),
   /*2*/ [cap(I('boxes', 'NVIDIA AI CHIPS.', 'Brand new.'), 'Stacks of boxes. Brand-new Nvidia AI chips.'), cap(I('chip', 'THE MOST WANTED CHIPS.'), 'Some of the most wanted computer chips on the planet.')],
   /*3*/ T('STILL SEALED.', 'danger'),
-  /*4*/ [cap(SP('BUY', '→', 'OPEN', 'NORMAL LOGIC.', 'facts'), "If you buy chips this powerful for your own data center, you open them."), cap(I('servers', 'PLUG IN. USE.', undefined, 'facts'), 'You plug them in. You use them.')],
+  /*4*/ [cap({template: 'recipe', recipe: 'unbox', stage: 'buy', mood: 'facts', title: 'NORMAL LOGIC.', sub: 'You buy it.'}, "If you buy chips this powerful for your own data center,"), cap({template: 'recipe', recipe: 'unbox', stage: 'open', mood: 'facts', title: 'NORMAL LOGIC.', sub: 'You open it.'}, 'you open them.'), cap({template: 'recipe', recipe: 'plugin', mood: 'facts', title: 'NORMAL LOGIC.', sub: 'You plug it in. You use it.'}, 'You plug them in. You use them.')],
   /*5*/ T('UNLESS…', 'danger'),
   /*6*/ [cap(I('magnifier', 'AN INVESTIGATION.'), 'According to reports, that one moment helped start an investigation'), cap(CA(['A MYSTERY WOMAN', 'THE WHITE HOUSE', "NVIDIA'S CEO"], 'WHERE IT LED.'), 'that would reach a mysterious Chinese businesswoman, the White House, and the man running the most important tech company in the world.')],
   /*7*/ P([JENSEN]),
