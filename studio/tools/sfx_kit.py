@@ -273,6 +273,9 @@ def glitch():
 
 
 # ------------------------------------------------------------------ the bed (seamless 64 s loops)
+# v3. The v2 bed (ten frozen notes + a heartbeat + a clashing pair) sounded like a fan / factory machine:
+# steady tones in 100-450 Hz never change, a pulse every 1.28 s is a "chug", and two notes a semitone apart wobble
+# like an idling engine. v3 rules: nothing static, nothing rhythmic, nothing beating, long reverb.
 LOOP = 64.0
 
 
@@ -285,58 +288,67 @@ def _f(f):
     return round(f * 64) / 64
 
 
-def _partials(spec, breathe_hz=1 / 16, depth=0.22, detune=3 / 64):
-    t = _t()
-    L = np.zeros(len(t))
-    R = np.zeros(len(t))
-    for i, (f, g) in enumerate(spec):
-        f = _f(f)
-        b = 1 - depth + depth * np.sin(2 * np.pi * breathe_hz * t + i * 0.9)
-        L += g * b * np.sin(2 * np.pi * (f - detune) * t + i)
-        R += g * b * np.sin(2 * np.pi * (f + detune) * t + i * 1.3)
-    return np.stack([L, R]).astype(np.float32)
+def _smooth(x):
+    x = np.clip(x, 0, 1)
+    return x * x * (3 - 2 * x)
 
 
-def _loopify(x, xf=4.0):
-    """make a longer noise take seamless by folding its tail into its head"""
-    n = int(LOOP * SR)
-    k = int(xf * SR)
-    body = x[:, :n].copy()
-    ramp = np.linspace(0, 1, k)
-    body[:, :k] = body[:, :k] * ramp + x[:, n : n + k] * (1 - ramp)
-    return body
+def _chord_env(t, c, atk=4.0, rel=5.0, span=22.0, shift=3.0):
+    """chord c fades in, holds, fades out; neighbours overlap 6 s so the harmony glides instead of switching"""
+    tw = (t - c * 16.0 + shift) % LOOP
+    return _smooth(tw / atk) * _smooth((span - tw) / rel)
+
+
+def _voice(f, t, phi, detune):
+    """one pad voice: 6 partials whose levels drift independently (timbre keeps moving), slight vibrato"""
+    f = _f(f)
+    out = np.zeros_like(t)
+    for k in range(1, 7):
+        m = 0.65 + 0.35 * np.sin(2 * np.pi * (3 + k) / 64 * t + phi * k)
+        out += k ** -1.5 * m * np.sin(2 * np.pi * (f * k + detune * k) * t + 0.25 * k * np.sin(2 * np.pi * 4 / 64 * t + phi) + 3 * phi * k)
+    return out
+
+
+def _circ_reverb(x, dur=4.0, wet=0.6, seed=1, damp=3500):
+    """reverb by circular convolution, so the loop stays seamless"""
+    n = x.shape[1]
+    ir = _ir(dur, seed, damp)
+    y = np.empty_like(x)
+    for c in range(2):
+        y[c] = np.fft.irfft(np.fft.rfft(x[c]) * np.fft.rfft(ir[c], n), n)
+    return (1 - wet) * x + wet * y
+
+
+# D minor -> Bb -> G minor -> A, 16 s each (root, pad notes)
+CHORDS = [
+    (36.71, [146.83, 174.61, 220.00, 293.66]),
+    (58.27, [116.54, 146.83, 174.61, 233.08]),
+    (49.00, [98.00, 116.54, 146.83, 196.00]),
+    (55.00, [110.00, 164.81, 220.00, 277.18]),
+]
 
 
 def make_bed():
-    """returns the bed layers as 64 s seamless stereo loops"""
+    """returns the bed as 64 s seamless stereo loops: root (sub notes), pad (slow chords), dark (crimson swells)"""
     t = _t()
+    root = np.zeros(len(t))
+    padL, padR = np.zeros(len(t)), np.zeros(len(t))
+    for c, (r, notes) in enumerate(CHORDS):
+        e = _chord_env(t, c)
+        root += _chord_env(t, c, 3.0, 4.0) * (np.sin(2 * np.pi * _f(r) * t) + 0.45 * np.sin(2 * np.pi * _f(r) * 2 * t + 0.6))
+        for i, nf in enumerate(notes):
+            padL += e * _voice(nf, t, c * 1.7 + i * 0.9, +2 / 64) / len(notes)
+            padR += e * _voice(nf, t, c * 1.7 + i * 0.9 + 0.4, -2 / 64) / len(notes)
     L = {}
-    # sub drone: D1 / A1 / D2 (felt)
-    L["sub"] = _partials([(36.71, 1.0), (55.0, 0.55), (73.42, 0.5)])
-    # body: harmonics up to ~300 Hz (this is what small speakers actually reproduce)
-    L["body"] = _partials([(87.31, 0.2), (110.0, 0.4), (146.83, 0.45), (174.61, 0.5), (220.0, 0.65), (293.66, 0.55), (349.23, 0.3), (440.0, 0.14)])
-    # air: breathing band noise
-    r = rng(5)
-    nz = np.stack([bp(r.standard_normal(int((LOOP + 4) * SR)), 150, 900, 2) for _ in range(2)])
-    nz = _loopify(nz)
-    breath = 0.35 + 0.65 * (0.5 + 0.5 * np.sin(2 * np.pi * t / 8)) ** 2
-    L["air"] = (nz / np.max(np.abs(nz)) * breath).astype(np.float32)
-    # danger: D1 against Eb1 (2.2 Hz beating = uneasy) + tritone + low overtones
-    L["danger"] = _partials([(38.89, 1.0), (36.71, 0.55), (77.78, 0.6), (103.83, 0.35), (155.56, 0.22)], depth=0.3)
-    # heartbeat: lub-dub every 1.28 s (50 beats per loop), saturated so it is audible on small speakers
-    hb = np.zeros(len(t))
-    k = np.arange(int(0.4 * SR)) / SR
-    thump = np.sin(2 * np.pi * (62 * np.exp(-k * 10) + 42) * k) * np.exp(-k * 13)
-    for beat in range(50):
-        for off, g in ((0.0, 1.0), (0.27, 0.62)):
-            i = int((beat * 1.28 + off) * SR)
-            j = min(len(hb), i + len(thump))
-            hb[i:j] += thump[: j - i] * g
-    hb = sat(hb / np.max(np.abs(hb)), 2.4)
-    L["heart"] = np.stack([hb, hb]).astype(np.float32)
-    # pad for fact scenes: open D-A-E, glassy and calm
-    pad = _partials([(293.66, 0.5), (440.0, 0.4), (329.63, 0.3), (587.33, 0.14)], breathe_hz=1 / 8, depth=0.4)
-    n = pad.shape[1]
-    tri = np.concatenate([pad, pad, pad], axis=1)  # filter a 3x copy and keep the middle: no click at the loop seam
-    L["pad"] = np.stack([lp(tri[0], 1800, 2)[n : 2 * n], lp(tri[1], 1800, 2)[n : 2 * n]]).astype(np.float32)
+    L["root"] = np.stack([root, root]).astype(np.float32)
+    L["pad"] = _circ_reverb(np.stack([padL, padR]), 4.0, 0.6, 21).astype(np.float32)
+    # crimson swells: wide tritone voicing (no close intervals = no wobble), two slow swells per loop
+    dL, dR = np.zeros(len(t)), np.zeros(len(t))
+    for ci, centre in enumerate((14.0, 46.0)):
+        s_ = np.clip(((t - centre + 8) % LOOP) / 16.0, 0, 1)
+        e = np.sin(np.pi * s_) ** 2
+        for i, nf in enumerate((73.42, 103.83, 130.81, 311.13)):
+            dL += e * _voice(nf, t, ci * 2.3 + i * 1.1, +3 / 64) / 4
+            dR += e * _voice(nf, t, ci * 2.3 + i * 1.1 + 0.5, -3 / 64) / 4
+    L["dark"] = _circ_reverb(np.stack([dL, dR]), 4.5, 0.7, 22).astype(np.float32)
     return L

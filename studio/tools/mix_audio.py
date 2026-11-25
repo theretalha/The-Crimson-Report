@@ -66,7 +66,8 @@ def main():
     ap.add_argument("--cues", required=True)
     ap.add_argument("--timing", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--bed-offset", type=float, default=-3.0, help="dB; bed loudness vs the voice (0 = as strong as the measured reference ratio)")
+    ap.add_argument("--bed-offset", type=float, default=0.0, help="dB; raise (+) or lower (-) the bed. 0 = default (sub -15 dB, low -18 dB under the voice)")
+    ap.add_argument("--stems", default=None, help="folder: also write bed.wav and sfx.wav so each part can be heard alone")
     ap.add_argument("--hits-offset", type=float, default=0.0, help="dB added to every sound effect")
     a = ap.parse_args()
 
@@ -82,11 +83,11 @@ def main():
     V_db = mean_db(hop20[hop20 > np.quantile(hop20, 0.5)])  # same yardstick used on the reference
     thr = 10 ** ((V_db - 22) / 20)
     mask = ve > thr
-    mask = binary_closing(mask, structure=np.ones(int(0.2 * CR)))  # bridge gaps between words
-    mask = np.roll(mask, -int(0.03 * CR))  # look-ahead: duck just before a word starts
+    mask = binary_closing(mask, structure=np.ones(int(0.5 * CR)))  # bridge gaps up to 0.5 s: duck per sentence, not per word
+    mask = np.roll(mask, -int(0.10 * CR))  # look-ahead: start easing down before the sentence starts
     D = np.zeros(len(mask))  # duck amount 0..1, fast attack, slow release
     cur = 0.0
-    ka, kr = 1 - np.exp(-1 / (0.012 * CR)), 1 - np.exp(-1 / (0.26 * CR))
+    ka, kr = 1 - np.exp(-1 / (0.08 * CR)), 1 - np.exp(-1 / (0.8 * CR))  # slow attack and release: no audible pumping
     for i, m in enumerate(mask):
         cur += ((ka if m > cur else kr)) * (float(m) - cur)
         D[i] = cur
@@ -244,14 +245,20 @@ def main():
     vv[:, : len(voice)] = voice
 
     # ---------------------------------------------------------------- bed
-    L = K.make_bed()
+    import os
+    cache_p = os.path.join(os.path.dirname(os.path.abspath(a.out)), ".bed_v3.npz")
+    if os.path.exists(cache_p):
+        L = dict(np.load(cache_p))
+    else:
+        L = K.make_bed()
+        np.savez(cache_p, **L)
     rms = lambda x: float(np.sqrt((x ** 2).mean()))
 
     def loop_band_db(x, lo, hi):
         return mean_db(band_env(x[0], lo, hi))
 
-    s_sub = 10 ** ((V_db + (-1.2 + a.bed_offset) - loop_band_db(L["sub"], 30, 120)) / 20)
-    s_body = 10 ** ((V_db + (-2.7 + a.bed_offset) - loop_band_db(L["body"], 120, 350)) / 20)
+    s_sub = 10 ** ((V_db + (-15.0 + a.bed_offset) - loop_band_db(L["root"], 30, 120)) / 20)
+    s_body = 10 ** ((V_db + (-18.0 + a.bed_offset) - loop_band_db(L["pad"], 120, 350)) / 20)
 
     # event curves: drop-out before a big hit, swell after it
     evc = np.ones(len(D))
@@ -267,22 +274,23 @@ def main():
     fadeout = np.clip((total - tc) / 3.0, 0, 1)
     glob = evc * fadein * fadeout
 
+    # a slow, irregular level drift (17-40 s waves) so the bed is never a constant sound
+    rs = np.random.default_rng(11)
+    drift = gaussian_filter1d(rs.standard_normal(len(D)), 7 * CR, mode="wrap")
+    drift = (drift - drift.min()) / (drift.max() - drift.min())
+    glob = glob * (0.4 + 0.6 * drift)
     G = {
-        "sub": (M["context"] + 0.9 * M["danger"] + 0.75 * M["facts"]) * (1 - 0.10 * D),
-        "body": (M["context"] + 0.8 * M["danger"] + 0.55 * M["facts"]) * (1 - 0.45 * D),
-        "air": (M["context"] + 1.2 * M["danger"] + 0.4 * M["facts"]) * (1 - 0.70 * D),
-        "danger": M["danger"] * (1 - 0.35 * D),
-        "heart": 0.9 * M["danger"] * (1 - 0.30 * D),
-        "pad": M["facts"] * (1 - 0.60 * D),
+        "root": (0.9 * M["context"] + 1.1 * M["danger"] + 0.3 * M["facts"]) * (1 - 0.05 * D),
+        "pad": (1.0 * M["context"] + 0.7 * M["danger"] + 0.55 * M["facts"]) * (1 - 0.35 * D),
+        "dark": M["danger"] * (1 - 0.30 * D),
     }
     ts = np.arange(N) / SR
     G_audio = {n: (np.interp(ts, tc, g * glob).astype(np.float32)) for n, g in G.items()}
-    reps = int(np.ceil(N / L["sub"].shape[1]))
+    reps = int(np.ceil(N / L["root"].shape[1]))
     tiled = {n: np.tile(L[n], (1, reps))[:, :N] for n in G}
 
     def scales(ss_, sb):
-        return {"sub": ss_, "body": sb, "danger": ss_ * 0.8, "heart": 0.5 * rms(L["sub"]) * ss_ / rms(L["heart"]),
-                "air": 0.45 * rms(L["body"]) * sb / rms(L["air"]), "pad": 0.5 * rms(L["body"]) * sb / rms(L["pad"])}
+        return {"root": ss_, "pad": sb, "dark": 0.8 * rms(L["pad"]) * sb / rms(L["dark"])}
 
     def build(ss_, sb):
         sc = scales(ss_, sb)
@@ -297,7 +305,7 @@ def main():
         pause, speech = vo < np.quantile(vo, 0.15), vo > np.quantile(vo, 0.5)
         return mean_db(sub[pause]) - mean_db(vo[speech]), mean_db(low[pause]) - mean_db(vo[speech])
 
-    want_sub, want_low = -1.2 + a.bed_offset, -2.7 + a.bed_offset
+    want_sub, want_low = -15.0 + a.bed_offset, -18.0 + a.bed_offset
     for it in range(3):  # calibrate: measure the real mix (ducking, moods, hits included), correct, repeat
         bed = build(s_sub, s_body)
         m_sub, m_low = yardstick(vv + bed + sfx)
@@ -307,6 +315,11 @@ def main():
         s_sub *= 10 ** ((want_sub - m_sub) / 20)
         s_body *= 10 ** ((want_low - m_low) / 20)
     out = vv + bed + sfx
+    if a.stems:
+        import os
+        os.makedirs(a.stems, exist_ok=True)
+        for nm, arr in (('bed', bed), ('sfx', sfx)):
+            wf.write(os.path.join(a.stems, nm + '.wav'), SR, (np.clip(arr, -1, 1).T * 32767).astype('<i2'))
 
     # look-ahead peak limiter (5 ms look-ahead, 120 ms release): no clipping, no global turn-down
     blk = int(0.001 * SR)

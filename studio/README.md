@@ -36,6 +36,14 @@ The audio is mixed outside Remotion so it can be heard in seconds and tuned with
 3. Master to -14 LUFS (two-pass `loudnorm`), copy to `public/audio/ep003-mix.wav`. The `EP003-Nvidia` composition plays that file (`sfx: false`).
    To change the sound only: remix, then `ffmpeg -i old.mp4 -i master.wav -map 0:v -map 1:a -c:v copy -c:a aac out.mp4` (no video re-render).
 
-Knobs: `--bed-offset` (dB, bed vs voice; default -3) and `--hits-offset` (dB, all effects).
+Knobs: `--bed-offset` (dB; + louder bed, - quieter; 0 = default) and `--hits-offset` (dB, all effects). `--stems out/stems` also writes `bed.wav` and `sfx.wav` so each part can be heard alone.
 All sounds are synthesised in `tools/sfx_kit.py` (nothing sampled). Mark big moments with `FX` in the episode data file
 (`reveal` / `twist` = riser, drop-out, hit). `python3 tools/mix_audio.py` prints a report: bed vs voice, event counts, peaks.
+
+### Why the bed is built this way (lessons from EP 003)
+A steady drone sounds like a fan / factory machine when it is **static** (the same notes forever), **rhythmic** (a pulse like a heartbeat
+layer = a "chug") or **beating** (two close notes = engine wobble), especially at 100-450 Hz, which is exactly what laptop and phone
+speakers play. The bed (`make_bed` in `tools/sfx_kit.py`) therefore has: slow chord changes (Dm -> Bb -> Gm -> A, 16 s each, overlapping),
+drifting timbre, long reverb, no pulse, no close intervals, a slow irregular level drift, and a slow sentence-level duck under the voice.
+Checks that must stay true (see the measurements in the session notes): spectrum 20 s later is NOT identical (correlation well under 0.9),
+amplitude flutter 1.5-8 Hz stays in single digits, no hiss band (the old breathing-noise layer was removed).
