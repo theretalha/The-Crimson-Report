@@ -54,7 +54,7 @@ const unbox = {
   events: (s: S): Ev[] => {
     const t = ut(s);
     return s.stage === 'open'
-      ? [{t: t.open, kind: 'tick', db: -11}, {t: t.open + 0.2, kind: 'whoosh', db: -20}, {t: t.open + 0.5, kind: 'ping', db: -14}]
+      ? [{t: t.open, kind: 'tick', db: -11, f: 1568}, {t: t.open + 0.2, kind: 'whoosh', db: -20}, {t: t.open + 0.5, kind: 'ping', db: -14, f: 1318.5}]
       : [{t: t.buy + 0.2, kind: 'slam', db: -16}];
   },
   Comp: ({scene}: {scene: S}) => {
@@ -114,7 +114,7 @@ const pt = (s: S) => ({plug: at(s, 'plug', -0.15), use: at(s, 'use', -0.05)});
 const plugin = {
   events: (s: S): Ev[] => {
     const t = pt(s);
-    return [{t: t.plug, kind: 'whoosh', db: -20}, {t: t.plug + 0.38, kind: 'tick', db: -10}, {t: t.plug + 0.42, kind: 'ping', db: -14}, {t: t.use, kind: 'ping', db: -14}, {t: t.use + 0.3, kind: 'tick', db: -18}];
+    return [{t: t.plug, kind: 'whoosh', db: -20}, {t: t.plug + 0.38, kind: 'tick', db: -10, f: 1175}, {t: t.plug + 0.42, kind: 'ping', db: -14, f: 1318.5}, {t: t.use, kind: 'ping', db: -14, f: 1568}, {t: t.use + 0.3, kind: 'tick', db: -18, f: 1318.5}];
   },
   Comp: ({scene}: {scene: S}) => {
     const f = useCurrentFrame();
