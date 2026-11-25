@@ -27,7 +27,7 @@ const H = (id: string | undefined, outlet: string, date: string, headline: strin
   ({template: 'headline', image: id ? `clips/${id}.jpg` : undefined, outlet, date, headline, mark, url, mood, source: `${outlet} via YouTube`});
 const src = (s: Spec, source: string): Spec => ({...s, source});
 const CHART = (o: {from: string; to: string; pins: {date: string; label: string}[]; counter?: boolean; slam?: {date: string; big: string; sub: string; tag: string}; title?: string; sub?: string; mood?: Mood}): Spec =>
-  ({template: 'chart', source: 'NVDA daily close · Yahoo Finance · +31.5% and $952B: Nvidia / Wikipedia', ...o});
+  ({template: 'chart', source: 'NVDA closing prices: Yahoo Finance, checked vs Nasdaq.com · $952B record: Wikipedia, citing news reports', ...o});
 const cap = (s: Spec, c: string): Spec => ({...s, cap: c});
 
 const KL: Pin = {lon: 101.7, lat: 3.1, label: 'MALAYSIA'};
@@ -99,7 +99,7 @@ const SPECS: (Spec | Spec[])[] = [
   /*54*/ CA(['NO MENTION OF ALICE', 'NO MENTION OF SPYING'], 'WHAT IT LEFT OUT.'),
   /*55*/ H('tp7qrTAT33k', 'NBC NEWS', 'NOV 2026', 'New report alleges that Jensen Huang had relationship with an Nvidia executive', 'Nvidia executive', 'https://www.youtube.com/watch?v=tp7qrTAT33k', 'danger'),
   /*56*/ T('A THIRD WOMAN.', 'danger'),
-  /*57*/ CHART({from: '2026-10-06', to: '2026-11-12', counter: true, title: 'FALLING FAST.', sub: 'NVDA from its Oct 6 peak', mood: 'danger', pins: [{date: '2026-10-06', label: 'OCT 6 · PEAK $239'}, {date: '2026-10-29', label: 'OCT 29 · NYT STORY'}, {date: '2026-11-12', label: 'NOV 12 · RESIGNS'}]}),
+  /*57*/ CHART({from: '2026-10-06', to: '2026-11-12', counter: true, title: 'FALLING FAST.', sub: 'NVDA from its Oct 6 peak', mood: 'danger', pins: [{date: '2026-10-06', label: 'OCT 6 · CLOSE $239'}, {date: '2026-10-29', label: 'OCT 29 · NYT STORY'}, {date: '2026-11-12', label: 'NOV 12 · RESIGNS'}]}),
   /*58*/ [cap(H('CU1I2a-FF7E', 'REUTERS', 'NOV 12, 2026', 'Nvidia CEO Jensen Huang resigns', 'resigns', 'https://www.youtube.com/watch?v=CU1I2a-FF7E', 'danger'), 'And on the morning of November 12th, Jensen Huang resigned from everything.'), cap(CA(['CEO', 'PRESIDENT', 'BOARD'], 'ALL OF IT.', 'danger'), 'CEO. President. The board.')],
 
   // 05 — THE COMEBACK
@@ -143,7 +143,7 @@ const SPECS: (Spec | Spec[])[] = [
   // 08 — WHO PROFITED?
   /*91*/ T('THE THEORY.', 'danger'),
   /*92*/ I('chartV', 'STOCK MANIPULATION?', undefined, 'danger'),
-  /*93*/ [cap(CHART({from: '2026-10-06', to: '2026-11-25', counter: true, title: 'DOWN. THEN UP.', mood: 'danger', pins: [{date: '2026-10-06', label: 'PEAK $239'}, {date: '2026-11-12', label: 'RESIGNS'}, {date: '2026-11-20', label: 'LOW $125'}], slam: {date: '2026-11-23', big: '+31.5%', sub: '+$952B IN ONE DAY', tag: 'LARGEST ONE-DAY GAIN ON RECORD'}}), 'The stock fell hard during the scandal, and jumped sharply when Jensen came back.'), cap(T('BUY THE BOTTOM?', 'facts'), 'Anyone who bought at the bottom could have made a fortune in days.')],
+  /*93*/ [cap(CHART({from: '2026-10-06', to: '2026-11-24', counter: true, title: 'DOWN. THEN UP.', mood: 'danger', pins: [{date: '2026-10-06', label: 'PEAK CLOSE $239'}, {date: '2026-11-12', label: 'RESIGNS'}, {date: '2026-11-20', label: 'LOW CLOSE $125'}], slam: {date: '2026-11-23', big: '+31.5%', sub: '+$952B IN ONE DAY', tag: 'LARGEST ONE-DAY GAIN ON RECORD'}}), 'The stock fell hard during the scandal, and jumped sharply when Jensen came back.'), cap(T('BUY THE BOTTOM?', 'facts'), 'Anyone who bought at the bottom could have made a fortune in days.')],
   /*94*/ T('NO ONE HAS BEEN ACCUSED.', 'facts'),
   /*95*/ [cap(I('magnifier', 'REGULATORS WATCH.', undefined, 'facts'), 'Big swings like this usually get regulators looking for unusual trades.'), cap(T('IF THEY FIND SOMETHING…', 'facts'), 'If they find something, it will be a much bigger story.')],
   /*96*/ T('WHO LEAKED IT? UNKNOWN.', 'context'),
