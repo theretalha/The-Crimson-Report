@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
 import {Frame} from './components/Frame';
 import {CardsT, IconT, MapT, QuoteT, SplitT, StatT, TitleT} from './templates/Templates';
-import {DocumentT, HeadlineT, TweetT} from './templates/Clips';
+import {DocumentT, HeadlineT, NewspaperT, PhotosT, TweetT} from './templates/Clips';
 import {FPS} from './theme';
 import type {Scene} from './types';
 
@@ -21,6 +21,8 @@ const Body: React.FC<{scene: Scene}> = ({scene}) => {
     case 'headline': return <HeadlineT scene={scene} />;
     case 'document': return <DocumentT scene={scene} />;
     case 'tweet': return <TweetT scene={scene} />;
+    case 'photos': return <PhotosT scene={scene} />;
+    case 'newspaper': return <NewspaperT scene={scene} />;
   }
 };
 

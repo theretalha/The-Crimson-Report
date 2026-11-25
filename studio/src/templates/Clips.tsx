@@ -113,3 +113,76 @@ export const TweetT: React.FC<S<'tweet'>> = ({scene}) => {
     </div>
   );
 };
+
+// ---------- PHOTOS: evidence-board photo cards with typewriter tags ----------
+// Use for introducing key people. Not every scene.
+export const PhotosT: React.FC<S<'photos'>> = ({scene}) => {
+  const {f, v} = useCardIn();
+  const {fps, durationInFrames} = useVideoConfig();
+  const n = scene.photos.length;
+  const cw = v ? (n > 1 ? 470 : 540) : 440;
+  const zoom = interpolate(f, [0, durationInFrames], [1, 1.06]);
+  return (
+    <div style={{position: 'absolute', left: 0, right: 0, top: v ? 470 : 230, display: 'flex', justifyContent: 'center',
+      gap: v ? 30 : 70, transform: `scale(${zoom})`}}>
+      {scene.photos.map((p, i) => {
+        const s = spring({frame: f - 4 - i * 9, fps, config: {damping: 13, mass: 0.8}});
+        const rot = (i % 2 === 0 ? -1 : 1) * (3 + i);
+        const tag = spring({frame: f - 16 - i * 9, fps, config: {damping: 16}});
+        return (
+          <div key={i} style={{width: cw, transform: `translateY(${(1 - s) * 600}px) rotate(${rot * s}deg)`, position: 'relative'}}>
+            <div style={{background: '#EDE7DA', padding: 16, paddingBottom: 26, boxShadow: '0 25px 60px rgba(0,0,0,0.7)'}}>
+              <Img src={staticFile(p.image)} style={{width: '100%', height: cw * 1.12, objectFit: 'cover', objectPosition: '50% 20%',
+                filter: 'grayscale(0.85) contrast(1.1) sepia(0.15)'}} />
+              <div style={{fontFamily: FONT_MONO, fontSize: v ? 15 : 13, color: '#8A8378', marginTop: 10}}>{p.credit}</div>
+            </div>
+            {/* tape */}
+            <div style={{position: 'absolute', top: -18, left: '50%', width: 130, height: 40, marginLeft: -65,
+              background: 'rgba(230,220,190,0.75)', transform: `rotate(${-rot}deg)`}} />
+            {/* typewriter tag */}
+            <div style={{position: 'absolute', left: -14, top: 34, opacity: tag, transform: `translateX(${(1 - tag) * -40}px)`}}>
+              <div style={{background: C.ink, color: C.paper, fontFamily: '"Courier New", monospace', fontWeight: 700,
+                fontSize: v ? 26 : 22, padding: '6px 12px', letterSpacing: 1}}>{p.name}</div>
+              <div style={{background: C.ink, color: '#B9B2A6', fontFamily: '"Courier New", monospace', fontWeight: 700,
+                fontSize: v ? 20 : 17, padding: '4px 12px', marginTop: 6, display: 'inline-block'}}>{p.role}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// ---------- NEWSPAPER: archive scan, slow zoom, red pen underline ----------
+// Use for history moments only.
+export const NewspaperT: React.FC<S<'newspaper'>> = ({scene}) => {
+  const {f, s, v} = useCardIn();
+  const {durationInFrames} = useVideoConfig();
+  const w = v ? 980 : 1150;
+  const zoom = interpolate(f, [0, durationInFrames], [1, 1.15]);
+  return (
+    <div style={{position: 'absolute', left: '50%', top: v ? 300 : 200, width: w, marginLeft: -w / 2,
+      transform: `translateY(${(1 - s) * 600}px) rotate(${interpolate(s, [0, 1], [-4, -1])}deg)`}}>
+      <div style={{position: 'relative', overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,0.7)', background: '#E9E0CC'}}>
+        <div style={{transform: `scale(${zoom})`, transformOrigin: '50% 20%', position: 'relative'}}>
+          <Img src={staticFile(scene.image)} style={{width: '100%', display: 'block', filter: 'sepia(0.35) contrast(1.05)'}} />
+          {scene.underline.map((u, i) => {
+            const p = interpolate(f, [16 + i * 8, 28 + i * 8], [0, 1], clamp);
+            return (
+              <svg key={i} style={{position: 'absolute', left: `${u.x}%`, top: `${u.y}%`, width: `${u.w}%`, height: 24, overflow: 'visible'}}
+                viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 6 Q 25 3 50 6 T 100 5" fill="none" stroke={C.crimson} strokeWidth="2.6" strokeLinecap="round"
+                  pathLength={1} style={{strokeDasharray: `${p} 1`}} vectorEffect="non-scaling-stroke" />
+              </svg>
+            );
+          })}
+        </div>
+        {/* paper vignette */}
+        <div style={{position: 'absolute', inset: 0, boxShadow: 'inset 0 0 120px rgba(80,50,10,0.45)', pointerEvents: 'none'}} />
+      </div>
+      <div style={{display: 'flex', justifyContent: 'space-between', marginTop: 14, fontFamily: FONT_MONO, fontSize: v ? 20 : 17, color: '#9A958F'}}>
+        <span>{scene.paper} · {scene.date}</span><span>{scene.credit}</span>
+      </div>
+    </div>
+  );
+};

@@ -15,6 +15,10 @@ export type Scene =
   // Real document/transcript line, e.g. congressional testimony
   | (Base & {template: 'document'; docTitle: string; docMeta: string; quote: string; mark: string; url: string})
   // Real post from X. Fill it in from the actual post only, never invent one.
+  // Photo cards on a dark board with typewriter name tags. Use only real, free-to-use photos.
+  | (Base & {template: 'photos'; photos: {image: string; name: string; role: string; credit: string}[]})
+  // Old newspaper scan (public domain / archive). underline = red pen lines, in % of the image.
+  | (Base & {template: 'newspaper'; image: string; paper: string; date: string; underline: {x: number; y: number; w: number}[]; credit: string; url: string})
   | (Base & {template: 'tweet'; name: string; handle: string; date: string; text: string; mark: string; url: string});
 
 type Base = {
