@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
 import {Frame} from './components/Frame';
+import {Bed, SceneSfx} from './components/Sfx';
 import {CardsT, IconT, MapT, QuoteT, SplitT, StatT, TimelineT, TitleT} from './templates/Templates';
 import {DocumentT, HeadlineT, NewspaperT, PhotosT, TweetT} from './templates/Clips';
 import {FPS} from './theme';
@@ -34,15 +35,16 @@ const Body: React.FC<{scene: Scene}> = ({scene}) => {
   }
 };
 
-export type EpisodeProps = {scenes: Scene[]; annotate?: boolean; audio?: string};
+export type EpisodeProps = {scenes: Scene[]; annotate?: boolean; audio?: string; sfx?: boolean};
 
 // Plays scenes back to back. Drop the TTS file in /public and pass its name as `audio`.
-export const Episode: React.FC<EpisodeProps> = ({scenes, annotate, audio}) => {
+export const Episode: React.FC<EpisodeProps> = ({scenes, annotate, audio, sfx = true}) => {
   const starts = startFrames(scenes);
   const total = starts[scenes.length];
   return (
     <AbsoluteFill style={{background: '#000'}}>
       {audio && <Audio src={staticFile(audio)} />}
+      {sfx && audio && <Bed />}
       {scenes.map((s, i) => {
         const from = starts[i];
         const dur = starts[i + 1] - starts[i];
@@ -51,6 +53,7 @@ export const Episode: React.FC<EpisodeProps> = ({scenes, annotate, audio}) => {
             <Frame scene={s} index={i} startFrame={from} totalFrames={total} prevMood={scenes[i - 1]?.mood} annotate={annotate}>
               <Body scene={s} />
             </Frame>
+            {sfx && <SceneSfx scene={s} index={i} prevMood={scenes[i - 1]?.mood} />}
           </Sequence>
         );
       })}

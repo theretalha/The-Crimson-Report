@@ -61,7 +61,7 @@ export const HeadlineT: React.FC<S<'headline'>> = ({scene}) => {
           fontWeight: 700, fontSize: v ? 22 : 18, padding: '6px 12px', letterSpacing: 2}}>NEWS CLIP</div>
       </div>
       <div style={{padding: v ? '26px 30px 34px' : '22px 28px 28px', fontFamily: FONT_BODY, fontWeight: 800,
-        fontSize: v ? 54 : 44, lineHeight: 1.18, color: C.ink}}>
+        fontSize: v ? 54 : 38, lineHeight: 1.18, color: C.ink}}>
         <Marked text={scene.headline} mark={scene.mark} start={18} />
       </div>
     </div>

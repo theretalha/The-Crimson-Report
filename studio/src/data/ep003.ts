@@ -11,6 +11,8 @@ type Spec = Partial<Scene> & {template: Scene['template']; cap?: string; [k: str
 
 const JENSEN = {image: 'photos/jensen-huang.jpg', name: 'JENSEN HUANG', role: 'CEO, NVIDIA', credit: 'Photo: Anderseidesvik · CC BY 4.0'};
 const MUSK = {image: 'photos/elon-musk.jpg', name: 'ELON MUSK', role: 'CEO, TESLA · xAI', credit: 'Photo: US Air Force / T. Cokley · Public domain'};
+const ALICE = {image: 'photos/alice-huang.jpg', name: 'ALICE HUANG', role: 'NAMED IN REPORTS', credit: 'Image: Reuters (via Instagram)'};
+const RUBIO = {image: 'photos/marco-rubio.jpg', name: 'MARCO RUBIO', role: 'US SECRETARY OF STATE', credit: 'Image: US Department of State'};
 const TRUMP = {image: 'photos/donald-trump.jpg', name: 'DONALD TRUMP', role: 'PRESIDENT OF THE UNITED STATES', credit: 'Official portrait · White House · Public domain'};
 
 const T = (big: string, mood?: Mood, glitch = false): Spec => ({template: 'title', big, mood, glitch});
@@ -55,7 +57,7 @@ const SPECS: (Spec | Spec[])[] = [
   /*20*/ P([JENSEN], 'CAUGHT IN THE MIDDLE.'),
 
   // 02 — THE WOMAN WITH NO PAST
-  /*21*/ I('idcard', 'ALICE HUANG.', 'Name, according to reports', 'danger'),
+  /*21*/ P([ALICE], 'ALICE HUANG.', 'danger'),
   /*22*/ I('idcard', 'CHINESE CITIZEN.', 'An impressive résumé… on paper.', 'danger'),
   /*23*/ [cap(src(TL([{label: 'STATE TV', sub: 'journalist'}, {label: 'BANKS', sub: 'finance'}, {label: '~2015', sub: 'Shanghai PE firm'}], 'HER CAREER.'), 'Washington Post'), 'According to the Washington Post, she worked as a journalist at Chinese state TV, then at major banks,'), cap(src(I('idcard', 'THE HUSBAND?', 'Owner of the firm: Kang Wei'), 'Washington Post'), 'and by around 2015, she was a senior manager at a Shanghai private equity firm. The owner of that firm, Kang Wei, was later described as her husband.')],
   /*24*/ T("BUT HERE'S THE PROBLEM.", 'danger'),
@@ -65,7 +67,7 @@ const SPECS: (Spec | Spec[])[] = [
   /*28*/ [cap(src(T('HER OWN HUSBAND.', 'danger'), 'Wall Street Journal'), 'According to the Wall Street Journal, it was her own husband who introduced them.'), cap(src(TL([{label: 'GAMING ERA', sub: 'Kang Wei knew Jensen'}, {label: 'YEARS LATER', sub: 'Introduced Alice'}], 'OLD FRIENDS.'), 'Wall Street Journal'), 'He had known Jensen for years, back when his firm invested in video games and Nvidia was mostly a gaming chip company.')],
   /*29*/ MP({center: [104, 2], zoom: 1.2, pins: [{lon: 103.8, lat: 1.35, label: 'SINGAPORE · DEC 2023'}], title: 'FIRST PUBLIC MEETING.'}),
   /*30*/ [cap(MP({center: [112, 18], zoom: 0.28, pins: [{lon: 121.5, lat: 25.0, label: 'TAIPEI'}, {lon: 121.5, lat: 31.2, label: 'SHANGHAI'}, {lon: 103.8, lat: 1.35, label: 'SINGAPORE'}], title: 'SEEN TOGETHER.'}), 'Over the next few years, they were reportedly seen together in Taipei, in Shanghai,'), cap(MP({center: [-119, 37], zoom: 0.5, pins: [{lon: -121.95, lat: 37.37, label: 'NVIDIA HQ'}, {lon: -121.9, lat: 36.57, label: 'GOLF RESORTS'}], title: 'AND IN AMERICA.'}), 'at Nvidia offices in America, and at golf resorts in California.')],
-  /*31*/ I('photos', 'NOT HIDING.', 'Photos posted online.'),
+  /*31*/ H('HFEpZyWsBDY', 'THE STAR', 'NOV 2026', 'Photo, video show Nvidia CEO Huang with woman at centre of spy probe', 'Photo, video', 'https://www.youtube.com/watch?v=HFEpZyWsBDY'),
   /*32*/ T('REMEMBER THIS.'),
 
   // 03 — FOLLOW THE CHIPS
@@ -88,7 +90,7 @@ const SPECS: (Spec | Spec[])[] = [
   /*47*/ I('radar', 'SURVEILLANCE.', 'Close to an American citizen…'),
   /*48*/ P([JENSEN], 'THE AMERICAN.', 'danger'),
   /*49*/ [cap(TL([{label: 'OCT 2025', sub: 'Trump briefed'}], 'THE WARNINGS.'), 'In October 2025, US intelligence officials reportedly briefed President Trump'), cap(I('whitehouse', 'THE WHITE HOUSE KNEW.'), 'about the relationship.')],
-  /*50*/ TL([{label: 'OCT 2025', sub: 'Trump briefed'}, {label: 'MAY 2026', sub: 'Rubio memo'}], 'SECOND WARNING.'),
+  /*50*/ [cap(P([RUBIO], 'SECOND WARNING.'), 'In May 2026, Secretary of State Marco Rubio'), cap(TL([{label: 'OCT 2025', sub: 'Trump briefed'}, {label: 'MAY 2026', sub: 'Rubio memo'}], 'THE MEMO.'), 'reportedly warned Trump again, in a memo.')],
   /*51*/ TL([{label: 'OCT 2025', sub: 'Trump briefed'}, {label: 'MAY 2026', sub: 'Rubio memo'}, {label: 'OCT 29, 2026', sub: 'NYT story'}], 'THE STORY BREAKS.', 'danger'),
   /*52*/ T('DENIED.', 'danger'),
   /*53*/ [cap(I('letter', 'THE LETTER.', 'To all employees'), 'A few days later, Jensen sent a letter to his employees.'), cap(T('ADMITTED.', 'danger'), 'He admitted he had been unfaithful to his wife. He said he had no excuse.')],
@@ -110,15 +112,15 @@ const SPECS: (Spec | Spec[])[] = [
 
   // 06 — THE TWIST
   /*67*/ T('THE PART MOST PEOPLE MISS.'),
-  /*68*/ I('idcard', 'IS SHE EVEN A SPY?'),
+  /*68*/ P([ALICE], 'IS SHE EVEN A SPY?'),
   /*69*/ T('NOBODY HAS PROVEN IT.', 'facts'),
   /*70*/ [cap(src(I('capitol', 'JUSTICE DEPT: NO CONCLUSION.', undefined, 'facts'), 'Attorney General Todd Blanche'), 'The US Attorney General, Todd Blanche, has said the Justice Department'), cap(src(T('NO CONCLUSION.', 'facts'), 'Attorney General Todd Blanche'), 'has not reached a conclusion on whether she is a spy.')],
   /*71*/ src(SP('CIA', '≠', 'PROOF', 'AS OF NOV 19.', 'facts'), 'CIA, as reported'),
-  /*72*/ [cap(I('photos', 'REMEMBER THE PHOTOS?'), 'Remember those public photos?'), cap(T('A SPY… ON SOCIAL MEDIA?', 'context'), 'Some people ask: if she were a trained spy, why would her relationship with the most watched CEO in tech be all over social media?')],
+  /*72*/ [cap(H('s9Zvkl_cYX4', 'REUTERS', 'NOV 2026', "Images that trace Jensen Huang's relationship with Alice Huang", 'Images', 'https://www.youtube.com/watch?v=s9Zvkl_cYX4'), 'Remember those public photos?'), cap(T('A SPY… ON SOCIAL MEDIA?', 'context'), 'Some people ask: if she were a trained spy, why would her relationship with the most watched CEO in tech be all over social media?')],
   /*73*/ T('WHERE DID THE SPY STORY COME FROM?'),
   /*74*/ I('capitol', 'A FIGHT INSIDE.', 'The US government'),
   /*75*/ [cap(P([JENSEN], 'SIDE 1: SELL TO CHINA.'), 'On one side: Jensen Huang. He has said publicly, many times, that he wants to sell more chips to China.'), cap(I('whitehouse', 'RULES LOOSENED.'), 'And with his access to Trump, some restrictions were loosened.'), cap(ST(['15–25%'], 'THE CUT.', 'Paid to the US government on some China sales', undefined, 'facts'), 'Trump even allowed certain chip sales to China, if Nvidia paid the US government a cut of 15 to 25 percent.')],
-  /*76*/ SP('HUANG', 'VS', 'HAWKS', 'SIDE 2: MARCO RUBIO.', 'danger'),
+  /*76*/ P([JENSEN, RUBIO], 'SIDE 2: THE HAWKS.', 'danger'),
   /*77*/ I('letter', "RUBIO'S MEMO.", 'First to say "spy," reportedly', 'danger'),
   /*78*/ [cap(T("HERE'S THE TWIST.", 'danger'), "But here's the twist."), cap(SP('CIA REPORT', '≠', '"SPY"', 'NEVER SAID IT.', 'facts'), 'The CIA report behind that memo reportedly never said she was a spy.'), cap(T("RUBIO'S OWN CALL.", 'facts'), "That conclusion was Rubio's own assessment.")],
   /*79*/ T('A REAL SPY CASE?'),
@@ -151,7 +153,7 @@ const SPECS: (Spec | Spec[])[] = [
   /*100*/ T('3 SIGNALS.', 'facts'),
   /*101*/ CA(['CIA / DOJ VERDICT'], 'SIGNAL 1.', 'facts'),
   /*102*/ CA(['CIA / DOJ VERDICT', 'MEGASPEED CHARGES?'], 'SIGNAL 2.', 'facts'),
-  /*103*/ [cap(CA(['CIA / DOJ VERDICT', 'MEGASPEED CHARGES?', 'NEXT CHINA CHIP DECISION'], 'SIGNAL 3.', 'facts'), 'Three: the next decision on chip sales to China.'), cap(SP('HUANG', 'VS', 'HAWKS', 'WHO REALLY WON?', 'facts'), "Because whoever wins that fight, Jensen's camp or the hawks, will tell you who really won this scandal.")],
+  /*103*/ [cap(CA(['CIA / DOJ VERDICT', 'MEGASPEED CHARGES?', 'NEXT CHINA CHIP DECISION'], 'SIGNAL 3.', 'facts'), 'Three: the next decision on chip sales to China.'), cap(P([JENSEN, RUBIO], 'WHO REALLY WON?', 'facts'), "Because whoever wins that fight, Jensen's camp or the hawks, will tell you who really won this scandal.")],
   /*104*/ T('YOUR TURN.'),
   /*105*/ SP('SPY CASE', 'OR', 'WEAPON', 'WHAT DO YOU THINK?', 'danger'),
   /*106*/ T('COMMENT YOUR FORECAST.'),
