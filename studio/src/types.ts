@@ -9,7 +9,13 @@ export type Scene =
   | (Base & {template: 'stat'; parts: string[]}) // e.g. ['2021', '+ 6', '= 2027'], last part is highlighted
   | (Base & {template: 'split'; left: string; right: string; sign: string})
   | (Base & {template: 'cards'; cards: string[]})
-  | (Base & {template: 'map'; label: string});
+  | (Base & {template: 'map'; label: string})
+  // Real news clip: screenshot/thumbnail + outlet + real headline. Keep the URL as proof.
+  | (Base & {template: 'headline'; outlet: string; date: string; headline: string; mark: string; image: string; url: string})
+  // Real document/transcript line, e.g. congressional testimony
+  | (Base & {template: 'document'; docTitle: string; docMeta: string; quote: string; mark: string; url: string})
+  // Real post from X. Fill it in from the actual post only, never invent one.
+  | (Base & {template: 'tweet'; name: string; handle: string; date: string; text: string; mark: string; url: string});
 
 type Base = {
   mood: Mood;

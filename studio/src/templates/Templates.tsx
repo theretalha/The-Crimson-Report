@@ -10,6 +10,11 @@ import {Icon} from '../components/Icons';
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 type S<T extends Scene['template']> = {scene: Extract<Scene, {template: T}>};
 
+const useV = () => {
+  const {width, height} = useVideoConfig();
+  return height > width;
+};
+
 const usePop = (delay = 0) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -42,8 +47,9 @@ export const IconT: React.FC<S<'icon'>> = ({scene}) => {
   const s = usePop(4);
   const main = scene.mood === 'facts' ? C.ink : scene.mood === 'danger' ? C.ink : C.paper;
   const accent = scene.mood === 'danger' ? C.paper : C.crimson;
+  const v = useV();
   return (
-    <div style={{position: 'absolute', left: 1080, top: 260, width: 600, height: 600,
+    <div style={{position: 'absolute', ...(v ? {left: 190, top: 560, width: 700, height: 700} : {left: 1080, top: 260, width: 600, height: 600}),
       transform: `scale(${s}) rotate(${interpolate(s, [0, 1], [-6, 0])}deg)`}}>
       <div style={{position: 'absolute', inset: 40, borderRadius: '50%', background: m.line, filter: 'blur(2px)'}} />
       <Icon name={scene.icon} main={main} accent={accent} />
@@ -77,11 +83,12 @@ export const QuoteT: React.FC<S<'quote'>> = ({scene}) => {
 // ---------- STAT: parts pop in one after another, last one is the punchline ----------
 export const StatT: React.FC<S<'stat'>> = ({scene}) => {
   const m = MOODS[scene.mood];
+  const v = useV();
   return (
-    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row', gap: 50, paddingTop: 60}}>
+    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: v ? 'column' : 'row', gap: v ? 0 : 50, paddingTop: v ? 0 : 60, paddingBottom: v ? 200 : 0}}>
       {scene.parts.map((p, i) => {
         const last = i === scene.parts.length - 1;
-        return <StatPart key={i} text={p} delay={6 + i * 14} color={last ? C.crimson : m.fg} size={last ? 230 : 170} />;
+        return <StatPart key={i} text={p} delay={6 + i * 14} color={last ? C.crimson : m.fg} size={(last ? 230 : 170) * (v && scene.parts.length === 1 ? 1.6 : 1)} />;
       })}
     </AbsoluteFill>
   );
@@ -97,13 +104,14 @@ export const SplitT: React.FC<S<'split'>> = ({scene}) => {
   const a = usePop(4);
   const b = usePop(12);
   const sign = usePop(22);
+  const v = useV();
   const box = (txt: string, s: number, crimson: boolean, dir: number): React.ReactNode => (
-    <div style={{width: 560, height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center',
+    <div style={{width: v ? 760 : 560, height: v ? 260 : 300, display: 'flex', alignItems: 'center', justifyContent: 'center',
       background: crimson ? C.crimson : C.ink, color: C.paper, fontFamily: FONT_HEAD, fontSize: 150,
       transform: `translateX(${(1 - s) * 300 * dir}px)`, opacity: s}}>{txt}</div>
   );
   return (
-    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row', gap: 40, paddingTop: 90}}>
+    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: v ? 'column' : 'row', gap: v ? 0 : 40, paddingTop: v ? 0 : 90, paddingBottom: v ? 260 : 0}}>
       {box(scene.left, a, false, -1)}
       <div style={{fontFamily: FONT_HEAD, fontSize: 200, color: m.fg, transform: `scale(${sign})`}}>{scene.sign}</div>
       {box(scene.right, b, true, 1)}
@@ -115,18 +123,19 @@ export const SplitT: React.FC<S<'split'>> = ({scene}) => {
 export const CardsT: React.FC<S<'cards'>> = ({scene}) => {
   const {durationInFrames} = useVideoConfig();
   const n = scene.cards.length;
+  const v = useV();
   return (
-    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row', gap: 44, paddingTop: 120}}>
+    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: v ? 'column' : 'row', gap: v ? 26 : 44, paddingTop: v ? 0 : 120, paddingBottom: v ? 300 : 0}}>
       {scene.cards.map((c, i) => (
-        <Card key={i} n={i + 1} text={c} delay={Math.round((i / n) * durationInFrames * 0.8) + 4} />
+        <Card key={i} n={i + 1} text={c} v={v} delay={Math.round((i / n) * durationInFrames * 0.8) + 4} />
       ))}
     </AbsoluteFill>
   );
 };
-const Card: React.FC<{n: number; text: string; delay: number}> = ({n, text, delay}) => {
+const Card: React.FC<{n: number; text: string; delay: number; v?: boolean}> = ({n, text, delay, v}) => {
   const s = usePop(delay);
   return (
-    <div style={{width: 480, height: 400, background: C.paper, color: C.ink, padding: 36, boxSizing: 'border-box',
+    <div style={{width: v ? 860 : 480, height: v ? 230 : 400, background: C.paper, color: C.ink, padding: 36, boxSizing: 'border-box',
       borderTop: `14px solid ${C.crimson}`, boxShadow: '0 20px 50px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column',
       justifyContent: 'space-between', transform: `translateY(${(1 - s) * 260}px) rotate(${(n - 2) * 2.5 * s}deg)`, opacity: Math.min(1, s * 2)}}>
       <div style={{fontFamily: FONT_MONO, fontWeight: 700, fontSize: 30, color: C.crimson}}>Q.0{n}</div>
@@ -141,11 +150,12 @@ const countries = feature(world as any, (world as any).objects.countries) as any
 export const MapT: React.FC<S<'map'>> = ({scene}) => {
   const f = useCurrentFrame();
   const m = MOODS[scene.mood];
-  const Wm = 1300, Hm = 620;
+  const v = useV();
+  const Wm = v ? 1000 : 1300, Hm = v ? 760 : 620;
   const {path, proj} = useMemo(() => {
-    const proj = geoMercator().center([120, 25]).scale(3600).translate([Wm / 2, Hm / 2]);
+    const proj = geoMercator().center(v ? [119.6, 24.6] : [120, 25]).scale(v ? 4200 : 3600).translate([Wm / 2, Hm / 2]);
     return {path: geoPath(proj), proj};
-  }, []);
+  }, [v, Wm, Hm]);
   const zoom = interpolate(f, [0, 110], [1.0, 1.18], clamp);
   const pulse = 0.55 + 0.45 * Math.sin(f / 4);
   const from = proj([118.1, 24.5])!; // Xiamen, Fujian
@@ -155,7 +165,7 @@ export const MapT: React.FC<S<'map'>> = ({scene}) => {
   const arrow = `M${from[0]},${from[1]} Q${mid[0]},${mid[1]} ${to[0]},${to[1]}`;
 
   return (
-    <div style={{position: 'absolute', left: 560, top: 230, width: Wm, height: Hm, overflow: 'hidden', borderRadius: 12,
+    <div style={{position: 'absolute', left: v ? 40 : 560, top: v ? 520 : 230, width: Wm, height: Hm, overflow: 'hidden', borderRadius: 12,
       border: `2px solid ${m.line}`, background: '#0A0C10'}}>
       <svg width={Wm} height={Hm} style={{transform: `scale(${zoom})`, transformOrigin: `${to[0]}px ${to[1]}px`}}>
         {countries.features.map((c: any) => {
@@ -171,8 +181,8 @@ export const MapT: React.FC<S<'map'>> = ({scene}) => {
         <path d={arrow} fill="none" stroke={C.paper} strokeWidth="5" strokeDasharray="14 10"
           pathLength={1} style={{strokeDasharray: `${draw} 1`}} />
         <circle cx={to[0]} cy={to[1]} r={30 + pulse * 30} fill="none" stroke={C.crimson} strokeWidth="4" opacity={1 - pulse * 0.6} />
-        <text x={from[0] - 270} y={from[1] - 140} fontFamily={FONT_HEAD} fontSize="64" fill="#9A9A9A">CHINA</text>
-        <text x={to[0] + 70} y={to[1] + 20} fontFamily={FONT_HEAD} fontSize="56" fill={C.paper}>{scene.label}</text>
+        <text x={from[0] - (v ? 300 : 270)} y={from[1] - (v ? 60 : 140)} fontFamily={FONT_HEAD} fontSize="64" fill="#9A9A9A">CHINA</text>
+        <text x={to[0] + (v ? -60 : 70)} y={to[1] + (v ? 230 : 20)} fontFamily={FONT_HEAD} fontSize="56" fill={C.paper}>{scene.label}</text>
         <text x={mid[0] - 70} y={mid[1] + 10} fontFamily={FONT_MONO} fontWeight="700" fontSize="26" fill={C.paper}
           opacity={draw}>~100 MI</text>
       </svg>
