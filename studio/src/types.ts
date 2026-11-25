@@ -15,6 +15,8 @@ export type Scene =
   | (Base & {template: 'cards'; cards: string[]})
   | (Base & {template: 'map'; label?: string; center?: [number, number]; zoom?: number; pins?: Pin[]; highlight?: string[]; arrow?: boolean})
   | (Base & {template: 'timeline'; points: {label: string; sub?: string}[]})
+  // Real NVDA price chart (src/data/nvda.json). Draws left to right with a live drop counter, event pins and an optional record slam.
+  | (Base & {template: 'chart'; from: string; to: string; pins: {date: string; label: string}[]; counter?: boolean; slam?: {date: string; big: string; sub: string; tag: string}})
   // Real news clip: screenshot/thumbnail + outlet + real headline. Keep the URL as proof.
   | (Base & {template: 'headline'; outlet: string; date: string; headline: string; mark: string; image?: string; url: string})
   // Real document/transcript line, e.g. congressional testimony

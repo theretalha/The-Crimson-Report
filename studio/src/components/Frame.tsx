@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, FONT_BODY, FONT_HEAD, FONT_MONO, MOODS} from '../theme';
 import type {Scene} from '../types';
 
@@ -11,12 +11,13 @@ type Props = {
   startFrame: number; // where this scene starts in the whole video
   totalFrames: number;
   prevMood?: Scene['mood'];
+  chapterStart?: boolean;
   annotate?: boolean;
   children: React.ReactNode;
 };
 
 // The shell every scene sits in: background, top bar, headline, captions, source, progress bar.
-export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, prevMood, annotate, children}) => {
+export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, prevMood, chapterStart, annotate, children}) => {
   const f = useCurrentFrame();
   const {fps, durationInFrames, width, height} = useVideoConfig();
   const v = height > width; // vertical = Shorts
@@ -28,6 +29,10 @@ export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, p
   const punch = spring({frame: f, fps, config: {damping: 18, mass: 0.5}});
   const flash = prevMood && prevMood !== scene.mood ? interpolate(f, [0, 4], [0.85, 0], clamp) : 0;
   const progress = (startFrame + f) / totalFrames;
+  // impact shake on big reveals and on the cut into a crimson scene
+  const hit = scene.fx || (prevMood && prevMood !== scene.mood && scene.mood === 'danger') ? Math.exp(-f / 4) * 11 : 0;
+  const dx = Math.sin(f * 7.1) * hit;
+  const dy = Math.cos(f * 9.3) * hit;
 
   return (
     <AbsoluteFill style={{background: `radial-gradient(ellipse at 60% 55%, ${m.bg} 0%, ${m.bg2} 100%)`, overflow: 'hidden'}}>
@@ -38,7 +43,7 @@ export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, p
       }} />
 
       {/* main visual */}
-      <AbsoluteFill style={{transform: `scale(${push * interpolate(punch, [0, 1], [1.08, 1])})`, opacity: interpolate(f, [0, 3], [0, 1], clamp)}}>
+      <AbsoluteFill style={{transform: `translate(${dx}px, ${dy}px) scale(${push * interpolate(punch, [0, 1], [1.08, 1])})`, opacity: interpolate(f, [0, 3], [0, 1], clamp)}}>
         {children}
       </AbsoluteFill>
 
@@ -71,6 +76,15 @@ export const Frame: React.FC<Props> = ({scene, index, startFrame, totalFrames, p
 
       {annotate && scene.note && <Note text={scene.note} />}
 
+      {/* cinematic finish: film grain, vignette, light leak at chapter changes */}
+      <AbsoluteFill style={{backgroundImage: `url(${staticFile('tex/grain.png')})`, backgroundSize: '512px 512px',
+        backgroundPosition: `${(f * 37) % 512}px ${(f * 53) % 512}px`, mixBlendMode: 'overlay', opacity: 0.2, pointerEvents: 'none'}} />
+      <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.5) 100%)', pointerEvents: 'none'}} />
+      {chapterStart && (
+        <AbsoluteFill style={{pointerEvents: 'none', mixBlendMode: 'screen', opacity: interpolate(f, [0, 8, 26], [0, 0.55, 0], clamp),
+          background: 'linear-gradient(100deg, rgba(0,0,0,0) 0%, rgba(255,70,50,0.8) 46%, rgba(255,190,120,0.5) 54%, rgba(0,0,0,0) 80%)',
+          transform: `translateX(${interpolate(f, [0, 26], [-70, 70], clamp)}%)`}} />
+      )}
       <AbsoluteFill style={{background: C.white, opacity: flash, pointerEvents: 'none'}} />
     </AbsoluteFill>
   );

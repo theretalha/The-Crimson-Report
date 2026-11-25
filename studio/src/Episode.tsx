@@ -4,6 +4,7 @@ import {Frame} from './components/Frame';
 import {Bed, SceneSfx} from './components/Sfx';
 import {CardsT, IconT, MapT, QuoteT, SplitT, StatT, TimelineT, TitleT} from './templates/Templates';
 import {DocumentT, HeadlineT, NewspaperT, PhotosT, TweetT} from './templates/Clips';
+import {ChartT} from './templates/StockChart';
 import {FPS} from './theme';
 import type {Scene} from './types';
 
@@ -27,6 +28,7 @@ const Body: React.FC<{scene: Scene}> = ({scene}) => {
     case 'cards': return <CardsT scene={scene} />;
     case 'map': return <MapT scene={scene} />;
     case 'timeline': return <TimelineT scene={scene} />;
+    case 'chart': return <ChartT scene={scene} />;
     case 'headline': return <HeadlineT scene={scene} />;
     case 'document': return <DocumentT scene={scene} />;
     case 'tweet': return <TweetT scene={scene} />;
@@ -50,7 +52,7 @@ export const Episode: React.FC<EpisodeProps> = ({scenes, annotate, audio, sfx = 
         const dur = starts[i + 1] - starts[i];
         return (
           <Sequence key={i} from={from} durationInFrames={dur}>
-            <Frame scene={s} index={i} startFrame={from} totalFrames={total} prevMood={scenes[i - 1]?.mood} annotate={annotate}>
+            <Frame scene={s} index={i} startFrame={from} totalFrames={total} prevMood={scenes[i - 1]?.mood} chapterStart={i > 0 && scenes[i - 1].chapter !== s.chapter} annotate={annotate}>
               <Body scene={s} />
             </Frame>
             {sfx && <SceneSfx scene={s} index={i} prevMood={scenes[i - 1]?.mood} />}
