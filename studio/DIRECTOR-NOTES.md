@@ -21,6 +21,11 @@ Same list is also saved in Claude memory (feedback notes for this repo).
 8. "Spicy": punchy reveals (slams, counters, stamps, shake). Facts found after recording go in as on-screen callouts.
 9. Use the Remotion kit effects (E:\Remotion) as the pattern, but do not fill the whole screen.
 
+## No AI-image shortcut (Nov 25, 2026)
+9b. Do NOT replace designed animation with AI (Flux) images. An earlier session in the owner's own repo filled the video with Flux stills instead of doing the animation work.
+    Flux is optional and rare: hero moments only (max 1-2 per minute, 4-5 s each, never back-to-back), always with motion and an "illustrative" label.
+    Animation, real photos and real data come first. Do not ask for the owner's Cloudflare token unless they ask for Flux.
+
 ## Content and voice
 10. Keep the approved Google TTS narration. Do not re-record.
 11. Authentic and balanced, not US-favouring. Verify facts, hedge allegations, never present unproven claims as fact, no sexual detail.
