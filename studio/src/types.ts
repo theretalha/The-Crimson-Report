@@ -26,6 +26,8 @@ export type Scene =
   | (Base & {template: 'photos'; photos: {image: string; name: string; role: string; credit: string}[]})
   // Old newspaper scan (public domain / archive). underline = red pen lines, in % of the image.
   | (Base & {template: 'newspaper'; image: string; paper: string; date: string; underline: {x: number; y: number; w: number}[]; credit: string; url: string})
+  // Hand-composed scene built from the Remotion kit effects (see templates/Recipes.tsx)
+  | (Base & {template: 'recipe'; recipe: string})
   | (Base & {template: 'tweet'; name: string; handle: string; date: string; text: string; mark: string; url: string});
 
 type Base = {

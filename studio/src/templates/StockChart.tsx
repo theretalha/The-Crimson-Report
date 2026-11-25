@@ -10,6 +10,30 @@ const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', '
 const md = (d: string) => `${MONTHS[+d.slice(5, 7) - 1]} ${+d.slice(8, 10)}`;
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
 
+// When (seconds from scene start) the line reaches each pin and the slam date; shared with the audio exporter.
+export const chartEvents = (scene: Extract<Scene, {template: 'chart'}>, durationInFrames: number, fps = 30) => {
+  const rows = (nvda.closes as [string, number][]).filter(([d]) => d >= scene.from && d <= scene.to);
+  const n = rows.length;
+  const drawF = Math.min(durationInFrames * 0.66, 3.0 * fps);
+  const when = (idx: number) => {
+    const target = idx / (n - 1);
+    let a = 0, b = 1;
+    for (let k = 0; k < 24; k++) { const mid = (a + b) / 2; if (Easing.inOut(Easing.quad)(mid) < target) a = mid; else b = mid; }
+    return (5 + a * drawF) / fps;
+  };
+  const ev: {t: number; kind: string; db?: number; f?: number}[] = [];
+  const PENT = [587.33, 698.46, 880.0, 1046.5];
+  scene.pins.forEach((p, k) => {
+    const idx = rows.findIndex(([d]) => d >= p.date);
+    if (idx >= 0) ev.push({t: when(idx), kind: 'tick', db: -18, f: PENT[k % 4]});
+  });
+  if (scene.slam) {
+    const idx = rows.findIndex(([d]) => d >= scene.slam!.date);
+    if (idx >= 0) { const t = when(idx); ev.push({t: t - 0.02, kind: 'impact', db: -7}, {t: t + 0.05, kind: 'stamp', db: -10}); }
+  }
+  return ev;
+};
+
 export const ChartT: React.FC<{scene: Extract<Scene, {template: 'chart'}>}> = ({scene}) => {
   const f = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();

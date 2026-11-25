@@ -35,7 +35,7 @@ SR = K.SR
 CR = 200  # control rate for gain curves (Hz)
 FPS = 30
 FAMILY = {"title": "text", "stat": "text", "split": "text", "cards": "text", "icon": "icon", "photos": "photo",
-          "headline": "clip", "document": "clip", "newspaper": "clip", "tweet": "clip", "map": "map", "timeline": "tl"}
+          "headline": "clip", "document": "clip", "newspaper": "clip", "tweet": "clip", "map": "map", "timeline": "tl", "recipe": "clip", "chart": "tl"}
 PENT = [587.33, 698.46, 880.0, 1046.5, 1174.66]  # D5 F5 A5 C6 D6
 
 
@@ -198,6 +198,10 @@ def main():
             add(T + 4 / FPS, "slam", -15)
             add(T + 12 / FPS, "slam", -15)
             add(T + 22 / FPS, "tick", -19, f=1174.66)
+
+        # sound events declared by recipe / chart scenes (placed on the narrated words and chart moments)
+        for e in c.get("events", []):
+            add(T + e["t"], e["kind"], e.get("db", -18), **({"f": e["f"]} if "f" in e else {}))
 
         # visual jump -> soft whoosh (only when the picture type changes, never on top of a big hit)
         if (prev and not big and c["part"] == 0 and tp not in ("title", "icon") and FAMILY[tp] != FAMILY[prev["template"]]

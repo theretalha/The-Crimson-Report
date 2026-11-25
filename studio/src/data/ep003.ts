@@ -52,7 +52,7 @@ const SPECS: (Spec | Spec[])[] = [
   /*13*/ [cap(CA(['CHATBOTS', 'SELF-DRIVING CARS', 'MILITARY SOFTWARE'], 'EVERY AI SYSTEM…'), 'Every powerful AI system in the world, from chatbots to self-driving cars to military software,'), cap(I('chip', '…NEEDS THESE.'), 'needs special chips to train and run.')],
   /*14*/ I('chip', 'NVIDIA.', 'Makes most of them.', 'facts'),
   /*15*/ SP('AI WAR', '=', 'NVIDIA', 'THE WEAPONS MAKER.'),
-  /*16*/ src(TL([{label: 'OCT 2022', sub: 'US bans top chips to China'}], 'THE BAN.', 'facts'), 'US Commerce Department export controls, Oct 2022'),
+  /*16*/ {template: 'recipe', recipe: 'ban', mood: 'context', title: 'THE BAN.', sub: 'Oct 2022 · US export controls', source: 'Photo: Geekerwan, CC BY 3.0 (Wikimedia Commons) · Federal Register doc. 2022-21658, Oct 13, 2022'},
   /*17*/ [cap(MP({center: [-98, 39], zoom: 0.12, highlight: ['840'], title: "WASHINGTON'S FEAR."}), "Washington's fear is simple."), cap(I('radar', 'MILITARY + SURVEILLANCE.'), 'If China gets ahead in AI, its military and surveillance power could grow enormously.')],
   /*18*/ [cap(MP({center: [104, 35], zoom: 0.25, highlight: ['156'], title: "BEIJING'S VIEW."}), 'Beijing sees it very differently.'), cap(SP('BANS', '=', 'HOLD US BACK', 'CHINA SAYS.'), 'To China, these bans are an attempt to hold back its economy and keep America on top.')],
   /*19*/ src(P([TRUMP], '"WHOEVER WINS AI, WINS."'), 'Donald Trump, public remarks'),

@@ -5,6 +5,7 @@ import {Bed, SceneSfx} from './components/Sfx';
 import {CardsT, IconT, MapT, QuoteT, SplitT, StatT, TimelineT, TitleT} from './templates/Templates';
 import {DocumentT, HeadlineT, NewspaperT, PhotosT, TweetT} from './templates/Clips';
 import {ChartT} from './templates/StockChart';
+import {RecipeT} from './templates/Recipes';
 import {FPS} from './theme';
 import type {Scene} from './types';
 
@@ -29,6 +30,7 @@ const Body: React.FC<{scene: Scene}> = ({scene}) => {
     case 'map': return <MapT scene={scene} />;
     case 'timeline': return <TimelineT scene={scene} />;
     case 'chart': return <ChartT scene={scene} />;
+    case 'recipe': return <RecipeT scene={scene} />;
     case 'headline': return <HeadlineT scene={scene} />;
     case 'document': return <DocumentT scene={scene} />;
     case 'tweet': return <TweetT scene={scene} />;
