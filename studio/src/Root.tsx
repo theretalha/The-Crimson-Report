@@ -7,6 +7,7 @@ import {PREVIEW} from './data/preview';
 import {buildEp003} from './data/ep003';
 import {StyleTest} from './pro/StyleTest';
 import {ProbeSelfTest} from './components/ProbeSelfTest';
+import {ThumbA, ThumbB, ThumbC} from './Thumbs';
 
 const EP003 = buildEp003();
 import {FPS, H, W} from './theme';
@@ -19,6 +20,9 @@ export const Root: React.FC = () => (
     {/* EP 003: full long video, synced to the TTS audio */}
     <Composition id="EP003-Nvidia" component={Episode} durationInFrames={totalFrames(EP003)}
       fps={FPS} width={W} height={H} defaultProps={{scenes: EP003, audio: 'audio/ep003-mix.wav', sfx: false}} />
+    <Composition id="Thumb-A" component={ThumbA} durationInFrames={1} fps={FPS} width={W} height={H} />
+    <Composition id="Thumb-B" component={ThumbB} durationInFrames={1} fps={FPS} width={W} height={H} />
+    <Composition id="Thumb-C" component={ThumbC} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="ProbeSelfTest" component={ProbeSelfTest} durationInFrames={10} fps={FPS} width={W} height={H} />
     <Composition id="StyleTest" component={StyleTest} durationInFrames={120} fps={FPS} width={W} height={H} />
     {/* Long video: 1920x1080 */}
