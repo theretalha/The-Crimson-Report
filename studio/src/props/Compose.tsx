@@ -18,7 +18,7 @@ export type Item = {
   from?: string; to?: string; x2?: number; y2?: number; color?: string;
   // calendar
   flips?: number; sub?: string;
-  fit?: string;
+  fit?: string; fromX?: number; dur?: number; hideUntil?: string | number;
   // generic
   w?: number; h?: number; size?: number; lit?: boolean; icon?: string; away?: string | number;
   // stage-2 props
@@ -43,10 +43,11 @@ const tOf = (s: S, it: Item) => {
 };
 const INK = KC.black;
 const CARD_W = 250;
+const prog1 = (f: number, t0: number, d: number) => interpolate(f, [t0, t0 + d], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
 const find = (s: S, id?: string) => s.items.find((i) => i.id === id);
 const pinPoint = (it: Item) => ({x: it.x, y: it.y + (it.p === 'card' ? -(it.h ?? 320) / 2 + 16 : -(it.h ?? 120))});
 
-const Card: React.FC<{it: Item}> = ({it}) => {
+const Card: React.FC<{it: Item; hidden?: boolean}> = ({it, hidden}) => {
   const w = it.w ?? CARD_W, h = it.h ?? 320, pw = w - 28, ph = h - 130;
   const id = `clip-${it.id ?? Math.round(it.x * 7 + it.y)}`;
   return (
@@ -61,6 +62,7 @@ const Card: React.FC<{it: Item}> = ({it}) => {
       {it.kind === 'text' && <text x={0} y={-h / 2 + 18 + ph / 2 + 22} textAnchor="middle" fontFamily={KF.head} fontWeight={700} fontSize={Math.min(96, pw / 1.2)} fill={KC.crimson}>{it.text}</text>}
       <NameTape name={it.name ?? ''} role={it.role} w={pw} y={h / 2 - (it.role ? 92 : 72)} />
       <circle cx={0} cy={-h / 2 + 4} r={12} fill={KC.crimson} stroke={INK} strokeWidth={4} />
+      {hidden && <g><rect x={-pw / 2} y={-h / 2 + 18} width={pw} height={ph} fill={KC.black} /><text x={0} y={-h / 2 + 18 + ph / 2 + 40} textAnchor="middle" fontFamily={KF.display} fontSize={150} fill={KC.crimson}>?</text></g>}
       {it.dim && <rect x={-w / 2} y={-h / 2} width={w} height={h} fill={KC.black} opacity={0.5} />}
     </g>
   );
@@ -107,7 +109,8 @@ export const COMPOSE = {
       const t = tOf(s, it);
       if (it.p === 'card') ev.push({t: t + 0.04, kind: 'paper', db: -15});
       else if (it.p === 'building') ev.push({t: t + 0.05, kind: 'paper', db: -13}, {t: t + 0.12, kind: 'tick', db: -19, f: 988});
-      else if (it.p === 'person' || it.p === 'chair') ev.push({t: t + 0.05, kind: 'tick', db: -17, f: 880});
+      else if (it.p === 'person' || it.p === 'chair') { ev.push({t: t + 0.05, kind: 'tick', db: -17, f: 880}); if (it.fromX) for (let k = 1; k < 4; k++) ev.push({t: t + k * 0.22, kind: 'tick', db: -22, f: 330}); }
+      else if (it.p === 'ribbon') ev.push({t, kind: 'whoosh', db: -22, v: 1});
       else if (it.p === 'string') ev.push({t, kind: 'marker', db: -22});
       else if (it.p === 'stamp') ev.push({t: t + 0.1, kind: 'stamp', db: -7});
       else if (it.p === 'tag') ev.push({t: t + 0.03, kind: 'tick', db: -18, f: 1568});
@@ -132,10 +135,10 @@ export const COMPOSE = {
   Comp: ({scene}: {scene: S}) => {
     const f = useCurrentFrame();
     const {fps} = useVideoConfig();
-    const svgItems = scene.items.filter((i) => ['board', 'card', 'building', 'person', 'string', 'calendar', 'tag', 'chair', 'text', 'money', 'stack', 'route', 'letter', 'phone', 'scales', 'door', 'table', 'crowd', 'rack', 'crates'].includes(i.p));
+    const svgItems = scene.items.filter((i) => ['board', 'card', 'building', 'person', 'string', 'calendar', 'tag', 'chair', 'text', 'money', 'stack', 'route', 'letter', 'phone', 'scales', 'door', 'table', 'crowd', 'rack', 'crates', 'ribbon'].includes(i.p));
     const htmlItems = scene.items.filter((i) => ['stamp', 'icon', 'arrow'].includes(i.p));
     return (
-      <AbsoluteFill>
+      <AbsoluteFill style={{transform: `scale(${scene.seconds >= 4 ? 1 + 0.055 * Math.min(1, f / Math.max(1, scene.seconds * FPS)) : 1})`, transformOrigin: '50% 58%'}}>
         <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
           {svgItems.map((it, k) => {
             const t0 = fr(tOf(scene, it));
@@ -165,8 +168,8 @@ export const COMPOSE = {
             }
             const away = it.away !== undefined && f >= fr(at(scene, it.away)) ? interpolate(f, [fr(at(scene, it.away)), fr(at(scene, it.away)) + 14], [0, 1], {extrapolateRight: 'clamp', easing: Easing.in(Easing.cubic)}) : 0;
             return (
-              <g key={k} transform={`translate(${it.x + away * 900} ${it.y + (1 - Math.min(1, pop)) * 40}) rotate(${(it.r ?? 0) + (1 - Math.min(1, pop)) * 6}) scale(${s})`} opacity={vis * (1 - away)}>
-                {it.p === 'card' && <Card it={it} />}
+              <g key={k} transform={`translate(${it.x + away * 900 - (it.fromX ? it.fromX * (1 - interpolate(f, [t0, t0 + (it.dur ?? 24)], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)})) : 0)} ${it.y + (it.fromX ? 0 : (1 - Math.min(1, pop)) * 40)}) rotate(${(it.r ?? 0) + (1 - Math.min(1, pop)) * 6}) scale(${s})`} opacity={vis * (1 - away)}>
+                {it.p === 'card' && <Card it={it} hidden={it.hideUntil !== undefined && f < fr(at(scene, it.hideUntil))} />}
                 {it.p === 'building' && (
                   <g>
                     <ellipse cx={0} cy={10} rx={230} ry={14} fill={INK} opacity={0.16} />
@@ -194,6 +197,12 @@ export const COMPOSE = {
                 {it.p === 'crowd' && <Crowd f={f} t0={t0} fg={fg} to={it.total ?? 1000} label={it.label} />}
                 {it.p === 'rack' && <Rack f={f} t0={t0} slots={it.slots} missing={it.missing} label={it.label} />}
                 {it.p === 'crates' && <Crates f={f} t0={t0} n={it.n} sealed={it.sealed} />}
+                {it.p === 'ribbon' && (
+                  <g transform={`translate(${(1 - prog1(f, t0, 14)) * 700} 0)`}>
+                    <rect x={-((it.text ?? '').length * 14.5 + 56)} y={-25} width={(it.text ?? '').length * 14.5 + 56} height={50} fill={KC.crimson} stroke={INK} strokeWidth={4} />
+                    <text x={-24} y={9} textAnchor="end" fontFamily={KF.head} fontWeight={700} fontSize={25} letterSpacing={3} fill={KC.cream}>{it.text}</text>
+                  </g>
+                )}
                 {it.p === 'tag' && (
                   <g>
                     <rect x={-(it.w ?? Math.max(120, (it.text ?? '').length * 17 + 44)) / 2} y={-26} width={it.w ?? Math.max(120, (it.text ?? '').length * 17 + 44)} height={52} rx={26} fill={it.color ?? KC.crimson} stroke={INK} strokeWidth={4} />

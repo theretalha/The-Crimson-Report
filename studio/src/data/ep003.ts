@@ -48,8 +48,8 @@ const CORK = (extra: any = {}) => [
 ];
 
 const NEW: Record<number, Spec | Spec[]> = {
-  1: CP([{p: 'building', kind: 'datacenter', label: 'DATA CENTER', x: 1260, y: 750, s: 1.4}, {p: 'person', name: 'US COMMERCE OFFICIAL', role: 'REPORTEDLY', badge: 'US', tie: true, x: 520, y: 740, s: 1.4, at: 'official'}, {p: 'tag', text: 'SOMETHING STRANGE', x: 900, y: 400, at: 'strange'}], 'THE VISIT.', 'Malaysia · according to reports', 'context'),
-  6: CP([...CORK({c1: {at: 'investigation'}, c2: {at: 'businesswoman'}, c3: {at: 'White House'}, c4: {at: 'man running'}}),
+  1: CP([{p: 'building', kind: 'datacenter', label: 'DATA CENTER', x: 1260, y: 750, s: 1.4}, {p: 'person', name: 'US COMMERCE OFFICIAL', role: 'REPORTEDLY', badge: 'US', tie: true, x: 520, y: 740, s: 1.4, at: 0, fromX: 520, dur: 60}, {p: 'tag', text: 'SOMETHING STRANGE', x: 900, y: 400, at: 'strange'}], 'THE VISIT.', 'Malaysia · according to reports', 'context'),
+  6: CP([...CORK({c1: {at: 'investigation'}, c2: {at: 'businesswoman'}, c3: {at: 'White House'}, c4: {at: 0.6, hideUntil: 'man running', s: 1.3}}),
     {p: 'string', from: 'c1', to: 'c2', at: 'businesswoman'}, {p: 'string', from: 'c2', to: 'c3', at: 'White House'}, {p: 'string', from: 'c3', to: 'c4', at: 'man running'},
     {p: 'tag', text: 'ACCORDING TO REPORTS', x: 1380, y: 262, at: 'According'}], 'THE INVESTIGATION.', undefined, 'context'),
   7: CP([BOARD, JP(960, 580, undefined, {s: 1.5, r: -2})], 'THE MAN.', undefined, 'context'),
@@ -156,7 +156,7 @@ const NEWF: Record<number, (b: Spec[]) => Spec[]> = {
 
 const SPECS_BASE: (Spec | Spec[])[] = [
   // 00 — THE SEALED BOXES
-  /*0*/ [cap(T('LATE 2024.', 'context', true), 'Late 2024.'), cap(MP({center: [104, 4], zoom: 0.9, pins: [KL], highlight: ['458']}), 'A data center in Malaysia.')],
+  /*0*/ [cap(CP([{p: 'crates', n: 6, x: 960, y: 800, s: 1.4, at: 0, sealed: true}, {p: 'tag', text: 'SEALED BOXES · MALAYSIA', x: 960, y: 300, at: 0.3}], 'LATE 2024.', undefined, 'context'), 'Late 2024.'), cap(MP({center: [104, 4], zoom: 0.9, pins: [KL], highlight: ['458']}), 'A data center in Malaysia.')],
   /*1*/ src(I('servers', 'A DATA CENTER.', 'Malaysia'), 'According to reports'),
   /*2*/ [cap(I('boxes', 'NVIDIA AI CHIPS.', 'Brand new.'), 'Stacks of boxes. Brand-new Nvidia AI chips.'), cap(I('chip', 'THE MOST WANTED CHIPS.'), 'Some of the most wanted computer chips on the planet.')],
   /*3*/ T('STILL SEALED.', 'danger'),
@@ -284,7 +284,13 @@ const SPECS_BASE: (Spec | Spec[])[] = [
   /*107*/ I('folder', 'SUBSCRIBE.', 'See what\'s coming before the headlines'),
   /*108*/ I('folder', 'FILE CLOSED.'),
 ];
-const SPECS: (Spec | Spec[])[] = SPECS_BASE.map((sp, i) => (i === 37 ? [(sp as Spec[])[0], (NEW[37] as Spec[])[1]] : NEWF[i] ? NEWF[i](sp as Spec[]) : NEW[i] ?? sp));
+const STAKES = {p: 'ribbon', x: 1820, y: 152, text: 'NVIDIA CEO · OUT NOV 12 · BACK NOV 22', at: 0};
+const withStakes = (x: Spec | Spec[], i: number): Spec | Spec[] => {
+  if (i > 9) return x;
+  const f = (sp: Spec): Spec => (sp.template === 'recipe' && (sp as any).recipe === 'compose' ? ({...sp, items: [...(sp as any).items, STAKES]} as Spec) : sp);
+  return Array.isArray(x) ? x.map(f) : f(x);
+};
+const SPECS: (Spec | Spec[])[] = SPECS_BASE.map((sp, i) => withStakes(i === 37 ? [(sp as Spec[])[0], (NEW[37] as Spec[])[1]] : NEWF[i] ? NEWF[i](sp as Spec[]) : NEW[i] ?? sp, i));
 
 
 const CHAPTERS: [number, string, Mood][] = [
