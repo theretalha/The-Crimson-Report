@@ -72,7 +72,7 @@ const NEW: Record<number, Spec | Spec[]> = {
   31: CP([{p: 'phone', x: 700, y: 570, at: 'Photos', header: 'POSTED ONLINE', imgsrc: 'photos/alice-huang.jpg'}, {p: 'tag', text: 'NOT HIDING', x: 1280, y: 430, at: 'hiding', color: '#0A0A0A'}, {p: 'card', kind: 'text', text: '📷', name: 'PUBLIC PHOTOS', role: 'OF THEM TOGETHER', x: 1280, y: 620, s: 1.1, r: 3, at: 'Photos'}], 'NOT EXACTLY HIDING.', undefined, 'context'),
   37: [cap(EM({title: 'FOUR DAYS LATER.', sub: 'An Nvidia cloud partner', mood: 'facts', nodes: [{id: 'shell', dim: true}, {id: 'megaspeed'}, {id: 'nvidia', at: 'Nvidia', focus: true}], links: [{from: 'megaspeed', to: 'shell', label: 'SHELL OWNER', dim: true}, {from: 'nvidia', to: 'megaspeed', label: 'CLOUD PARTNER · +4 DAYS', at: 'cloud partner'}]}), 'And just four days after that, MegaSpeed became an official Nvidia cloud partner,'), cap(CP([{p: 'building', kind: 'tower', x: 1300, y: 780, s: 1.1, label: 'MEGASPEED', at: 0}, {p: 'crates', n: 3, x: 620, y: 780, s: 1, at: 'priority', sealed: false}, {p: 'money', x: 820, y: 540, x2: 1100, y2: 540, text: 'PRIORITY', at: 'priority'}], 'FIRST IN LINE.', 'Priority access to Nvidia chips', 'facts'), "which meant priority access to Nvidia's chips.")],
   39: CP([{p: 'building', kind: 'office', x: 600, y: 780, s: 1.1, label: 'MEGASPEED · 2023', at: 0}, {p: 'stack', n: 2, x: 1300, y: 760, s: 1.5, label: '$33M', at: 'million'}], '2023 ASSETS.', 'Reportedly', 'facts'),
-  40: CP([{p: 'building', kind: 'tower', x: 600, y: 780, s: 1.15, label: 'MEGASPEED · 2024', at: 0}, {p: 'stack', n: 12, x: 1300, y: 770, s: 1.3, label: '$3B', at: 'billion'}], 'ONE YEAR LATER.', 'Reportedly', 'facts'),
+  40: CP([{p: 'building', kind: 'tower', x: 600, y: 780, s: 1.15, label: 'MEGASPEED · 2024', at: 0}, {p: 'stack', n: 12, x: 1300, y: 800, s: 1.1, label: '$3B', at: 'billion'}], 'ONE YEAR LATER.', 'Reportedly', 'facts'),
   42: [cap(CP([{p: 'route', x: 560, y: 560, x2: 1360, y2: 560, a: 'NVIDIA', b: 'MALAYSIA', at: 'sister', n: 5}], 'SISTER COMPANY.', 'Malaysia', 'facts'), 'A sister company in Malaysia reportedly bought'),
        cap(CP([{p: 'building', kind: 'datacenter', x: 1380, y: 760, s: 1.1, label: 'SISTER COMPANY', at: 0}, {p: 'money', x: 420, y: 560, x2: 1050, y2: 560, text: '$4.8B', at: 'billion', n: 8}, {p: 'tag', text: 'ALMOST ALL FROM NVIDIA', x: 900, y: 330, at: 'almost all'}], 'AI EQUIPMENT.', undefined, 'facts'), 'at least 4.8 billion dollars of advanced AI equipment, almost all of it from Nvidia.')],
   44: [cap(H(undefined, 'BLOOMBERG', 'DEC 2025', 'Nvidia Buyer Megaspeed Faces Smuggling Probe', 'Smuggling Probe', 'https://www.youtube.com/watch?v=vfrQtabNYYE', 'danger'), 'And according to Bloomberg,'),
@@ -86,7 +86,7 @@ const NEW: Record<number, Spec | Spec[]> = {
   60: [cap(CP([{p: 'crowd', x: 960, y: 640, total: 18800, label: 'SIGNATURES', at: 'petition'}], 'THE PETITION.', 'To bring him back', 'context', 'As reported'), 'A petition to bring him back collected more than 18,800 signatures.'),
        cap(P([MUSK], 'PUBLIC SUPPORT.'), 'Big names, including Elon Musk, publicly backed him.')],
   61: CP([{p: 'table', kind: 'board', x: 700, y: 560, n: 6, at: 0}, {p: 'door', x: 1420, y: 800, label: 'NOT COMING BACK', at: 'not coming back'}, {p: 'tag', text: 'NOV 17', x: 960, y: 290, at: 'November'}], 'THE BOARD SAYS NO.', undefined, 'danger'),
-  62: CP([{p: 'table', kind: 'board', x: 700, y: 560, n: 6, hands: 6, at: 0}, {p: 'calendar', x: 1400, y: 540, flips: 5, label: 'DAYS', sub: 'LATER', at: 'Five days', s: 1.25}, {p: 'tag', text: 'NOV 22 · UNANIMOUS', x: 960, y: 290, at: 'unanimously'}], 'THE BOARD VOTES.', undefined, 'facts'),
+  62: CP([{p: 'table', kind: 'board', x: 700, y: 560, n: 6, hands: 6, at: 0}, {p: 'calendar', x: 1400, y: 700, flips: 5, label: 'DAYS', sub: 'LATER', at: 'Five days', s: 1.0}, {p: 'tag', text: 'NOV 22 · UNANIMOUS', x: 960, y: 290, at: 'unanimously'}], 'THE BOARD VOTES.', undefined, 'facts'),
   71: CP([{p: 'scales', x: 960, y: 570, left: 'SPY', right: 'NOT A SPY', tilt: 0, at: 0}, {p: 'tag', text: 'CIA · AS OF NOV 19', x: 960, y: 250, at: 'CIA'}, {p: 'stamp', text: 'CAN\'T SAY', x: 1380, y: 800, r: -6, size: 84, at: 'either way'}], 'NOBODY KNOWS.', 'As reported', 'facts'),
   80: CP([{p: 'scales', x: 960, y: 570, left: 'SPY CASE', right: 'POLITICAL WEAPON', tilt: 0, at: 0}, {p: 'tag', text: 'YOU DECIDE', x: 960, y: 250, at: 'weapon'}], 'REAL SPY CASE… OR A WEAPON?', undefined, 'danger'),
   87: CP([{p: 'scales', x: 960, y: 570, left: 'OTHERS: OPEN UP', right: 'US CHIPS: CLOSED', tilt: 1, at: 'double standard'}], 'DOUBLE STANDARD.', undefined, 'context'),
@@ -284,13 +284,29 @@ const SPECS_BASE: (Spec | Spec[])[] = [
   /*107*/ I('folder', 'SUBSCRIBE.', 'See what\'s coming before the headlines'),
   /*108*/ I('folder', 'FILE CLOSED.'),
 ];
+
+// Facts found AFTER the voice was recorded go on screen as sourced, hedged callouts (director note 8). See episodes/003-nvidia-ceo-scandal/fact-check.md.
+const UPDATES: Record<number, {part?: number; lines: string[]}> = {
+  40: {lines: ['NUMBERS NOT VERIFIED.', 'NYT (Nov 18): Megaspeed bought', '$4B+ of Nvidia chips.']},
+  50: {part: 1, lines: ['LATER REPORTS: memo dated', 'Mar 30. Trump briefed in May.']},
+  60: {part: 0, lines: ['LATER REPORTS: 178,000+', 'signatures by Nov 16.']},
+  62: {lines: ['Vote Nov 22 (SEC filing),', 'announced Nov 23.', 'Some outlets count 11 days.']},
+  71: {lines: ['NYT/ABC/WSJ, Nov 22-23:', 'contact with a Chinese', 'intelligence officer reported.', 'Not proven she passed secrets.']},
+};
+const withUpdates = (x: Spec | Spec[], i: number): Spec | Spec[] => {
+  const u = UPDATES[i]; if (!u) return x;
+  const add = (sp: Spec): Spec => (sp.template === 'recipe' && (sp as any).recipe === 'compose'
+    ? ({...sp, items: [...(sp as any).items, {p: 'letter', x: 1500, y: 130 + ((114 + 46 * u.lines.length) * 1.3) / 2, s: 1.3, w: 520, header: 'UPDATE SINCE RECORDING', lines: u.lines, hl: [], at: 1.0}]} as Spec) : sp);
+  return Array.isArray(x) ? x.map((sp, k) => (u.part === undefined || u.part === k ? add(sp) : sp)) : add(x);
+};
+
 const STAKES = {p: 'ribbon', x: 1820, y: 152, text: 'NVIDIA CEO · OUT NOV 12 · BACK NOV 22', at: 0};
 const withStakes = (x: Spec | Spec[], i: number): Spec | Spec[] => {
   if (i > 9) return x;
   const f = (sp: Spec): Spec => (sp.template === 'recipe' && (sp as any).recipe === 'compose' ? ({...sp, items: [...(sp as any).items, STAKES]} as Spec) : sp);
   return Array.isArray(x) ? x.map(f) : f(x);
 };
-const SPECS: (Spec | Spec[])[] = SPECS_BASE.map((sp, i) => withStakes(i === 37 ? [(sp as Spec[])[0], (NEW[37] as Spec[])[1]] : NEWF[i] ? NEWF[i](sp as Spec[]) : NEW[i] ?? sp, i));
+const SPECS: (Spec | Spec[])[] = SPECS_BASE.map((sp, i) => withUpdates(withStakes(i === 37 ? [(sp as Spec[])[0], (NEW[37] as Spec[])[1]] : NEWF[i] ? NEWF[i](sp as Spec[]) : NEW[i] ?? sp, i), i));
 
 
 const CHAPTERS: [number, string, Mood][] = [
