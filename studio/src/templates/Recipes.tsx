@@ -11,7 +11,7 @@ import {COMPOSE} from '../props/Compose';
 // "Recipes": hand-composed scenes built from the Remotion kit effects, timed to the narrated words.
 // Each recipe exports its sound events too, so the audio mix lands on the same moments.
 
-export type Ev = {t: number; kind: string; db?: number; f?: number};
+export type Ev = {t: number; kind: string; db?: number; f?: number; v?: number; count?: number};
 type RScene = {caption: string; speak?: number; seconds: number; [k: string]: any};
 
 // seconds (from scene start) at which `word` is spoken, estimated from its position in the caption

@@ -199,7 +199,7 @@ def main():
 
         # sound events declared by recipe / chart scenes (placed on the narrated words and chart moments)
         for e in c.get("events", []):
-            add(T + e["t"], e["kind"], e.get("db", -18), **({"f": e["f"]} if "f" in e else {}))
+            add(T + e["t"], e["kind"], e.get("db", -18), **{k: e[k] for k in ("f", "v", "count") if k in e})
 
         # visual jump -> soft whoosh (only when the picture type changes, never on top of a big hit)
         if (prev and not big and c["part"] == 0 and tp not in ("title", "icon") and FAMILY[tp] != FAMILY[prev["template"]]

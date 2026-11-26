@@ -5,6 +5,7 @@ import {RubberStamp} from '../kit/effects/text/Stamp';
 import {HandArrow} from '../kit/effects/text/HandDrawn';
 import {ProIcon} from '../pro/ProIcon';
 import {BuildingArt, NameTape, PersonArt, Sign, type BuildingKind} from './art';
+import {Money, CoinStack, Route, Letter, Phone, Scales, Door, Table, Crowd, Rack, Crates} from './art2';
 import type {Ev} from '../templates/Recipes';
 
 // The scene composer: a scene is a list of items placed on the 1920x1080 stage; each item appears on the narrated word `at`.
@@ -17,10 +18,14 @@ export type Item = {
   from?: string; to?: string; x2?: number; y2?: number; color?: string;
   // calendar
   flips?: number; sub?: string;
+  fit?: string;
   // generic
-  w?: number; h?: number; size?: number; lit?: boolean; icon?: string; away?: number;
+  w?: number; h?: number; size?: number; lit?: boolean; icon?: string; away?: string | number;
+  // stage-2 props
+  n?: number; lines?: string[]; hl?: number[]; strike?: number[]; header?: string; a?: string; b?: string; blocked?: boolean; left?: string; right?: string; tilt?: number; hands?: number; total?: number; slots?: number; missing?: number[]; sealed?: boolean; imgsrc?: string;
 };
-type S = {caption: string; speak?: number; seconds: number; items: Item[]};
+type S = {caption: string; speak?: number; seconds: number; items: Item[]; mood?: string};
+const DEFAULT_S: Record<string, number> = {letter: 1.3, stack: 1.9, rack: 1.4, crates: 1.25, table: 1.5, door: 1.2, crowd: 1.35, phone: 1.1, scales: 1.15, route: 1.1, money: 1};
 const FPS = 30;
 const fr = (sec: number) => Math.round(sec * FPS);
 const at = (s: S, word: string | number | undefined, lead = 0) => {
@@ -44,8 +49,8 @@ const Card: React.FC<{it: Item}> = ({it}) => {
       <rect x={-w / 2 + 8} y={-h / 2 + 10} width={w} height={h} fill={INK} opacity={0.22} />
       <rect x={-w / 2} y={-h / 2} width={w} height={h} fill={KC.cream} stroke={INK} strokeWidth={5} />
       <clipPath id={id}><rect x={-pw / 2} y={-h / 2 + 18} width={pw} height={ph} /></clipPath>
-      <rect x={-pw / 2} y={-h / 2 + 18} width={pw} height={ph} fill={it.kind === 'person' ? KC.black2 : KC.cream2} />
-      {it.kind === 'photo' && it.src && <image href={staticFile(it.src)} x={-pw / 2} y={-h / 2 + 18} width={pw} height={ph} preserveAspectRatio="xMidYMid slice" clipPath={`url(#${id})`} style={{filter: 'contrast(1.05) saturate(0.9)'}} />}
+      <rect x={-pw / 2} y={-h / 2 + 18} width={pw} height={ph} fill={it.kind === 'person' || it.fit === 'meet' ? KC.black : KC.cream2} />
+      {it.kind === 'photo' && it.src && <image href={staticFile(it.src)} x={-pw / 2} y={-h / 2 + 18} width={pw} height={ph} preserveAspectRatio={it.fit === 'meet' ? 'xMidYMid meet' : 'xMidYMid slice'} clipPath={`url(#${id})`} style={{filter: 'contrast(1.05) saturate(0.9)'}} />}
       {it.kind === 'person' && <g clipPath={`url(#${id})`}><g transform={`translate(0 ${-h / 2 + 18 + ph - 6}) scale(${ph / 290})`}><PersonArt tie={it.tie} badge={it.badge} hat={it.hat} /></g></g>}
       {it.kind === 'building' && <g clipPath={`url(#${id})`}><g transform={`translate(0 ${-h / 2 + 18 + ph - 8}) scale(${Math.min(pw / 480, ph / 330)})`}><BuildingArt kind={(it.text as BuildingKind) ?? 'office'} /></g></g>}
       {it.kind === 'text' && <text x={0} y={-h / 2 + 18 + ph / 2 + 22} textAnchor="middle" fontFamily={KF.head} fontWeight={700} fontSize={Math.min(96, pw / 1.2)} fill={KC.crimson}>{it.text}</text>}
@@ -103,13 +108,24 @@ export const COMPOSE = {
         const n = Math.min(it.flips ?? 1, 12), per = Math.max(3, Math.round(24 / Math.max(1, it.flips ?? 1) + 2));
         for (let k = 0; k < n; k++) ev.push({t: t + (k * per) / FPS, kind: 'tick', db: -22, f: 1318.5});
       } else if (it.p === 'board') ev.push({t, kind: 'paper', db: -20});
+      else if (it.p === 'money') ev.push({t, kind: 'whoosh', db: -21, v: 1}, {t: t + 0.5, kind: 'tick', db: -20, f: 1568});
+      else if (it.p === 'stack') ev.push({t, kind: 'tick', db: -17, f: 1046.5}, {t: t + 0.25, kind: 'tick', db: -18, f: 1318.5});
+      else if (it.p === 'route') ev.push({t, kind: 'whoosh', db: -20, v: 2});
+      else if (it.p === 'letter') ev.push({t, kind: 'paper', db: -14}, {t: t + 0.35, kind: 'keys', db: -24, count: 5});
+      else if (it.p === 'phone') ev.push({t, kind: 'whoosh', db: -22}, {t: t + 0.5, kind: 'ping', db: -15, f: 1760});
+      else if (it.p === 'scales') ev.push({t: t + 0.25, kind: 'whoosh', db: -22, v: 2}, {t: t + 0.7, kind: 'tick', db: -16, f: 659.3});
+      else if (it.p === 'door') ev.push({t: t + 0.8, kind: 'slam', db: -11});
+      else if (it.p === 'table') ev.push({t, kind: 'paper', db: -17});
+      else if (it.p === 'crowd') for (let k = 0; k < 6; k++) ev.push({t: t + k * 0.2, kind: 'tick', db: -22, f: 880 * Math.pow(1.122, k)});
+      else if (it.p === 'rack') ev.push({t, kind: 'paper', db: -16}, {t: t + 0.7, kind: 'ping', db: -16, f: 523.3});
+      else if (it.p === 'crates') ev.push({t, kind: 'paper', db: -15}, {t: t + 0.25, kind: 'paper', db: -17, v: 1});
     });
     return ev;
   },
   Comp: ({scene}: {scene: S}) => {
     const f = useCurrentFrame();
     const {fps} = useVideoConfig();
-    const svgItems = scene.items.filter((i) => ['board', 'card', 'building', 'person', 'string', 'calendar', 'tag', 'chair', 'text'].includes(i.p));
+    const svgItems = scene.items.filter((i) => ['board', 'card', 'building', 'person', 'string', 'calendar', 'tag', 'chair', 'text', 'money', 'stack', 'route', 'letter', 'phone', 'scales', 'door', 'table', 'crowd', 'rack', 'crates'].includes(i.p));
     const htmlItems = scene.items.filter((i) => ['stamp', 'icon', 'arrow'].includes(i.p));
     return (
       <AbsoluteFill>
@@ -118,7 +134,8 @@ export const COMPOSE = {
             const t0 = fr(tOf(scene, it));
             const pop = spring({frame: f - t0, fps, config: {damping: 12, stiffness: 150, mass: 0.75}});
             const vis = interpolate(f, [t0, t0 + 3], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-            const s = (it.s ?? 1) * (0.7 + 0.3 * Math.min(1.15, pop));
+            const s = (it.s ?? DEFAULT_S[it.p] ?? 1) * (0.7 + 0.3 * Math.min(1.15, pop));
+            const fg = scene.mood === 'facts' ? INK : KC.cream;
             if (it.p === 'string') {
               const a = find(scene, it.from), b = find(scene, it.to);
               if (!a || !b) return null;
@@ -159,6 +176,17 @@ export const COMPOSE = {
                 )}
                 {it.p === 'calendar' && <Calendar it={it} f0={t0} f={f} />}
                 {it.p === 'chair' && <Chair it={it} />}
+                {it.p === 'money' && <Money f={f} t0={t0} fg={fg} dx={(it.x2 ?? it.x) - it.x} dy={(it.y2 ?? it.y) - it.y} text={it.text} n={it.n} />}
+                {it.p === 'stack' && <CoinStack f={f} t0={t0} fg={fg} n={it.n ?? 3} label={it.label} />}
+                {it.p === 'route' && <Route f={f} t0={t0} fg={fg} dx={(it.x2 ?? it.x) - it.x} dy={(it.y2 ?? it.y) - it.y} a={it.a ?? ''} b={it.b ?? ''} blocked={it.blocked} n={it.n} />}
+                {it.p === 'letter' && <Letter f={f} t0={t0} lines={it.lines ?? []} hl={it.hl} strike={it.strike} header={it.header} w={it.w} />}
+                {it.p === 'phone' && <Phone f={f} t0={t0} header={it.header} src={it.imgsrc ? staticFile(it.imgsrc) : undefined} />}
+                {it.p === 'scales' && <Scales f={f} t0={t0} fg={fg} left={it.left ?? ''} right={it.right ?? ''} tilt={it.tilt} />}
+                {it.p === 'door' && <Door f={f} t0={t0} label={it.label} />}
+                {it.p === 'table' && <Table f={f} t0={t0} kind={it.kind} hands={it.hands} n={it.n} />}
+                {it.p === 'crowd' && <Crowd f={f} t0={t0} fg={fg} to={it.total ?? 1000} label={it.label} />}
+                {it.p === 'rack' && <Rack f={f} t0={t0} slots={it.slots} missing={it.missing} label={it.label} />}
+                {it.p === 'crates' && <Crates f={f} t0={t0} n={it.n} sealed={it.sealed} />}
                 {it.p === 'tag' && (
                   <g>
                     <rect x={-(it.w ?? Math.max(120, (it.text ?? '').length * 17 + 44)) / 2} y={-26} width={it.w ?? Math.max(120, (it.text ?? '').length * 17 + 44)} height={52} rx={26} fill={it.color ?? KC.crimson} stroke={INK} strokeWidth={4} />
@@ -173,7 +201,7 @@ export const COMPOSE = {
         {htmlItems.map((it, k) => {
           const d = fr(tOf(scene, it));
           if (it.p === 'stamp') return <RubberStamp key={k} text={it.text ?? ''} x={it.x} y={it.y} rotate={it.r ?? -8} delay={d} size={it.size ?? 120} color={it.color ?? KC.crimson} clean />;
-          if (it.p === 'icon') return <div key={k} style={{position: 'absolute', left: it.x - (it.size ?? 220) / 2, top: it.y - (it.size ?? 220) / 2}}><ProIcon name={it.icon ?? 'search'} size={it.size ?? 220} delay={d} light plate={false} /></div>;
+          if (it.p === 'icon') return <div key={k} style={{position: 'absolute', left: it.x - (it.size ?? 220) / 2, top: it.y - (it.size ?? 220) / 2}}><ProIcon name={it.icon ?? 'search'} size={it.size ?? 220} delay={d} light={scene.mood === 'facts'} plate={false} /></div>;
           return <HandArrow key={k} from={[it.x, it.y]} to={[it.x2 ?? it.x, it.y2 ?? it.y]} delay={d} duration={14} color={it.color ?? KC.crimson} strokeWidth={9} />;
         })}
       </AbsoluteFill>
