@@ -18,6 +18,7 @@ REPEAT_WINDOW = 5          # same template twice inside this many scenes = repet
 MAX_TEXTISH_RUN_S = 12.0   # continuous seconds of title/cards/split/stat/icon-only scenes
 MAX_TITLE_SHARE = 0.10     # title cards as share of runtime (punchlines only)
 MAX_STATIC_TITLE_S = 3.0   # a title card longer than this is a dry screen
+MAX_FIRST_REVEAL_S = 0.7   # a scene must show its first real picture within this many seconds (no empty starts)
 MAX_SAME_TEMPLATE_RUN = 2  # consecutive scenes of the same template
 CONTINUOUS = {'recipe', 'entities', 'chart'}   # one idea built across several scenes (same place on screen), allowed to repeat
 TEXTISH = {'title', 'cards', 'split', 'stat', 'icon'}     # no real objects / action on screen
@@ -117,6 +118,10 @@ def validate(cues, analysis):
         run = run + 1 if cues[i]['template'] == cues[i - 1]['template'] else 1
         if run > MAX_SAME_TEMPLATE_RUN and cues[i]['template'] not in CONTINUOUS:
             issues.append({'rule': 'R-RUN', 'at': round(cues[i]['start'], 1), 'line': cues[i]['line'], 'msg': f"{run} '{cues[i]['template']}' scenes in a row"})
+    for c in cues:
+        fr = c.get('firstReveal')
+        if fr is not None and fr > MAX_FIRST_REVEAL_S and c['dur'] > 1.5:
+            issues.append({'rule': 'R-EMPTY', 'at': round(c['start'], 1), 'line': c['line'], 'msg': f"scene shows nothing for {fr:.1f} s before its first picture"})
     # dry stretches
     acc, t_start = 0.0, 0.0
     for c in cues:

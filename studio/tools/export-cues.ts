@@ -10,7 +10,8 @@ const scenes = buildEp003();
 let t = 0;
 const cues = scenes.map((s: any, i: number) => {
   const n = s.photos?.length ?? s.points?.length ?? s.cards?.length ?? s.parts?.length ?? s.pins?.length ?? 0;
-  const cue = {i, start: +t.toFixed(3), dur: +s.seconds.toFixed(3), template: s.template, mood: s.mood, chapter: s.chapter, fx: s.fx ?? null, line: s.line, part: s.part, n, glitch: !!s.glitch,
+  const first = s.template === 'recipe' && RECIPES[s.recipe] && (RECIPES[s.recipe] as any).firstReveal ? +(RECIPES[s.recipe] as any).firstReveal(s).toFixed(2) : null;
+  const cue = {i, firstReveal: first, start: +t.toFixed(3), dur: +s.seconds.toFixed(3), template: s.template, mood: s.mood, chapter: s.chapter, fx: s.fx ?? null, line: s.line, part: s.part, n, glitch: !!s.glitch,
     events: s.template === 'recipe' ? RECIPES[s.recipe].events(s) : s.template === 'chart' ? chartEvents(s, Math.round(s.seconds * 30))
       : s.template === 'stat' ? statEvents(s) : s.template === 'timeline' ? timelineEvents(s) : s.template === 'entities' ? entityEvents(s) : []};
   t += s.seconds;

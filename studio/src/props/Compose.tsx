@@ -35,7 +35,12 @@ const at = (s: S, word: string | number | undefined, lead = 0) => {
   const frac = i < 0 ? 0 : i / s.caption.length;
   return Math.max(0, frac * (s.speak ?? s.seconds * 0.9) + lead);
 };
-const tOf = (s: S, it: Item) => at(s, it.at, it.lead ?? 0);
+const HERO = ['card', 'building', 'person', 'chair', 'calendar', 'crates', 'rack', 'phone', 'letter', 'scales', 'route', 'door', 'table', 'crowd', 'stack', 'money', 'icon'];
+// Director rule R-EMPTY: the FIRST real picture of every scene is on screen within 0.25 s; later items keep their word timing.
+const tOf = (s: S, it: Item) => {
+  const t = at(s, it.at, it.lead ?? 0);
+  return it === s.items.find((i) => HERO.includes(i.p)) ? Math.min(t, 0.25) : t;
+};
 const INK = KC.black;
 const CARD_W = 250;
 const find = (s: S, id?: string) => s.items.find((i) => i.id === id);
@@ -94,6 +99,8 @@ const Chair: React.FC<{it: Item}> = ({it}) => (
 );
 
 export const COMPOSE = {
+  // seconds until the first real picture is on screen (the director's rule: no scene starts empty)
+  firstReveal: (s: S): number => Math.min(99, ...s.items.filter((i) => HERO.includes(i.p)).map((i) => tOf(s, i))),
   events: (s: S): Ev[] => {
     const ev: Ev[] = [];
     s.items.forEach((it) => {

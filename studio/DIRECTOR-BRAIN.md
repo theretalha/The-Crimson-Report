@@ -41,6 +41,7 @@ An icon alone is the weakest visual: use it as a supporting element beside a rea
 | R-REPEAT | same title/icon template ≤ 2 times in any 5 scenes |
 | R-RUN | ≤ 2 same-template scenes in a row (building one idea across scenes — recipe, entity map, chart — is exempt) |
 | R-DRY | ≤ 12 s in a row of text/icon-only scenes (title, cards, split, stat, icon) |
+| R-EMPTY | a scene shows its first real picture within 0.7 s (no empty starts) |
 | R-9C | a beat that names an object/action/document must not be shown only as text or an icon |
 Rhythm: alternate long holds (4–6 s: a map, a chart, a document) with quick cuts (1–2 s: a stamp, a hit). No more than ~20 s with the same visual rhythm; place a pattern interrupt (zoom, shake, reveal) there. Reveal/twist moments get the impact hit; **no risers** (Note 15).
 
