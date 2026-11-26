@@ -33,7 +33,41 @@ const cap = (s: Spec, c: string): Spec => ({...s, cap: c});
 
 const KL: Pin = {lon: 101.7, lat: 3.1, label: 'MALAYSIA'};
 
-const SPECS: (Spec | Spec[])[] = [
+
+// Director shot-list scenes (compose recipe): items appear on the narrated word `at`. See DIRECTOR-BRAIN.md and shot-list.md.
+const CP = (items: any[], title?: string, sub?: string, mood?: Mood, source?: string): Spec => ({template: 'recipe', recipe: 'compose', items, title, sub, mood, source});
+const JP = (x: number, y: number, at?: string, extra: any = {}) => ({p: 'card', kind: 'photo', src: 'photos/jensen-huang.jpg', name: 'JENSEN HUANG', role: 'NVIDIA CEO', x, y, at, ...extra});
+const AP = (x: number, y: number, at?: string, extra: any = {}) => ({p: 'card', kind: 'photo', src: 'photos/alice-huang.jpg', name: 'ALICE HUANG', role: 'NAMED IN REPORTS', x, y, at, ...extra});
+const BOARD = {p: 'board', x: 960, y: 570, w: 1580, h: 520};
+const CORK = (extra: any = {}) => [
+  BOARD,
+  {id: 'c1', p: 'card', kind: 'person', name: 'COMMERCE OFFICIAL', role: 'US DEPT.', badge: 'US', tie: true, x: 340, y: 580, r: -3, s: 1.12, ...extra.c1},
+  {id: 'c2', p: 'card', kind: 'person', name: 'BUSINESSWOMAN', role: 'IDENTITY UNCONFIRMED', x: 730, y: 590, r: 2, s: 1.12, ...extra.c2},
+  {id: 'c3', p: 'card', kind: 'building', text: 'whitehouse', name: 'THE WHITE HOUSE', x: 1120, y: 580, r: -2, s: 1.12, ...extra.c3},
+  {id: 'c4', p: 'card', kind: 'photo', src: 'photos/jensen-huang.jpg', name: 'JENSEN HUANG', role: 'NVIDIA CEO', x: 1510, y: 590, r: 3, s: 1.12, ...extra.c4},
+];
+
+const NEW: Record<number, Spec | Spec[]> = {
+  1: CP([{p: 'building', kind: 'datacenter', label: 'DATA CENTER', x: 1260, y: 750, s: 1.4}, {p: 'person', name: 'US COMMERCE OFFICIAL', role: 'REPORTEDLY', badge: 'US', tie: true, x: 520, y: 740, s: 1.4, at: 'official'}, {p: 'tag', text: 'SOMETHING STRANGE', x: 900, y: 400, at: 'strange'}], 'THE VISIT.', 'Malaysia · according to reports', 'context'),
+  6: CP([...CORK({c1: {at: 'investigation'}, c2: {at: 'businesswoman'}, c3: {at: 'White House'}, c4: {at: 'man running'}}),
+    {p: 'string', from: 'c1', to: 'c2', at: 'businesswoman'}, {p: 'string', from: 'c2', to: 'c3', at: 'White House'}, {p: 'string', from: 'c3', to: 'c4', at: 'man running'},
+    {p: 'tag', text: 'ACCORDING TO REPORTS', x: 1380, y: 262, at: 'According'}], 'THE INVESTIGATION.', undefined, 'context'),
+  7: CP([BOARD, JP(960, 580, undefined, {s: 1.5, r: -2})], 'THE MAN.', undefined, 'context'),
+  8: CP([{p: 'chair', x: 960, y: 760, s: 1.4, name: 'CEO · NVIDIA', at: 0}, JP(960, 520, undefined, {away: 'lose'}), {p: 'tag', text: 'JOB LOST', x: 1380, y: 520, at: 'lose his job', color: '#0A0A0A'}], 'TWO YEARS.', undefined, 'danger'),
+  9: CP([{p: 'calendar', x: 600, y: 520, flips: 10, label: 'DAYS', sub: 'LATER', at: 'ten days', s: 1.45}, {p: 'chair', x: 1300, y: 760, s: 1.4, name: 'CEO · NVIDIA', at: 0}, JP(1300, 500, 'get it back', {s: 1.1})], 'TEN DAYS LATER.', undefined, 'danger'),
+  26: CP([{p: 'person', name: 'DENNIS WILDER', role: 'FORMER CIA CHINA ANALYST', x: 520, y: 780, s: 1.4, tie: true, at: 'Wilder'}, {p: 'tag', text: '"A LEGEND"', x: 560, y: 440, at: 'legend', color: '#0A0A0A'}, {p: 'card', kind: 'person', name: 'FAKE IDENTITY?', role: 'BUILT TO LOOK REAL', x: 1350, y: 560, r: 3, s: 1.2, at: 'fake identity'}], 'THE ANALYST.', 'Dennis Wilder, former CIA China analyst', 'context'),
+  33: CP([AP(520, 560, undefined, {s: 1.25}), {p: 'building', kind: 'office', x: 1250, y: 790, s: 1.25, at: 'company', lit: true}, {p: 'tag', text: 'QUIETLY GROWING', x: 1250, y: 330, at: 'quietly'}], 'MEANWHILE…', undefined, 'facts'),
+  34: CP([{p: 'building', kind: 'tower', label: 'MEGASPEED', x: 960, y: 790, s: 1.2, at: 0, lit: true}], 'MEGASPEED.', 'Singapore-registered', 'facts'),
+  49: CP([{p: 'card', kind: 'person', name: 'US INTELLIGENCE', role: 'OFFICIALS', badge: 'US', x: 400, y: 570, r: -3, s: 1.15, at: 'intelligence'}, {p: 'building', kind: 'whitehouse', x: 960, y: 800, s: 0.95, at: 0}, {p: 'card', kind: 'photo', src: 'photos/donald-trump.jpg', name: 'DONALD TRUMP', role: 'PRESIDENT', x: 1540, y: 570, r: 3, s: 1.15, at: 'Trump'}, {p: 'tag', text: 'OCT 2025', x: 960, y: 330, at: 'October'}, {p: 'arrow', x: 580, y: 480, x2: 1340, y2: 480, at: 'briefed', color: '#C4151C'}], 'THE BRIEFING.', 'According to reports', 'context'),
+  56: CP([{p: 'card', kind: 'person', name: 'A THIRD WOMAN', role: 'REPORTED BY REUTERS', x: 960, y: 570, at: 0, s: 1.4}, {p: 'tag', text: 'NEXT DAY', x: 960, y: 270, at: 'next day'}], 'ANOTHER REPORT.', undefined, 'danger'),
+  67: CP([...CORK({c1: {dim: true}, c2: {dim: true}, c3: {dim: true}, c4: {dim: true}}), AP(960, 590, 'missing', {s: 1.4, r: -2})], 'THE MISSING PIECE.', undefined, 'context'),
+  68: CP([...CORK({c1: {dim: true}, c2: {dim: true}, c3: {dim: true}, c4: {dim: true}}), AP(960, 590, undefined, {s: 1.4, r: -2}), {p: 'stamp', text: 'SPY?', x: 1250, y: 430, r: -10, size: 84, at: 'spy'}], 'IS SHE A SPY?', undefined, 'context'),
+  69: CP([...CORK({c1: {dim: true}, c2: {dim: true}, c3: {dim: true}, c4: {dim: true}}), AP(960, 590, undefined, {s: 1.4, r: -2}), {p: 'stamp', text: 'UNPROVEN', x: 1290, y: 420, r: -10, size: 78, at: 'proven'}], 'THE HONEST ANSWER.', undefined, 'facts'),
+  70: CP([{p: 'building', kind: 'doj', label: 'JUSTICE DEPT.', x: 540, y: 790, s: 1.3, at: 0}, {p: 'person', name: 'TODD BLANCHE', role: 'US ATTORNEY GENERAL', tie: true, x: 1330, y: 790, s: 1.4, at: 'Blanche'}, {p: 'tag', text: '"NO CONCLUSION"', x: 1330, y: 360, at: 'conclusion', color: '#0A0A0A'}], 'THE JUSTICE DEPARTMENT.', undefined, 'facts', 'Attorney General Todd Blanche, as reported'),
+  79: CP([...CORK({c1: {dim: true}, c2: {dim: true}, c3: {dim: true}, c4: {dim: true}}), AP(960, 590, undefined, {s: 1.4, r: -2}), {p: 'icon', icon: 'search', x: 1230, y: 640, size: 240, at: 'real'}, {p: 'stamp', text: 'REAL?', x: 1290, y: 430, r: -8, size: 84, at: 'spy case'}], 'A REAL SPY CASE?', undefined, 'context'),
+};
+
+const SPECS_BASE: (Spec | Spec[])[] = [
   // 00 — THE SEALED BOXES
   /*0*/ [cap(T('LATE 2024.', 'context', true), 'Late 2024.'), cap(MP({center: [104, 4], zoom: 0.9, pins: [KL], highlight: ['458']}), 'A data center in Malaysia.')],
   /*1*/ src(I('servers', 'A DATA CENTER.', 'Malaysia'), 'According to reports'),
@@ -163,6 +197,8 @@ const SPECS: (Spec | Spec[])[] = [
   /*107*/ I('folder', 'SUBSCRIBE.', 'See what\'s coming before the headlines'),
   /*108*/ I('folder', 'FILE CLOSED.'),
 ];
+const SPECS: (Spec | Spec[])[] = SPECS_BASE.map((sp, i) => NEW[i] ?? sp);
+
 
 const CHAPTERS: [number, string, Mood][] = [
   [0, '00 / THE SEALED BOXES', 'context'], [12, '01 / WHY THESE CHIPS MATTER', 'context'], [21, '02 / THE WOMAN WITH NO PAST', 'context'],
