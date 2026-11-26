@@ -125,6 +125,7 @@ def main():
         ev.append((t, kind, db + a.hits_offset, p))
         cnt[kind] += 1
 
+    thin_last = {}
     for k, c in enumerate(cues):
         T, n, tp, prev = c["start"], c["n"], c["template"], (cues[k - 1] if k else None)
         gap = gap_before(c)
@@ -199,7 +200,13 @@ def main():
 
         # sound events declared by recipe / chart scenes (placed on the narrated words and chart moments)
         for e in c.get("events", []):
-            add(T + e["t"], e["kind"], e.get("db", -18), **{k: e[k] for k in ("f", "v", "count") if k in e})
+            # thin out dense soft sounds so they never turn into a repeating pattern (owner dislikes irritating, repeated SFX)
+            thin = {"paper": 0.7, "tick": 0.45, "ping": 0.6, "marker": 0.8}.get(e["kind"])
+            tt = T + e["t"]
+            if thin and tt - thin_last.get(e["kind"], -9) < thin:
+                continue
+            if thin: thin_last[e["kind"]] = tt
+            add(tt, e["kind"], e.get("db", -18) - (2 if e["kind"] in ("paper", "tick") else 0), **{k: e[k] for k in ("f", "v", "count") if k in e})
 
         # visual jump -> soft whoosh (only when the picture type changes, never on top of a big hit)
         if (prev and not big and c["part"] == 0 and tp not in ("title", "icon") and FAMILY[tp] != FAMILY[prev["template"]]
