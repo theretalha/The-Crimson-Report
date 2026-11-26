@@ -9,7 +9,7 @@ You are the producer/director. The narration is the script; the studio is the se
 2. **Direct**: write the shot list (you, the producer). One entry per beat: the picture-word, the prop, the staging, the timing word. Start from the analysis, overrule it where a better idea exists.
 3. **Build** missing props first (props.json status `missing`), never fall back to text for a thing you can draw.
 4. **Validate**: `python3 tools/director.py ... --strict` must print `violations 0` before any full render.
-5. **Check** with `tools/probe.ts` (text clipping/overlap), render stills of the new scenes, then the full render.
+5. **Check** with `tools/probe.ts` (text clipping/overlap), render stills of the new scenes, then render ONCE with `tools/render_segments.py` (cached per chapter). Never re-render the whole video for a small change (see DIRECTOR-NOTES 18).
 
 ## 1. Picture-words (what the brain looks for)
 Only words that name something you could photograph: **objects** (box, chip, server, letter, phone, door), **actions** (buy, open, plug in, ban, resign, hand over, vanish), **documents** (memo, report, headline), **people**, **places**, **organisations**, **money/numbers**, **dates**.

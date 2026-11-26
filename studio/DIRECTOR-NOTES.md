@@ -46,3 +46,9 @@ Same list is also saved in Claude memory (feedback notes for this repo).
 ## Workflow
 16. Cloud studio builds and renders. Laptop fetches assets the cloud cannot (see ASSETS-TODO.md). Do not publish two competing Nvidia videos.
 17. TTS expression (Nov 26, 2026): in narration scripts use the Google AI Studio tags listed in TTS-TAGS.md (e.g. <short pause>, <long pause>, <breath>) instead of dots or punctuation tricks. Use sparingly and keep the calm documentary tone.
+18. RENDER BUDGET (Nov 26, 2026): a full render takes ~35 min and the owner must upload on time. NEVER re-render the whole video for each small change.
+    - Batch ALL visual changes first, check them with stills (tools/probe.ts + director.py --strict + contact sheets), then render ONCE.
+    - Audio-only changes (SFX, mix, loudness) never need a video render: remix, master, re-mux (about 2 minutes).
+    - Use `python3 tools/render_segments.py`: it renders per chapter and caches; a data-only change re-renders only the touched chapters. Use --force after editing prop code.
+    - Do not start a render without telling the owner why it is needed and how long it will take; ask for all pending feedback first.
+
