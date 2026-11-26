@@ -67,3 +67,14 @@ export const ThumbC: React.FC = () => (
     <Stamp t="UNPROVEN" x={960} y={800} size={118} />
   </Base>
 );
+
+// B2: same as B plus a big question mark on the photo (curiosity without accusing anyone)
+export const ThumbB2: React.FC = () => (
+  <Base>
+    <Photo src="photos/jensen-huang.jpg" x={1120} y={150} w={690} h={800} rot={3} />
+    <div style={{position: 'absolute', left: 1600, top: 120, fontFamily: F.display, fontSize: 560, lineHeight: 1, color: C.crimson, textShadow: '10px 10px 0 rgba(0,0,0,0.75), -4px -4px 0 #F4F1EA', transform: 'rotate(8deg)'}}>?</div>
+    <Big t="FIRED." size={330} x={50} y={150} />
+    <Big t="REHIRED." size={330} x={50} y={440} color={C.crimson} />
+    <div style={{position: 'absolute', left: 60, bottom: 60, fontFamily: F.head, fontWeight: 700, fontSize: 92, letterSpacing: 6, color: C.black, background: C.cream, padding: '6px 34px', transform: 'rotate(-2deg)'}}>IN 10 DAYS</div>
+  </Base>
+);

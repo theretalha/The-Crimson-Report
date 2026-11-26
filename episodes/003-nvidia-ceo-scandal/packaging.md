@@ -28,3 +28,7 @@ Thumbnails (1280x720 PNG, under 2 MB, in `thumbnails/`; source: `studio/src/Thum
 1. **Alice Huang photo (thumbnail C):** it comes from a Reuters image shared on Instagram. It is used in the video as news reporting; in a thumbnail it is more exposed to a copyright claim and to a privacy complaint. Safer option: replace it with a silhouette card labelled "ALICE HUANG?". Tell me if you want that version.
 2. **Jensen photo** (A is object-only; B and C use it) is CC BY 4.0 (credit Anderseidesvik). Put the credit in the description.
 3. YouTube may not show the full title on mobile; the first 40 characters carry the meaning in every option.
+
+## Update (Nov 26): owner asked for a question mark and "who is behind" in the title
+- Thumbnail **B2** (`thumbnails/thumb-B2-fired-rehired-question.png`): same as B with a big crimson "?" in the photo corner, face left clear.
+- Title: do NOT promise "who is behind it". The video says nobody has proven who is behind it and that who leaked the story is unknown, so that promise would mislead viewers (early drop-off hurts reach) and implies a plot we cannot support. Use: **"Nvidia's CEO: Fired and Rehired in 10 Days. What Really Happened?"**
