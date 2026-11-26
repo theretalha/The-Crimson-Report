@@ -217,7 +217,7 @@ export const COMPOSE = {
         </svg>
         {htmlItems.map((it, k) => {
           const d = fr(tOf(scene, it));
-          if (it.p === 'stamp') return <RubberStamp key={k} text={it.text ?? ''} x={it.x} y={it.y} rotate={it.r ?? -8} delay={d} size={(it.size ?? 120) * (VH > VW ? 1.2 : 1)} color={it.color ?? KC.crimson} clean />;
+          if (it.p === 'stamp') return <RubberStamp key={k} text={it.text ?? ''} x={VH > VW ? it.x * (1920 / VW) : it.x} y={VH > VW ? (it.y - (VH - (VW * 1080) / 1920) / 2) * (1920 / VW) : it.y} rotate={it.r ?? -8} delay={d} size={(it.size ?? 120) * (VH > VW ? 1.1 * (1920 / VW) : 1)} color={it.color ?? KC.crimson} clean />;
           if (it.p === 'icon') return <div key={k} style={{position: 'absolute', left: it.x - (it.size ?? 220) / 2, top: it.y - (it.size ?? 220) / 2}}><ProIcon name={it.icon ?? 'search'} size={it.size ?? 220} delay={d} light={scene.mood === 'facts'} plate={false} /></div>;
           return <HandArrow key={k} from={[it.x, it.y]} to={[it.x2 ?? it.x, it.y2 ?? it.y]} delay={d} duration={14} color={it.color ?? KC.crimson} strokeWidth={9} />;
         })}
