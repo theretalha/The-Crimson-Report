@@ -1,0 +1,336 @@
+{
+ "_doc": "Words that carry a PICTURE. cat priority: action > object > document > person > place > org > money > concept. 'see' answers: what would a person SEE in real life? prop = the drawn prop that shows it (see props.json). Add a row when a new episode introduces a new thing.",
+ "entries": [
+  {
+   "id": "box",
+   "cat": "object",
+   "re": "\\b(boxes|box|crates?|packages?)\\b",
+   "prop": "parcel",
+   "see": "sealed cardboard boxes stacked, one arrives and sits there"
+  },
+  {
+   "id": "sealed",
+   "cat": "action",
+   "re": "\\b(sealed|unopened)\\b",
+   "prop": "parcel",
+   "see": "tape-sealed box that stays shut"
+  },
+  {
+   "id": "buy",
+   "cat": "action",
+   "re": "\\b(buy|bought|purchase[ds]?|imported)\\b",
+   "prop": "parcel",
+   "see": "parcel arriving with a BUY tag / money handed over"
+  },
+  {
+   "id": "open",
+   "cat": "action",
+   "re": "\\b(open|opens|opened)\\b",
+   "prop": "parcel",
+   "see": "tape cut, lid lifted, chip taken out"
+  },
+  {
+   "id": "plug",
+   "cat": "action",
+   "re": "\\b(plug|plugs|plugged|use them|use it)\\b",
+   "prop": "rack",
+   "see": "chip pushed into a server slot, light turns on"
+  },
+  {
+   "id": "chip",
+   "cat": "object",
+   "re": "\\b(chips?|gpus?|semiconductors?|equipment)\\b",
+   "prop": "chip",
+   "see": "a chip on screen, close and detailed"
+  },
+  {
+   "id": "datacenter",
+   "cat": "object",
+   "re": "\\b(data ?cent(er|re)s?|servers?|racks?|cloud partner)\\b",
+   "prop": "rack",
+   "see": "rows of server racks with blinking lights"
+  },
+  {
+   "id": "ai",
+   "cat": "object",
+   "re": "\\b(ai systems?|chatbots?|self-driving|military software)\\b",
+   "prop": "icon",
+   "see": "a few simple devices: chatbot window, car, drone"
+  },
+  {
+   "id": "weapons",
+   "cat": "object",
+   "re": "\\b(weapons?|war)\\b",
+   "prop": "icon",
+   "see": "chip placed on a table like a weapon in an armory"
+  },
+  {
+   "id": "ban",
+   "cat": "action",
+   "re": "\\b(banned?|bans|restrictions?|controls)\\b",
+   "prop": "ban-stamp",
+   "see": "chip stopped at a border, BANNED stamp lands"
+  },
+  {
+   "id": "sell",
+   "cat": "action",
+   "re": "\\b(selling|sell|sales?|sold)\\b",
+   "prop": "money-flow",
+   "see": "chip crate handed across, money coming back"
+  },
+  {
+   "id": "ship",
+   "cat": "action",
+   "re": "\\b(move|moved|ship(ped)?|route|smuggl\\w*)\\b",
+   "prop": "route",
+   "see": "crates travelling along a route line between two countries"
+  },
+  {
+   "id": "missing",
+   "cat": "action",
+   "re": "\\b(could not be found|missing|disappear\\w*|never meant to stay)\\b",
+   "prop": "route",
+   "see": "empty rack slots / a crate that vanishes along the route"
+  },
+  {
+   "id": "door",
+   "cat": "action",
+   "re": "\\b(shuts? the door|door)\\b",
+   "prop": "door-shut",
+   "see": "a door closing on a chip crate"
+  },
+  {
+   "id": "market",
+   "cat": "object",
+   "re": "\\b(markets?|tariffs?|trade barriers?|trade war)\\b",
+   "prop": "split-compare",
+   "see": "goods crossing a border one way only"
+  },
+  {
+   "id": "stock",
+   "cat": "object",
+   "re": "\\b(stock|shares?|bottom|fortune)\\b",
+   "prop": "stock-chart",
+   "see": "the real price line falling or jumping"
+  },
+  {
+   "id": "fall",
+   "cat": "action",
+   "re": "\\b(falling|fell|jumped|crash\\w*)\\b",
+   "prop": "stock-chart",
+   "see": "price line dropping with the drop counter"
+  },
+  {
+   "id": "resign",
+   "cat": "action",
+   "re": "\\b(resign(ed)?|lose his job|fired|bring him back|brought him back|back as ceo)\\b",
+   "prop": "portrait",
+   "see": "portrait leaves the frame / returns to the chair"
+  },
+  {
+   "id": "vote",
+   "cat": "action",
+   "re": "\\b(voted|vote|board)\\b",
+   "prop": "silhouette",
+   "see": "silhouettes around a table raising hands"
+  },
+  {
+   "id": "petition",
+   "cat": "object",
+   "re": "\\b(petition|signatures?)\\b",
+   "prop": "crowd-petition",
+   "see": "signature counter climbing, small people dots filling in"
+  },
+  {
+   "id": "letter",
+   "cat": "document",
+   "re": "\\b(letter|memo)\\b",
+   "prop": "letter",
+   "see": "a letter slides in, unfolds, key sentence underlined"
+  },
+  {
+   "id": "report",
+   "cat": "document",
+   "re": "\\b(reports?|reported|investigation|intelligence|briefed|assessment|conclusion)\\b",
+   "prop": "document",
+   "see": "a classified file with sections redacted, stamp on top"
+  },
+  {
+   "id": "story",
+   "cat": "document",
+   "re": "\\b(broke the story|reuters reported|new york times|wall street journal|washington post|bloomberg|the information)\\b",
+   "prop": "headline-clip",
+   "see": "the outlet's real headline card"
+  },
+  {
+   "id": "photos",
+   "cat": "object",
+   "re": "\\b(photos?|posted online|social media)\\b",
+   "prop": "phone-screen",
+   "see": "phone feed with the photos scrolling"
+  },
+  {
+   "id": "meeting",
+   "cat": "action",
+   "re": "\\b(dinner|golf|seen together|first public meeting|introduced)\\b",
+   "prop": "dinner-meeting",
+   "see": "two silhouettes at a table / on a golf course"
+  },
+  {
+   "id": "married",
+   "cat": "action",
+   "re": "\\b(husband|wife|marriage|married)\\b",
+   "prop": "entity-map",
+   "see": "two people joined by a 'married to' link"
+  },
+  {
+   "id": "owns",
+   "cat": "action",
+   "re": "\\b(renamed|ownership|owner|shell company|directors?|sister company|invested)\\b",
+   "prop": "entity-map",
+   "see": "company node changes owner, name tag swaps"
+  },
+  {
+   "id": "spy",
+   "cat": "object",
+   "re": "\\b(spy|spies|legend|fake identity|surveillance|cia)\\b",
+   "prop": "corkboard",
+   "see": "photos on a board linked with red string, one stamped UNPROVEN"
+  },
+  {
+   "id": "court",
+   "cat": "object",
+   "re": "\\b(justice department|attorney general|regulators?|court|charged)\\b",
+   "prop": "courtroom",
+   "see": "gavel and scales, silhouette at a desk"
+  },
+  {
+   "id": "scale",
+   "cat": "object",
+   "re": "\\b(conflict of interest|ethics|conduct|double standard)\\b",
+   "prop": "scales",
+   "see": "scales that tip when a chip is added"
+  },
+  {
+   "id": "jensen",
+   "cat": "person",
+   "re": "\\b(jensen( huang)?)\\b",
+   "prop": "portrait",
+   "see": "Jensen's real photo"
+  },
+  {
+   "id": "alice",
+   "cat": "person",
+   "re": "\\b(alice( huang)?|businesswoman|the woman)\\b",
+   "prop": "portrait",
+   "see": "Alice's photo with an unconfirmed-identity label"
+  },
+  {
+   "id": "musk",
+   "cat": "person",
+   "re": "\\b(elon musk)\\b",
+   "prop": "portrait",
+   "see": "Musk's photo with a quote card"
+  },
+  {
+   "id": "rubio",
+   "cat": "person",
+   "re": "\\b(marco rubio|rubio|secretary of state)\\b",
+   "prop": "portrait",
+   "see": "Rubio's photo and the memo"
+  },
+  {
+   "id": "trump",
+   "cat": "person",
+   "re": "\\b(donald trump|trump|president)\\b",
+   "prop": "portrait",
+   "see": "Trump's photo"
+  },
+  {
+   "id": "xi",
+   "cat": "person",
+   "re": "\\b(beijing|xi jinping)\\b",
+   "prop": "portrait",
+   "see": "Beijing skyline / Xi photo"
+  },
+  {
+   "id": "others",
+   "cat": "person",
+   "re": "\\b(kang wei|dennis wilder|todd blanche|executive|employees?|staff)\\b",
+   "prop": "silhouette",
+   "see": "named silhouette card with role"
+  },
+  {
+   "id": "whitehouse",
+   "cat": "place",
+   "re": "\\b(white house|washington|commerce department|us government|american government)\\b",
+   "prop": "building",
+   "see": "White House / Commerce building exterior"
+  },
+  {
+   "id": "malaysia",
+   "cat": "place",
+   "re": "\\bmalaysia\\b",
+   "prop": "map",
+   "see": "map zoomed on Malaysia with a pin"
+  },
+  {
+   "id": "singapore",
+   "cat": "place",
+   "re": "\\bsingapore\\b",
+   "prop": "map",
+   "see": "map zoomed on Singapore with a pin"
+  },
+  {
+   "id": "china",
+   "cat": "place",
+   "re": "\\b(china|chinese)\\b",
+   "prop": "flag",
+   "see": "China flag + map highlight"
+  },
+  {
+   "id": "taipei",
+   "cat": "place",
+   "re": "\\b(taipei|shanghai|california)\\b",
+   "prop": "map",
+   "see": "map with pins at each place they were seen"
+  },
+  {
+   "id": "megaspeed",
+   "cat": "org",
+   "re": "\\b(megaspeed)\\b",
+   "prop": "entity-map",
+   "see": "MegaSpeed node on the entity map"
+  },
+  {
+   "id": "nvidia",
+   "cat": "org",
+   "re": "\\b(nvidia)\\b",
+   "prop": "entity-map",
+   "see": "Nvidia node on the entity map"
+  },
+  {
+   "id": "money",
+   "cat": "money",
+   "re": "(\\$\\s?\\d[\\d,.]*\\s?(?:billion|million|b|m)?|\\b\\d[\\d,.]*\\s+(?:billion|million|thousand)\\s+dollars\\b|\\b(?:billion|million)s?\\b)",
+   "prop": "money-flow",
+   "see": "amount counter with coins moving between the two companies"
+  },
+  {
+   "id": "ninety",
+   "cat": "money",
+   "re": "\\b(ninety times|90 times|bigger)\\b",
+   "prop": "stat-viz",
+   "see": "small box grows to a huge box (size comparison)"
+  },
+  {
+   "id": "time",
+   "cat": "concept",
+   "re": "\\b(ten days|days later|eight months later|years?|months?|days?)\\b",
+   "prop": "clock-calendar",
+   "see": "calendar pages flipping to the day count"
+  }
+ ],
+ "date_re": "\\b(?:january|february|march|april|may|june|july|august|september|october|november|december)(?:\\s+\\d{1,2}(?:st|nd|rd|th)?(?!\\d))?(?:,?\\s+(?:19|20)\\d\\d)?\\b|\\b(?:19|20)\\d\\d\\b",
+ "connect_re": "\\b(husband|wife|introduced|owns?|owned|bought|renamed|ownership|sister company|connected to|linked to|partner|invested)\\b"
+}

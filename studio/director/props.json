@@ -1,0 +1,33 @@
+{
+  "_doc": "Prop library: what the studio can already DRAW. status: built | partial | missing. The director may only choose built props; partial = usable with limits; missing = must be built first (listed in the shot list as NEEDS BUILD).",
+  "props": {
+    "parcel":        {"status": "built",   "how": "recipe 'unbox' (stage buy/open): parcel arrives, tape cut, lid off, chip out", "file": "src/templates/Everyday.tsx"},
+    "rack":          {"status": "built",   "how": "recipe 'plugin': chip slides into server rack, LED on, RUNNING panel", "file": "src/templates/Everyday.tsx"},
+    "chip":          {"status": "built",   "how": "Chip SVG (Everyday.tsx), H100 photo, ProIcon cpu", "file": "src/templates/Everyday.tsx"},
+    "portrait":      {"status": "built",   "how": "photos template with real photo: Jensen, Musk, Alice (Reuters), Rubio, Trump, Xi", "file": "public/photos"},
+    "silhouette":    {"status": "missing", "how": "anonymous person card for people with no photo (Kang Wei, Wilder, Blanche, board)"},
+    "map":           {"status": "built",   "how": "map template with pins and highlighted countries", "file": "src/templates/"},
+    "route":         {"status": "missing", "how": "map with an animated route line and moving crates (smuggling path)"},
+    "entity-map":    {"status": "built",   "how": "EntityMap: people -> companies -> money with typed links and callouts", "file": "src/templates/EntityMap.tsx"},
+    "stock-chart":   {"status": "built",   "how": "real NVDA daily closes, draw-on, drop counter, pins", "file": "src/templates/StockChart.tsx"},
+    "timeline":      {"status": "built",   "how": "TimelineCards: slim ribbon with dated cards", "file": "src/templates/Upgraded.tsx"},
+    "headline-clip": {"status": "built",   "how": "news clip card (real thumbnail + headline)", "file": "src/templates/"},
+    "document":      {"status": "partial", "how": "document card with highlighted quote; no redaction / stamp animation yet"},
+    "ban-stamp":     {"status": "built",   "how": "recipe 'ban': US gov card -> chip -> BANNED stamp -> China", "file": "src/templates/Recipes.tsx"},
+    "icon":          {"status": "partial", "how": "76 ProIcons with draw-on; one icon + label is the WEAKEST visual, use only as a supporting element"},
+    "flag":          {"status": "partial", "how": "US and China flags only; Malaysia, Singapore, Taiwan flags need the laptop fetch"},
+    "stat-viz":      {"status": "built",   "how": "StatPlus: number with objects (bars, servers, dots, ring)", "file": "src/templates/Upgraded.tsx"},
+    "money-flow":    {"status": "missing", "how": "coins/bills moving between two company nodes, with amount counter"},
+    "phone-screen":  {"status": "missing", "how": "phone with message bubbles / news alert (leaks, texts, social posts)"},
+    "letter":        {"status": "missing", "how": "letter or memo that slides in, unfolds, key line highlighted"},
+    "courtroom":     {"status": "missing", "how": "gavel / scales / silhouettes at a table (investigation, charges)"},
+    "corkboard":     {"status": "missing", "how": "photos pinned to a board with red string (investigation, connections)"},
+    "building":      {"status": "missing", "how": "flat-drawn office / data center / White House exterior"},
+    "clock-calendar":{"status": "missing", "how": "calendar page flipping or clock sweeping (days, deadlines, 'ten days')"},
+    "crowd-petition":{"status": "missing", "how": "signature counter rising with many small people dots"},
+    "dinner-meeting":{"status": "missing", "how": "two silhouettes at a table / golf course (relationship, meetings)"},
+    "door-shut":     {"status": "missing", "how": "door closing on a chip crate (America shuts the door)"},
+    "scales":        {"status": "partial", "how": "scales icon only; needs a balance animation"},
+    "split-compare": {"status": "partial", "how": "split card; needs real objects on each side, not words"}
+  }
+}
