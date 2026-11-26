@@ -10,6 +10,7 @@ import {ProbeSelfTest} from './components/ProbeSelfTest';
 import {ThumbA, ThumbB, ThumbB2, ThumbC} from './Thumbs';
 import {CurioTest, CurioTest2} from './stickman/CurioTest';
 import {CurioFilm} from './stickman/CurioFilm';
+import {SHORTS_EP003} from './data/shorts-ep003';
 
 const EP003 = buildEp003();
 import {FPS, H, W} from './theme';
@@ -28,6 +29,11 @@ export const Root: React.FC = () => (
     <Composition id="CurioTest" component={CurioTest} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="CurioTest2" component={CurioTest2} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="CurioFilm" component={CurioFilm} durationInFrames={300} fps={FPS} width={W} height={H} />
+    <Composition id="Short-EP003-0" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[0].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[0].scenes, sfx: false}} />
+    <Composition id="Short-EP003-1" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[1].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[1].scenes, sfx: false}} />
+    <Composition id="Short-EP003-2" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[2].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[2].scenes, sfx: false}} />
+    <Composition id="Short-EP003-3" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[3].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[3].scenes, sfx: false}} />
+    <Composition id="Short-EP003-4" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[4].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[4].scenes, sfx: false}} />
     <Composition id="Thumb-C" component={ThumbC} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="ProbeSelfTest" component={ProbeSelfTest} durationInFrames={10} fps={FPS} width={W} height={H} />
     <Composition id="StyleTest" component={StyleTest} durationInFrames={120} fps={FPS} width={W} height={H} />

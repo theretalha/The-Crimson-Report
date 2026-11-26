@@ -134,17 +134,18 @@ export const COMPOSE = {
   },
   Comp: ({scene}: {scene: S}) => {
     const f = useCurrentFrame();
-    const {fps} = useVideoConfig();
+    const {fps, width: VW, height: VH} = useVideoConfig();
     const svgItems = scene.items.filter((i) => ['board', 'card', 'building', 'person', 'string', 'calendar', 'tag', 'chair', 'text', 'money', 'stack', 'route', 'letter', 'phone', 'scales', 'door', 'table', 'crowd', 'rack', 'crates', 'ribbon'].includes(i.p));
     const htmlItems = scene.items.filter((i) => ['stamp', 'icon', 'arrow'].includes(i.p));
     return (
       <AbsoluteFill style={{transform: `scale(${scene.seconds >= 4 ? 1 + 0.055 * Math.min(1, f / Math.max(1, scene.seconds * FPS)) : 1})`, transformOrigin: '50% 58%'}}>
-        <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
+        <svg width={VW} height={VH} viewBox={`0 0 ${VW} ${VH}`} style={{position: 'absolute', inset: 0}}>
           {svgItems.map((it, k) => {
             const t0 = fr(tOf(scene, it));
             const pop = spring({frame: f - t0, fps, config: {damping: 12, stiffness: 150, mass: 0.75}});
             const vis = interpolate(f, [t0, t0 + 3], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-            const s = (it.s ?? DEFAULT_S[it.p] ?? 1) * (0.7 + 0.3 * Math.min(1.15, pop));
+            const vzoom = VH > VW && ['card', 'building', 'person', 'chair', 'calendar', 'crates', 'rack', 'phone', 'letter', 'scales', 'door', 'icon', 'stack'].includes(it.p) ? 1.3 : VH > VW && it.p === 'tag' ? 1.3 : 1;
+            const s = (it.s ?? DEFAULT_S[it.p] ?? 1) * vzoom * (0.7 + 0.3 * Math.min(1.15, pop));
             const fg = scene.mood === 'facts' ? INK : KC.cream;
             if (it.p === 'string') {
               const a = find(scene, it.from), b = find(scene, it.to);
@@ -216,7 +217,7 @@ export const COMPOSE = {
         </svg>
         {htmlItems.map((it, k) => {
           const d = fr(tOf(scene, it));
-          if (it.p === 'stamp') return <RubberStamp key={k} text={it.text ?? ''} x={it.x} y={it.y} rotate={it.r ?? -8} delay={d} size={it.size ?? 120} color={it.color ?? KC.crimson} clean />;
+          if (it.p === 'stamp') return <RubberStamp key={k} text={it.text ?? ''} x={it.x} y={it.y} rotate={it.r ?? -8} delay={d} size={(it.size ?? 120) * (VH > VW ? 1.2 : 1)} color={it.color ?? KC.crimson} clean />;
           if (it.p === 'icon') return <div key={k} style={{position: 'absolute', left: it.x - (it.size ?? 220) / 2, top: it.y - (it.size ?? 220) / 2}}><ProIcon name={it.icon ?? 'search'} size={it.size ?? 220} delay={d} light={scene.mood === 'facts'} plate={false} /></div>;
           return <HandArrow key={k} from={[it.x, it.y]} to={[it.x2 ?? it.x, it.y2 ?? it.y]} delay={d} duration={14} color={it.color ?? KC.crimson} strokeWidth={9} />;
         })}
