@@ -1,0 +1,763 @@
+1
+00:00:00,000 --> 00:00:03,662
+Late 2024. A data center in Malaysia.
+
+2
+00:00:04,981 --> 00:00:09,153
+An official from the US Commerce Department is
+walking through the building when he
+
+3
+00:00:09,153 --> 00:00:10,460
+notices something strange.
+
+4
+00:00:11,451 --> 00:00:17,059
+Stacks of boxes. Brand-new Nvidia AI chips. Some
+of the most wanted computer chips
+
+5
+00:00:17,059 --> 00:00:18,016
+on the planet.
+
+6
+00:00:19,178 --> 00:00:20,320
+And they are still sealed.
+
+7
+00:00:21,643 --> 00:00:26,387
+If you buy chips this powerful for your own data
+center, you open them. You plug
+
+8
+00:00:26,387 --> 00:00:27,691
+them in. You use them.
+
+9
+00:00:29,046 --> 00:00:33,225
+Unless they were never meant to stay there...
+
+10
+00:00:33,545 --> 00:00:37,601
+According to reports, that one moment helped start
+an investigation that would reach
+
+11
+00:00:37,601 --> 00:00:41,513
+a mysterious Chinese businesswoman, the White
+House, and the man running the most
+
+12
+00:00:41,513 --> 00:00:43,251
+important tech company in the world.
+
+13
+00:00:44,040 --> 00:00:44,700
+Jensen Huang.
+
+14
+00:00:46,106 --> 00:00:48,296
+Within two years, he would lose his job.
+
+15
+00:00:49,170 --> 00:00:51,282
+And just ten days later... get it back.
+
+16
+00:00:52,593 --> 00:00:57,520
+This is the story of how it happened. And why,
+even now, nobody can say for sure
+
+17
+00:00:57,520 --> 00:00:58,629
+what the truth is.
+
+18
+00:00:59,786 --> 00:01:00,655
+Let's open the file.
+
+19
+00:01:02,251 --> 00:01:05,070
+To understand this story, you need to understand
+one thing.
+
+20
+00:01:06,050 --> 00:01:10,782
+Every powerful AI system in the world, from
+chatbots to self-driving cars to
+
+21
+00:01:10,782 --> 00:01:14,268
+military software, needs special chips to train
+and run.
+
+22
+00:01:15,085 --> 00:01:17,454
+And the company that makes most of them is Nvidia.
+
+23
+00:01:18,711 --> 00:01:24,437
+If AI is a war, Nvidia is the company making the
+weapons. For both sides, if it can.
+
+24
+00:01:25,567 --> 00:01:30,415
+That's why, in October 2022, the US government
+banned Nvidia from selling its most
+
+25
+00:01:30,415 --> 00:01:31,834
+advanced chips to China.
+
+26
+00:01:32,994 --> 00:01:37,349
+Washington's fear is simple. If China gets ahead
+in AI, its military and
+
+27
+00:01:37,349 --> 00:01:39,829
+surveillance power could grow enormously.
+
+28
+00:01:41,157 --> 00:01:45,914
+Beijing sees it very differently. To China, these
+bans are an attempt to hold back
+
+29
+00:01:45,914 --> 00:01:48,003
+its economy and keep America on top.
+
+30
+00:01:49,219 --> 00:01:53,090
+Donald Trump has put it bluntly: whoever wins AI,
+wins.
+
+31
+00:01:54,238 --> 00:01:56,868
+And caught right in the middle of this fight was
+one man.
+
+32
+00:01:58,065 --> 00:02:02,907
+Her name, according to reports, is Alice Huang. No
+relation to Jensen, despite the
+
+33
+00:02:02,907 --> 00:02:03,675
+same surname.
+
+34
+00:02:04,672 --> 00:02:08,785
+She is a Chinese citizen. And on paper, her career
+looks impressive.
+
+35
+00:02:09,987 --> 00:02:15,482
+According to the Washington Post, she worked as a
+journalist at Chinese state TV,
+
+36
+00:02:15,482 --> 00:02:20,841
+then at major banks, and by around 2015, she was a
+senior manager at a Shanghai
+
+37
+00:02:20,841 --> 00:02:26,335
+private equity firm. The owner of that firm, Kang
+Wei, was later described as her
+
+38
+00:02:26,335 --> 00:02:26,878
+husband.
+
+39
+00:02:27,878 --> 00:02:28,833
+But here's the problem.
+
+40
+00:02:29,511 --> 00:02:34,752
+Almost none of it can be independently confirmed.
+No public record of the TV work.
+
+41
+00:02:34,752 --> 00:02:36,350
+No proof of the marriage.
+
+42
+00:02:37,108 --> 00:02:42,382
+A former top CIA China analyst, Dennis Wilder,
+said her background looked like a
+
+43
+00:02:42,382 --> 00:02:47,261
+"legend." In spy language, that means a fake
+identity, built to look real.
+
+44
+00:02:48,441 --> 00:02:52,209
+So how did she get so close to one of the richest
+men in the world?
+
+45
+00:02:52,750 --> 00:02:57,961
+According to the Wall Street Journal, it was her
+own husband who introduced them. He
+
+46
+00:02:57,961 --> 00:03:02,987
+had known Jensen for years, back when his firm
+invested in video games and Nvidia
+
+47
+00:03:02,987 --> 00:03:05,034
+was mostly a gaming chip company.
+
+48
+00:03:05,550 --> 00:03:10,569
+Their first public meeting on record was a dinner
+in Singapore, in December 2023.
+
+49
+00:03:11,599 --> 00:03:16,680
+Over the next few years, they were reportedly seen
+together in Taipei, in Shanghai,
+
+50
+00:03:16,680 --> 00:03:20,597
+at Nvidia offices in America, and at golf resorts
+in California.
+
+51
+00:03:21,510 --> 00:03:25,620
+And they weren't exactly hiding. Photos of them
+together were posted online.
+
+52
+00:03:26,639 --> 00:03:30,120
+Keep that detail in mind. It will matter later.
+
+53
+00:03:30,816 --> 00:03:34,854
+While all this was happening, a company connected
+to Alice was quietly growing.
+
+54
+00:03:35,532 --> 00:03:37,070
+It was called MegaSpeed.
+
+55
+00:03:37,984 --> 00:03:43,157
+In March 2023, Alice reportedly bought a company
+in Singapore and renamed it
+
+56
+00:03:43,157 --> 00:03:43,838
+MegaSpeed.
+
+57
+00:03:44,520 --> 00:03:49,279
+Eight months later, her name was removed from the
+list of directors. Ownership moved
+
+58
+00:03:49,279 --> 00:03:50,355
+to a shell company.
+
+59
+00:03:51,148 --> 00:03:56,259
+And just four days after that, MegaSpeed became an
+official Nvidia cloud partner,
+
+60
+00:03:56,259 --> 00:03:59,162
+which meant priority access to Nvidia's chips.
+
+61
+00:04:00,274 --> 00:04:01,230
+Now look at the numbers.
+
+62
+00:04:01,701 --> 00:04:08,652
+In 2023, MegaSpeed's total assets were reportedly
+around 33 million dollars.
+
+63
+00:04:09,192 --> 00:04:10,231
+One year later? Around 3 billion.
+
+64
+00:04:10,909 --> 00:04:13,780
+That's roughly ninety times bigger, in a single
+year.
+
+65
+00:04:14,370 --> 00:04:19,285
+A sister company in Malaysia reportedly bought at
+least 4.8 billion dollars of
+
+66
+00:04:19,285 --> 00:04:22,562
+advanced AI equipment, almost all of it from
+Nvidia.
+
+67
+00:04:23,260 --> 00:04:28,716
+According to an investigation by The Information,
+Alice used her companies, and her
+
+68
+00:04:28,716 --> 00:04:34,238
+connection to Jensen, to help move at least 5
+billion dollars' worth of Nvidia chips
+
+69
+00:04:34,238 --> 00:04:35,618
+to Chinese companies.
+
+70
+00:04:36,417 --> 00:04:41,735
+And according to Bloomberg, at least 500 chips
+that MegaSpeed imported could not be
+
+71
+00:04:41,735 --> 00:04:43,850
+found in its data centers at all.
+
+72
+00:04:44,876 --> 00:04:47,926
+Which brings us back to those sealed boxes in
+Malaysia...
+
+73
+00:04:48,821 --> 00:04:54,433
+After that discovery, MegaSpeed came onto the
+radar of US agencies. Then Alice.
+
+74
+00:04:55,202 --> 00:04:59,983
+According to reports, when surveillance began,
+agents found she was close to an
+
+75
+00:04:59,983 --> 00:05:01,012
+American citizen.
+
+76
+00:05:01,903 --> 00:05:03,737
+That American was Jensen Huang.
+
+77
+00:05:04,754 --> 00:05:10,005
+In October 2025, US intelligence officials
+reportedly briefed President Trump about
+
+78
+00:05:10,005 --> 00:05:11,081
+the relationship.
+
+79
+00:05:11,921 --> 00:05:17,560
+In May 2026, Secretary of State Marco Rubio
+reportedly warned Trump again, in a
+
+80
+00:05:17,560 --> 00:05:17,917
+memo.
+
+81
+00:05:18,724 --> 00:05:24,431
+Then, on October 29th, 2026, the New York Times
+broke the story to the world.
+
+82
+00:05:25,251 --> 00:05:28,673
+At first, Nvidia and Jensen denied any
+relationship.
+
+83
+00:05:29,460 --> 00:05:34,525
+A few days later, Jensen sent a letter to his
+employees. He admitted he had been
+
+84
+00:05:34,525 --> 00:05:37,628
+unfaithful to his wife. He said he had no excuse.
+
+85
+00:05:38,242 --> 00:05:42,109
+But the letter didn't mention Alice. And it didn't
+mention spying.
+
+86
+00:05:42,932 --> 00:05:46,988
+On November 11th, the New York Times reported that
+Jensen had also had a
+
+87
+00:05:46,988 --> 00:05:49,467
+relationship with a senior Nvidia executive.
+
+88
+00:05:50,181 --> 00:05:52,798
+The next day, Reuters reported a third woman.
+
+89
+00:05:53,628 --> 00:05:55,559
+Nvidia's stock was falling fast.
+
+90
+00:05:56,403 --> 00:06:02,134
+And on the morning of November 12th, Jensen Huang
+resigned from everything. CEO.
+
+91
+00:06:02,134 --> 00:06:03,639
+President. The board.
+
+92
+00:06:04,560 --> 00:06:06,346
+But the story didn't end there.
+
+93
+00:06:06,914 --> 00:06:12,359
+A petition to bring him back collected more than
+18,800 signatures. Big names,
+
+94
+00:06:12,359 --> 00:06:15,221
+including Elon Musk, publicly backed him.
+
+95
+00:06:16,048 --> 00:06:21,448
+On November 17th, Nvidia's board said clearly: he
+is not coming back.
+
+96
+00:06:22,336 --> 00:06:27,127
+Five days later, on November 22nd, the same board
+voted unanimously to bring him
+
+97
+00:06:27,127 --> 00:06:29,583
+back as CEO, president, and board member.
+
+98
+00:06:29,944 --> 00:06:35,217
+The board said it had spoken with senior officials
+in the US government, and was
+
+99
+00:06:35,217 --> 00:06:39,040
+confident his return posed no threat to national
+security.
+
+100
+00:06:39,909 --> 00:06:43,122
+Earlier, according to reports, Jensen had told
+Trump he had no idea Alice might be a
+
+101
+00:06:43,122 --> 00:06:45,379
+spy. And Trump allegedly told him he should stay
+on as CEO.
+
+102
+00:06:45,976 --> 00:06:49,302
+Fired on the 12th. Back on the 22nd.
+
+103
+00:06:50,132 --> 00:06:51,243
+Ten days.
+
+104
+00:06:51,811 --> 00:06:54,720
+Now here is the part most people are missing.
+
+105
+00:06:55,732 --> 00:06:57,857
+Is Alice Huang actually a Chinese spy?
+
+106
+00:06:58,492 --> 00:07:01,193
+The honest answer: nobody has proven it.
+
+107
+00:07:02,034 --> 00:07:08,043
+The US Attorney General, Todd Blanche, has said
+the Justice Department has not
+
+108
+00:07:08,043 --> 00:07:11,510
+reached a conclusion on whether she is a spy.
+
+109
+00:07:12,229 --> 00:07:17,021
+And as of November 19th, the CIA was still saying
+the intelligence so far could not
+
+110
+00:07:17,021 --> 00:07:18,176
+prove it either way.
+
+111
+00:07:19,022 --> 00:07:23,758
+Remember those public photos? Some people ask: if
+she were a trained spy, why would
+
+112
+00:07:23,758 --> 00:07:28,095
+her relationship with the most watched CEO in tech
+be all over social media?
+
+113
+00:07:28,934 --> 00:07:30,847
+So where did the spy story come from?
+
+114
+00:07:31,784 --> 00:07:35,539
+To answer that, you have to look at a fight inside
+the American government.
+
+115
+00:07:36,450 --> 00:07:41,514
+On one side: Jensen Huang. He has said publicly,
+many times, that he wants to sell
+
+116
+00:07:41,514 --> 00:07:46,640
+more chips to China. And with his access to Trump,
+some restrictions were loosened.
+
+117
+00:07:46,640 --> 00:07:51,705
+Trump even allowed certain chip sales to China, if
+Nvidia paid the US government a
+
+118
+00:07:51,705 --> 00:07:53,187
+cut of 15 to 25 percent.
+
+119
+00:07:54,055 --> 00:07:58,956
+On the other side: China hawks like Marco Rubio,
+who strongly oppose selling chips
+
+120
+00:07:58,956 --> 00:07:59,494
+to China.
+
+121
+00:08:00,328 --> 00:08:04,795
+According to reports, it was Rubio's memo that
+first labeled Alice a Chinese spy.
+
+122
+00:08:05,586 --> 00:08:10,935
+But here's the twist. The CIA report behind that
+memo reportedly never said she was
+
+123
+00:08:10,935 --> 00:08:14,157
+a spy. That conclusion was Rubio's own assessment.
+
+124
+00:08:14,974 --> 00:08:16,776
+So was this a real spy case?
+
+125
+00:08:17,656 --> 00:08:23,018
+Or was a personal scandal turned into a weapon, in
+a political war over who gets to
+
+126
+00:08:23,018 --> 00:08:24,310
+sell chips to China?
+
+127
+00:08:25,555 --> 00:08:28,857
+To see this clearly, you have to separate three
+different issues.
+
+128
+00:08:29,744 --> 00:08:31,453
+Issue one: conduct.
+
+129
+00:08:32,214 --> 00:08:37,308
+Jensen admitted he cheated on his wife. But two of
+the reported relationships were
+
+130
+00:08:37,308 --> 00:08:42,278
+with Nvidia employees. When a CEO has
+relationships with his own staff, that's a
+
+131
+00:08:42,278 --> 00:08:46,254
+serious question of workplace ethics. That part is
+not a theory.
+
+132
+00:08:47,519 --> 00:08:49,694
+Issue two: conflict of interest.
+
+133
+00:08:50,517 --> 00:08:55,499
+Spy or not, a company linked to the woman he was
+involved with got Nvidia partner
+
+134
+00:08:55,499 --> 00:09:00,543
+status and billions of dollars in chips. That is a
+clear conflict of interest, and
+
+135
+00:09:00,543 --> 00:09:02,573
+it deserves a full investigation.
+
+136
+00:09:03,538 --> 00:09:05,244
+Issue three: the trade war.
+
+137
+00:09:06,108 --> 00:09:08,664
+And this is where America's double standard shows.
+
+138
+00:09:09,391 --> 00:09:13,471
+The US constantly tells other countries to open
+their markets and remove trade
+
+139
+00:09:13,471 --> 00:09:17,499
+barriers. It pressures countries like India to cut
+tariffs on American goods.
+
+140
+00:09:18,252 --> 00:09:22,595
+But when it comes to selling its own technology to
+China, America shuts the door.
+
+141
+00:09:23,375 --> 00:09:25,749
+Free trade, it seems, only goes one way.
+
+142
+00:09:26,683 --> 00:09:28,914
+Now, the theory exploding online.
+
+143
+00:09:29,776 --> 00:09:32,034
+Was this a way to move Nvidia's stock?
+
+144
+00:09:32,856 --> 00:09:37,280
+The stock fell hard during the scandal, and jumped
+sharply when Jensen came back.
+
+145
+00:09:37,280 --> 00:09:40,884
+Anyone who bought at the bottom could have made a
+fortune in days.
+
+146
+00:09:41,952 --> 00:09:47,354
+But so far, no regulator, no court, and no major
+outlet has accused anyone of market
+
+147
+00:09:47,354 --> 00:09:48,190
+manipulation.
+
+148
+00:09:49,006 --> 00:09:55,233
+Big swings like this usually get regulators
+looking for unusual trades. If they find
+
+149
+00:09:55,233 --> 00:09:58,346
+something, it will be a much bigger story.
+
+150
+00:09:58,863 --> 00:10:02,623
+And one more open question: exactly who leaked the
+story, and why at that moment, is
+
+151
+00:10:02,623 --> 00:10:03,652
+still not fully public.
+
+152
+00:10:04,626 --> 00:10:06,033
+So here is our forecast.
+
+153
+00:10:06,988 --> 00:10:12,791
+Jensen Huang stays CEO through 2027. The board,
+Washington, and investors all want
+
+154
+00:10:12,791 --> 00:10:13,499
+him there.
+
+155
+00:10:14,333 --> 00:10:18,221
+But the fight over chips to China does not go
+away. It gets louder.
+
+156
+00:10:19,095 --> 00:10:20,369
+Watch three signals.
+
+157
+00:10:21,265 --> 00:10:26,324
+One: whether the CIA or the Justice Department
+ever reaches a final conclusion about
+
+158
+00:10:26,324 --> 00:10:27,047
+Alice Huang.
+
+159
+00:10:27,934 --> 00:10:33,366
+Two: what happens to MegaSpeed, and whether anyone
+is charged over the missing
+
+160
+00:10:33,366 --> 00:10:33,784
+chips.
+
+161
+00:10:34,593 --> 00:10:38,926
+Three: the next decision on chip sales to China.
+Because whoever wins that fight,
+
+162
+00:10:38,926 --> 00:10:42,671
+Jensen's camp or the hawks, will tell you who
+really won this scandal.
+
+163
+00:10:43,151 --> 00:10:45,315
+Now I want to hear from you.
+
+164
+00:10:46,732 --> 00:10:47,804
+Real spy case, or political weapon?
+
+165
+00:10:48,619 --> 00:10:50,834
+Tell me your forecast in the comments.
+
+166
+00:10:51,801 --> 00:10:57,884
+And if you want to see what's coming before it
+hits the headlines, subscribe to The
+
+167
+00:10:57,884 --> 00:10:59,130
+Crimson Forecast.
+
+168
+00:11:00,211 --> 00:11:02,953
+This file is closed. See you in the next one.
