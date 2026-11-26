@@ -1,5 +1,7 @@
 # Google AI Studio TTS (Gemini 3.8): expression tags — official list from the owner (Nov 26, 2026)
 
+SCOPE: this rule is for THE CRIMSON FORECAST only. The Curious Lines channel has its own voice rules (its master prompt uses punctuation for pauses and no bracketed directions); do not change those unless the owner says so.
+
 Rule: when writing narration for the owner to paste into Google AI Studio, add expression with these tags.
 Do NOT fake pauses or emotion with extra dots ("....") or other punctuation tricks. Paste the tag inside the text, where the sound should happen.
 
