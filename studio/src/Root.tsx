@@ -11,6 +11,7 @@ import {ThumbA, ThumbB, ThumbB2, ThumbC} from './Thumbs';
 import {CurioTest, CurioTest2} from './stickman/CurioTest';
 import {CurioFilm} from './stickman/CurioFilm';
 import {SHORTS_EP003} from './data/shorts-ep003';
+import {SHORT_T1} from './data/short-t1';
 
 const EP003 = buildEp003();
 import {FPS, H, W} from './theme';
@@ -34,6 +35,7 @@ export const Root: React.FC = () => (
     <Composition id="Short-EP003-2" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[2].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[2].scenes, sfx: false}} />
     <Composition id="Short-EP003-3" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[3].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[3].scenes, sfx: false}} />
     <Composition id="Short-EP003-4" component={Episode} durationInFrames={totalFrames(SHORTS_EP003[4].scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORTS_EP003[4].scenes, sfx: false}} />
+    <Composition id="Short-T1" component={Episode} durationInFrames={totalFrames(SHORT_T1.scenes)} fps={FPS} width={H} height={W} defaultProps={{scenes: SHORT_T1.scenes, sfx: false}} />
     <Composition id="Thumb-C" component={ThumbC} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="ProbeSelfTest" component={ProbeSelfTest} durationInFrames={10} fps={FPS} width={W} height={H} />
     <Composition id="StyleTest" component={StyleTest} durationInFrames={120} fps={FPS} width={W} height={H} />

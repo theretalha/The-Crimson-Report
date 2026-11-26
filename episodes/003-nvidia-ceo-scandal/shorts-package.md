@@ -1,3 +1,7 @@
+# NOTE (Nov 26): the first 5 Shorts below were rejected by the owner ("no head or tail"): they were chopped from the long video's lines and had no hook or story.
+# New approach: every Short gets its OWN 25-30 s script (hook -> build -> payoff) with new TTS audio. The first one is the TEASER (`st1-teaser.mp4`, script in `studio/src/data/short-t1-phrases.txt`).
+# Do not upload s0-s4 from the table below. The other three Shorts will be rewritten the same way.
+
 # EP 003 — Shorts package (5 Shorts, native vertical, not cut from the long video)
 
 Files: `studio/out/shorts/<id>.mp4` (1080x1920, 30 fps, audio mastered to -14 LUFS). Voice = the approved narration lines (nothing re-recorded).
@@ -48,3 +52,9 @@ Set each with Schedule in Studio and check the time zone says GMT+5. Link each S
 ## Checks done
 - Every picture shows what is said (rule 9c). No unverified numbers on screen. Allegations are hedged ("according to reports", UNPROVEN, UPDATE card).
 - Short 3 ends with the UPDATE card because the narration was recorded before the newest reporting.
+
+
+## New teaser (approved script)
+Title: Nvidia's CEO: Fired, Then Back in 10 Days. Full Story Tonight
+Publish: Thu Nov 26, 10:00 pm PKT (12:00 pm ET). The audio says "the full story goes live tonight"; the on-screen tag says "EP 003 · 3 PM ET".
+File: studio/out/shorts/st1-teaser.mp4 (30 s, 1080x1920, -14 LUFS)

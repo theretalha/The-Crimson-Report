@@ -18,7 +18,14 @@ sr, v = wf.read(a.voice); assert sr == SR, sr
 v = v.astype(np.float32) / (32768.0 if v.dtype == np.int16 else 1.0)
 N = int((sp['total'] + 0.3) * SR)
 voice = np.zeros(N, np.float32)
-for item in sp['voice']:
+if sp.get('voiceFile'):  # a Short with its own recording: place the whole file, timeline starts at the first spoken word
+    import os, tempfile
+    tmp = tempfile.mktemp(suffix='.wav'); subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', sp['voiceFile'], '-ac', '1', '-ar', str(SR), tmp], check=True)
+    sr2, w = wf.read(tmp); w = w.astype(np.float32) / (32768.0 if w.dtype == np.int16 else 1.0)
+    i0 = int(sp['voiceOffset'] * SR)
+    src0 = max(0, -i0); dst0 = max(0, i0)
+    seg = w[src0:src0 + (N - dst0)]; voice[dst0:dst0 + len(seg)] += seg
+for item in sp.get('voice') or []:
     t = T[item['line']]
     seg = v[int(max(0, t['start'] - 0.03) * SR): int((t['speechEnd'] + 0.12) * SR)].copy()
     n = int(0.015 * SR); seg[:n] *= np.linspace(0, 1, n); seg[-n:] *= np.linspace(1, 0, n)
