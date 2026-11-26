@@ -8,6 +8,7 @@ import {buildEp003} from './data/ep003';
 import {StyleTest} from './pro/StyleTest';
 import {ProbeSelfTest} from './components/ProbeSelfTest';
 import {ThumbA, ThumbB, ThumbB2, ThumbC} from './Thumbs';
+import {CurioTest, CurioTest2} from './stickman/CurioTest';
 
 const EP003 = buildEp003();
 import {FPS, H, W} from './theme';
@@ -23,6 +24,8 @@ export const Root: React.FC = () => (
     <Composition id="Thumb-A" component={ThumbA} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="Thumb-B" component={ThumbB} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="Thumb-B2" component={ThumbB2} durationInFrames={1} fps={FPS} width={W} height={H} />
+    <Composition id="CurioTest" component={CurioTest} durationInFrames={1} fps={FPS} width={W} height={H} />
+    <Composition id="CurioTest2" component={CurioTest2} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="Thumb-C" component={ThumbC} durationInFrames={1} fps={FPS} width={W} height={H} />
     <Composition id="ProbeSelfTest" component={ProbeSelfTest} durationInFrames={10} fps={FPS} width={W} height={H} />
     <Composition id="StyleTest" component={StyleTest} durationInFrames={120} fps={FPS} width={W} height={H} />
