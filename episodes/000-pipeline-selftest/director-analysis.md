@@ -23,14 +23,14 @@ none
 _now:_ recipe
 - `0.0s` “A tanker sat anchored near the shore,” — keys: tanker(obj)  
   SEE: oil tanker riding on the water, funnel smoking, deck hatches → **custom:oil-tanker** [built (custom)]
-- `2.0s` “and its engines were off.” — keys: -  
+- `1.9s` “and its engines were off.” — keys: -  
   SEE: NO PICTURE WORD: ask the producer for a visual idea
 
 **L1** `4.0s` The captain stood alone on deck, and nobody answered the radio.  
 _now:_ recipe
 - `4.0s` “The captain stood alone on deck,” — keys: -  
   SEE: NO PICTURE WORD: ask the producer for a visual idea
-- `5.8s` “and nobody answered the radio.” — keys: -  
+- `5.7s` “and nobody answered the radio.” — keys: -  
   SEE: NO PICTURE WORD: ask the producer for a visual idea
 
 **L2** `8.0s` A man in a grey coat walked down the pier with a sealed envelope.  
@@ -42,5 +42,5 @@ _now:_ recipe
 _now:_ recipe
 - `12.0s` “Reportedly, the captain had sold the cargo to a Chinese firm,” — keys: sold(act), Chinese(pla)  
   SEE: chip crate handed across, money coming back → **money-flow** [built]
-- `14.5s` “according to Reuters.” — keys: -  
+- `14.4s` “according to Reuters.” — keys: -  
   SEE: punchline: a title card is allowed
