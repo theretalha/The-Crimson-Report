@@ -8,15 +8,15 @@ China has extended a pause on new rare earth export controls until January 10, 2
 
 Every figure in this video is a reported number from a named source. Some are single-outlet estimates and are marked as such on screen. Nothing here accuses a company or a person of wrongdoing.
 
-CHAPTERS (planned times; refresh after the final cut)
+CHAPTERS (from the Stage 2 timing; refresh after the final cut)
 0:00 Nine days
-0:47 The seventeen metals
-2:18 The middle stop
-3:32 The licence form
-5:11 Two readouts
-6:12 The customs data
-8:32 The American deadline
-10:05 Three endings
+0:44 The seventeen metals
+1:57 The middle stop
+3:05 The licence form
+4:33 Two readouts
+5:25 The customs data
+7:29 The American deadline
+8:46 Three endings
 
 SOURCES
 S&P Global (Nov 9, 2026); Benchmark Minerals (extension; Q3 2026 price review); Global Trade Alert; CSIS "One Year After Busan" and "Rare Earth Export Restrictions One Year Later"; Fastmarkets; TrendForce; Mining.com; CNBC (Nov 20, 2026); Adamas Intelligence; Rare Earth Exchanges; Federal Register (DFARS 225.7018); Nasdaq and Columbia Center on Global Energy Policy (MP Materials deal); Korea Times (Sept 24, 2026); CBS News and Mining.com (Ford).
@@ -36,7 +36,7 @@ Jan 1, 2027 is a Friday and Jan 10, 2027 is a Sunday. If you spot a newer number
 
 ## Upload checklist
 1. Title and thumbnail from `packaging.md` (default B + T1).
-2. Chapters: replace the planned times with the real ones from `src/data/ep004-timing.json`.
+2. Chapters: check the times above against the final render (they come from `src/data/ep004-timing.json`).
 3. Credits: paste `studio/public/assets/ep004/CREDITS.md`.
 4. Check the Federal Register for any DFARS delay, and re-check the Jan 10 date on the MOFCOM site the day before upload.
 5. Link the five Shorts as related videos after upload (`shorts-package.md`).
