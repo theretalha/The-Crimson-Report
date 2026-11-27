@@ -68,6 +68,7 @@ Research, then write everything, then **stop for manual Google AI Studio TTS**.
    Every picture-word gets a prop that is really that thing; things no built-in prop draws get `[CUSTOM epNNN.slug]`. No `[NEW]`.
 5. `edit-sheet.md` (chapters, planned timecodes, moods), `shorts-package.md` (each Short has its OWN 25-30 s script: hook, build, payoff, own TTS; titles, descriptions, Pakistan-time schedule), `youtube-metadata.md` (title options, description, chapters, tags, corrections section), `assets-todo.md` (parseable tables), thumbnails/titles in `packaging.md`.
 6. Gate: `python3 tools/director.py --narration ../episodes/NNN-slug/narration-tts.txt --shotlist ../episodes/NNN-slug/shot-list.md --ep NNN --strict --allow R-CUSTOM-MISSING` must show no other violation.
+   Custom Prop Plan: list every planned custom prop in `episodes/NNN-slug/custom-props.md` as a table row `| epNNN.slug | evidence regex | what it draws |` (escape `|` inside the regex as `\|`). `director.py` reads it next to the shot list, so the evidence words of props that are not coded yet are still checked (R-REUSE, R-NOCUSTOM). Stage 3 codes each prop with the same `evidence`.
 7. **Stop.** Tell the owner: generate TTS per chapter (and per Short), save WAVs in `studio/audio-in/epNNN/` (`ch00.wav`, `ch01.wav`...), then say `audio ready`.
 
 ### Stage 2: owner says `audio ready`

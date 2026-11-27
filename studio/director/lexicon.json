@@ -329,6 +329,13 @@
    "re": "\\b(ten days|days later|eight months later|years?|months?|days?)\\b",
    "prop": "clock-calendar",
    "see": "calendar pages flipping to the day count"
+  },
+  {
+   "id": "price",
+   "cat": "object",
+   "re": "\\b(prices?|price floor|price tags?)\\b",
+   "prop": "stat-viz",
+   "see": "price tags hung on real jars or bars, never a lone number"
   }
  ],
  "date_re": "\\b(?:january|february|march|april|may|june|july|august|september|october|november|december)(?:\\s+\\d{1,2}(?:st|nd|rd|th)?(?!\\d))?(?:,?\\s+(?:19|20)\\d\\d)?\\b|\\b(?:19|20)\\d\\d\\b",
@@ -585,6 +592,41 @@
    "re": "\\b(hospitals?|clinics?|ambulances?|medicine shortage)\\b",
    "custom": "hospital",
    "see": "hospital front with a red cross, ambulance arriving"
+  },
+  {
+   "id": "magnet",
+   "cat": "object",
+   "re": "\\b(magnets?|magnet rings?|neodymium|praseodymium|dysprosium|terbium|samarium)\\b",
+   "custom": "magnet",
+   "see": "a grey rare-earth magnet block, field lines curling, a rotor spinning around it"
+  },
+  {
+   "id": "oxide",
+   "cat": "object",
+   "re": "\\b(oxides?|powders?|jars?)\\b",
+   "custom": "oxide-jars",
+   "see": "a row of labelled jars of single-metal powder, one lifted onto a scale"
+  },
+  {
+   "id": "sepplant",
+   "cat": "place",
+   "re": "\\b(separation plants?|processing plants?|rows of (?:mixing )?tanks|refining)\\b",
+   "custom": "separation-plant",
+   "see": "rows of mixing tanks and pipes, rock going in, jars of powder coming out"
+  },
+  {
+   "id": "evmotor",
+   "cat": "object",
+   "re": "\\b(electric cars?|electric motors?|motors?|rotors?)\\b",
+   "custom": "ev-motor",
+   "see": "cut-away electric motor, magnet ring around a spinning rotor"
+  },
+  {
+   "id": "licence",
+   "cat": "document",
+   "re": "\\b(licen[cs]es?|licen[cs]ing|licen[cs]e forms?)\\b",
+   "custom": "licence-form",
+   "see": "an export licence form, a stamp hovering, APPROVED or WAITING landing on it"
   }
  ],
  "_doc_custom": "custom_entries: physical things that NO built-in prop draws. A line that matches one needs a NEW custom prop in src/props/custom/epNNN/ (AGENTS.md rule 1). `custom` is the suggested slug; the real id is epNNN.<slug>."

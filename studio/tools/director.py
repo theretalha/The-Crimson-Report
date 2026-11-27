@@ -190,6 +190,20 @@ def load_custom(custom_dir, folder):
         out[m.group(1)] = {'evidence': (ev.group(1).replace('\\\\', '\\') if ev else ''), 'describes': ds.group(1) if ds else '', 'src': blob}
     return out
 
+def load_plan(path):
+    """Stage 1 custom-prop PLAN (episodes/NNN-slug/custom-props.md): rows `| epNNN.slug | evidence regex | what it draws |`.
+    Lets the stage-1 gate check evidence words for props that are planned but not coded yet (they are coded in stage 3)."""
+    out = {}
+    p = pathlib.Path(path)
+    if not p.is_file(): return out
+    for raw in p.read_text(encoding='utf-8').splitlines():
+        cells = [c.strip() for c in re.split(r'(?<!\\)\|', raw.strip())]
+        if len(cells) < 4 or cells[0] != '': continue
+        m = re.match(r'^`?([a-z0-9]+\.[a-z0-9-]+)`?$', cells[1])
+        ev = cells[2].strip('`').replace('\\|', '|')
+        if m and ev and not ev.lower().startswith('evidence'): out[m.group(1)] = {'evidence': ev, 'describes': cells[3], 'src': ''}
+    return out
+
 def custom_quality(cid, c):
     """Static check that a custom prop really has draw-on strokes, depth, overshoot and sound events (rule 1)."""
     src = c['src']; miss = []
@@ -275,7 +289,8 @@ def parse_shotlist(path):
 
 PROP_TOKEN = re.compile(r'([A-Za-z0-9._:-]+)\s*\[\s*(built|partial|missing|new|custom)\b\s*([A-Za-z0-9._-]+)?\s*\]', re.I)
 
-def check_shotlist(path, lines, lex, props, rules, custom):
+def check_shotlist(path, lines, lex, props, rules, custom, planned=None):
+    planned = planned or {}
     issues = []; blocks = parse_shotlist(path)
     P = props['props']; compose = rules['compose']
     allege = re.compile(rules['allegation_re'], re.I); hedge = re.compile(rules['hedge_re'], re.I); onscreen = re.compile(rules['on_screen_hedge_re'])
@@ -290,12 +305,13 @@ def check_shotlist(path, lines, lex, props, rules, custom):
             status = status.lower(); base = name.split(':')[0]
             if status in ('custom', 'new'):
                 if status == 'new' and not cid: cid = None
+                known = custom.get(cid) or planned.get(cid) if cid else None
                 if not cid or cid not in custom:
                     issues.append({'rule': 'R-CUSTOM-MISSING', 'line': i, 'msg': f"PROP '{name}' is a custom prop ('{cid}') but it is not coded in src/props/custom/ yet (render stage must build it)"})
-                else:
+                if known:
                     used_custom.append(cid)
-                    if custom[cid]['evidence'] and not ev_match(custom[cid]['evidence'], text):
-                        issues.append({'rule': 'R-REUSE', 'line': i, 'msg': f"custom prop {cid} is planned but the line never says {custom[cid]['evidence'].split('|')[:5]}"})
+                    if known['evidence'] and not ev_match(known['evidence'], text):
+                        issues.append({'rule': 'R-REUSE', 'line': i, 'msg': f"custom prop {cid} is planned but the line never says {known['evidence'].split('|')[:5]}"})
                 continue
             R = compose.get(base)
             if R and R['role'] == 'generic':
@@ -307,7 +323,7 @@ def check_shotlist(path, lines, lex, props, rules, custom):
             elif not R and base not in P and base not in {'map', 'timeline', 'chart', 'photos', 'headline', 'document', 'tweet', 'newspaper', 'entity-map', 'entities'}:
                 issues.append({'rule': 'R-SHOT-INCOMPLETE', 'line': i, 'msg': f"PROP '{name}' is unknown (not in props.json, reuse-rules.json or templates)"})
         for h in find_hits(text, lex):
-            if h.get('custom') and not any(ev_match(custom[c]['evidence'], h['word']) for c in used_custom):
+            if h.get('custom') and not any(ev_match((custom.get(c) or planned[c])['evidence'], h['word']) for c in used_custom):
                 issues.append({'rule': 'R-NOCUSTOM', 'line': i, 'msg': f"line names '{h['word']}' ({h['custom']}): PROP must include a [CUSTOM epNNN.{h['custom']}] prop that draws it"})
         if allege.search(text):
             if not hedge.search(text):
@@ -374,7 +390,7 @@ def main():
         cues = json.load(open(a.cues))['cues']
         issues, stats = validate(cues, analysis, rules, custom)
     if a.shotlist:
-        issues += check_shotlist(a.shotlist, lines, lex, props, rules, custom)
+        issues += check_shotlist(a.shotlist, lines, lex, props, rules, custom, load_plan(pathlib.Path(a.shotlist).parent / 'custom-props.md'))
     demand = prop_demand(analysis, props)
     pathlib.Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     json.dump({'stats': stats, 'issues': issues, 'prop_demand': demand, 'custom_props': {k: {'evidence': v['evidence'], 'describes': v['describes']} for k, v in custom.items()}, 'lines': analysis}, open(a.out, 'w'), indent=1)

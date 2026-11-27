@@ -1,0 +1,274 @@
+THE CRIMSON FORECAST — EP 004 — "China Paused Its Rare Earth Ban. What Happens Jan 10?"
+NARRATION ONLY — paste into Google AI Studio (Generate speech)
+Target: ~11 min (~1,650 words)
+
+=====================================================================
+STYLE INSTRUCTIONS (paste in the "Style instructions" box, not in the text):
+
+Read this like a calm, serious investigative documentary narrator.
+Confident and clear, medium pace, slightly low voice.
+Pause briefly at every line break. Obey the tags in angle brackets as pauses
+or soft delivery, and do not read them aloud.
+Add emphasis on numbers and dates. Never sound excited, gossipy or salesy.
+
+VOICE: Charon (informative). Backup: Orus (firm).
+Generate one CHAPTER at a time. Do not paste the [CHAPTER] lines.
+=====================================================================
+
+
+[CHAPTER 0 — NINE DAYS]
+
+In May 2025, a car factory in Chicago stopped building the Ford Explorer.
+
+The reason was one small magnet, stuck waiting for a Chinese export licence.
+
+Now China has set a new date. The tenth of January. <short pause>
+
+And nine days earlier, America's got a deadline of its own.
+
+Why are both governments watching those same nine days?
+
+On the ninth of November, China's commerce ministry announced an extension.
+
+Controls on rare earths, battery materials and processing equipment would stay suspended until the tenth of January.
+
+That's two more months. Not two more years.
+
+So what exactly is being rationed? Start with the magnet.
+
+
+[CHAPTER 1 — THE SEVENTEEN METALS]
+
+There's a family of seventeen metals called rare earths.
+
+They aren't actually rare. They're just buried in small amounts, mixed together in the same rock.
+
+It isn't easy to pull one metal away from the others. It takes rows of mixing tanks and many rounds of chemistry.
+
+Two of them, neodymium and praseodymium, make the strongest magnets in everyday use.
+
+A third, dysprosium, keeps those magnets from giving up when a motor's running hot. <short pause>
+
+Inside an electric car, there's a magnet ring around the spinning rotor.
+
+One data review averaged about one and a half kilograms of magnet in each electric car.
+
+Fighter jets use them too. A widely quoted figure says each F-35 carries four hundred and seventeen kilograms of rare earth material.
+
+But where does that magnet figure come from?
+
+The research firm Adamas traces it to a single Pentagon report from 2012, never made public. <short pause>
+
+So treat the number as a rough guide to the magnets inside, not a fact.
+
+The International Energy Agency says China mined about sixty percent of the world's rare earths in 2024.
+
+Yet it handled about ninety-one percent of the refining.
+
+How does one country control more than its own mines produce?
+
+
+[CHAPTER 2 — THE MIDDLE STOP]
+
+Picture the supply chain as three stops. A mine. A separation plant. A magnet factory.
+
+Plenty of countries have the ore, so the mine's the easy stop.
+
+The middle stop is the separation plant, where mixed powder gets split apart one metal at a time. <short pause>
+
+Rock goes in at one end. Jars of single-metal oxide come out the other.
+
+Then the oxide's melted into alloy, pressed into blocks, and cut into magnets.
+
+For the heavy metals like dysprosium, one industry estimate puts China near ninety-nine percent.
+
+Lynas, an Australian company, began separating dysprosium in Malaysia in May 2025.
+
+Fastmarkets reports it made eight tonnes of dysprosium and terbium in the first three months of 2026.
+
+In 2024, China shipped about fourteen tonnes of those two to Japan alone. That's every single month.
+
+Eight tonnes in three months. Fourteen tonnes a month. <short pause>
+
+That's the gap that lets a licence form in Beijing stop a car factory in Chicago.
+
+So how did that licence form actually work?
+
+
+[CHAPTER 3 — THE LICENCE FORM]
+
+In April 2025, China began requiring export licences for seven medium and heavy rare earths, and for magnets made from them.
+
+Every shipment needed a stamp of approval from the commerce ministry in Beijing.
+
+Ford's chief executive, Jim Farley, said the applications were being approved one at a time.
+
+He called the supply hand to mouth. Ford had already shut one factory for about a week.
+
+In June, China gave temporary licences to the magnet suppliers of the three biggest American carmakers, according to Reuters.
+
+Suzuki halted its Swift line from the twenty-sixth of May, Reuters reported. Some European supplier plants shut too.
+
+On the ninth of October 2025, Beijing went further. <short pause>
+
+Law firms read the new rule this way. A product made anywhere would need a Chinese licence. The trigger was one part in a thousand of Chinese rare earths in its value.
+
+China's commerce ministry said the scope was limited, and promised easier licensing.
+
+Twenty-one days later, Trump and Xi met in Busan, South Korea.
+
+China agreed to suspend that expansion for one year.
+
+Washington paused its own rule on the affiliates of blacklisted companies.
+
+It looked like a clean swap of tariffs for metals.
+
+<long pause> But the pause covered only the new expansion. The April licences didn't go away.
+
+So did the magnets actually start flowing again?
+
+
+[CHAPTER 4 — TWO READOUTS]
+
+In mid-May 2026, Trump flew to Beijing for a summit with Xi.
+
+Afterwards, the White House said China had pledged to ease its limits on rare earth processing equipment.
+
+China's commerce ministry then published its own summary of the summit. Rare earths weren't in it. <short pause>
+
+Mining.com reported that Trump left Beijing with no rare earth deal confirmed.
+
+Two readouts of the same meeting. One page mentions the rare earths. The other doesn't.
+
+Last week, Trump and Xi met again, in Shenzhen. <short pause>
+
+They agreed to draft a stability action plan, CNBC reported.
+
+Beijing's summary left out rare earths again. The January deadline wasn't settled in public.
+
+Analysts say shipments remain far below the levels from before the trade war.
+
+So which readout should you believe? Use the customs data, which records what actually shipped.
+
+
+[CHAPTER 5 — THE CUSTOMS DATA]
+
+A year after Busan, analysts at the Center for Strategic and International Studies went through China's customs numbers.
+
+In the ten months after the deal, total exports of these materials fell only two and a half percent. <short pause>
+
+But combined shipments to the United States and Japan fell fifty-eight percent.
+
+The total barely moved. The destinations did.
+
+The monitoring group Global Trade Alert reads the same data differently. It argues China kept its word overall.
+
+CSIS also found magnet exports rose thirteen percent after the truce. American imports of them fell eleven percent that same month.
+
+Shipments to Europe jumped sixty percent.
+
+So why would Beijing extend a pause, yet keep the squeeze on?
+
+Japan shows the squeeze most clearly. On the sixth of January 2026, China barred dual-use exports to Japan's military.
+
+Analysts compare it to 2010, when a sea dispute with Japan reportedly held up magnet shipments too.
+
+Fastmarkets cites Chinese customs data showing no dysprosium oxide or terbium oxide reached Japan in 2026.
+
+TrendForce reports that Japan's dysprosium imports fell eighty-two percent in the first half of the year.
+
+China says the measures target military use and protect its national security.
+
+Tokyo calls the new export controls unacceptable.
+
+Now look at the price tags. Outside China, dysprosium oxide has climbed fast.
+
+Benchmark Minerals says the European price rose one hundred and fifty percent in the third quarter alone.
+
+S&P Global put the September average price in Europe at thirty-five hundred dollars a kilogram.
+
+Platts assessed the price at forty-one hundred dollars in North America on the thirtieth of October. <short pause>
+
+The same Benchmark review says Europe now pays about sixteen times the Chinese price for the same metal.
+
+So why would a metal cost sixteen times more outside China?
+
+Analysts point to two reasons. Chinese supply is tightly licensed, and new magnet makers are bidding for every kilogram left.
+
+
+[CHAPTER 6 — THE AMERICAN DEADLINE]
+
+Now the other end of those nine days. On the first of January 2027, a Pentagon rule takes effect.
+
+Trade press describes it this way. Defense contractors can't deliver products with certain magnets mined or processed in China.
+
+The rule also covers tungsten and tantalum. A contractor who can't certify its magnets could lose the contract.
+
+According to industry reports, they've asked for a second delay. <short pause>
+
+Their argument is simple. A supply chain from mine to magnet doesn't exist yet outside China, they say.
+
+Can Washington build one in time?
+
+In July 2025, the Pentagon took a four hundred million dollar stake in MP Materials.
+
+MP runs the Mountain Pass mine in California.
+
+The Pentagon also promised a price floor of one hundred and ten dollars a kilogram for neodymium and praseodymium. It's a ten-year promise.
+
+One analysis said the Chinese price was under sixty at the time.
+
+MP's big new magnet plant is due to open in 2028. At full size, it should make ten thousand tonnes a year. <short pause>
+
+That's more than a year after the ban begins.
+
+<long pause> That's why those nine days matter. America's ban starts before its own supply exists. China's pause ends nine days later.
+
+But what will Beijing do on the tenth?
+
+
+[CHAPTER 7 — THREE ENDINGS]
+
+First ending. Another extension.
+
+In September, Treasury Secretary Scott Bessent said he wasn't sure whether a bigger deal or another extension would follow.
+
+Second ending. The pause simply ends, and the controls snap back. <short pause>
+
+The October 2025 export controls would return, with their one-part-in-a-thousand reach.
+
+Carmakers in Europe and Asia could need Chinese licences for cars they've already built.
+
+A repeat of the Chicago car factory stoppage isn't out of the question.
+
+Third ending. Nothing's announced. Licences just get slower.
+
+That's close to what the customs data already shows about magnet shipments.
+
+Analysts say that's why the mix looks odd. The pause keeps the talks alive. The licence form keeps the control.
+
+Beijing's view is different. It calls export controls a normal tool for national security and for non-proliferation duties.
+
+Washington and Tokyo see pressure that's applied one factory at a time.
+
+Can anyone simply build around Chinese magnets?
+
+Electrek reported in September that Tesla has built a new motor with no rare earths.
+
+Lynas is building a bigger heavy rare earth plant in Malaysia. Its first products are expected within two years.
+
+The research firm BMI says China's grip won't loosen for years.
+
+None of those magnets will be rolling out by the tenth of January.
+
+So watch three things before then. How fast licences get approved. The price of dysprosium. And whether a new leaders' meeting gets a date.
+
+Our forecast: another extension, announced by officials in Beijing, and soon. <short pause>
+
+But each extension buys weeks. The new magnet plants need years.
+
+If you drive a new electric car, one of those magnets is probably already in your driveway.
+
+<whispers> Nobody can say for sure which ending Beijing picks.
+
+The next date on the licence calendar is the tenth of January.
