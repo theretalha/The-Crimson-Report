@@ -1,0 +1,704 @@
+[
+ {
+  "text": "In May 2025, a car factory in Chicago stopped building the Ford Explorer.",
+  "start": 0.0,
+  "speechEnd": 5.238,
+  "next": 5.858
+ },
+ {
+  "text": "The reason was one small magnet, stuck waiting for a Chinese export licence.",
+  "start": 5.858,
+  "speechEnd": 11.187,
+  "next": 12.183
+ },
+ {
+  "text": "Now China has set a new date. The tenth of January.",
+  "start": 12.183,
+  "speechEnd": 15.679,
+  "next": 16.463
+ },
+ {
+  "text": "And nine days earlier, America's got a deadline of its own.",
+  "start": 16.463,
+  "speechEnd": 19.2,
+  "next": 19.979
+ },
+ {
+  "text": "Why are both governments watching those same nine days?",
+  "start": 19.979,
+  "speechEnd": 22.74,
+  "next": 23.8
+ },
+ {
+  "text": "On the ninth of November, China's commerce ministry announced an extension.",
+  "start": 23.8,
+  "speechEnd": 27.669,
+  "next": 28.562
+ },
+ {
+  "text": "Controls on rare earths, battery materials and processing equipment would stay suspended until the tenth of January.",
+  "start": 28.562,
+  "speechEnd": 35.224,
+  "next": 36.086
+ },
+ {
+  "text": "That's two more months. Not two more years.",
+  "start": 36.086,
+  "speechEnd": 38.975,
+  "next": 39.822
+ },
+ {
+  "text": "So what exactly is being rationed? Start with the magnet.",
+  "start": 39.822,
+  "speechEnd": 43.122,
+  "next": 43.45
+ },
+ {
+  "text": "There's a family of seventeen metals called rare earths.",
+  "start": 44.05,
+  "speechEnd": 47.387,
+  "next": 47.788
+ },
+ {
+  "text": "They aren't actually rare. They're just buried in small amounts, mixed together in the same rock.",
+  "start": 47.788,
+  "speechEnd": 52.976,
+  "next": 53.573
+ },
+ {
+  "text": "It isn't easy to pull one metal away from the others. It takes rows of mixing tanks and many rounds of chemistry.",
+  "start": 53.573,
+  "speechEnd": 60.075,
+  "next": 61.024
+ },
+ {
+  "text": "Two of them, neodymium and praseodymium, make the strongest magnets in everyday use.",
+  "start": 61.024,
+  "speechEnd": 66.426,
+  "next": 67.089
+ },
+ {
+  "text": "A third, dysprosium, keeps those magnets from giving up when a motor's running hot.",
+  "start": 67.089,
+  "speechEnd": 71.465,
+  "next": 72.548
+ },
+ {
+  "text": "Inside an electric car, there's a magnet ring around the spinning rotor.",
+  "start": 72.548,
+  "speechEnd": 76.156,
+  "next": 76.74
+ },
+ {
+  "text": "One data review averaged about one and a half kilograms of magnet in each electric car.",
+  "start": 76.74,
+  "speechEnd": 81.177,
+  "next": 82.027
+ },
+ {
+  "text": "Fighter jets use them too. A widely quoted figure says each F-35 carries four hundred and seventeen kilograms of rare earth material.",
+  "start": 82.027,
+  "speechEnd": 89.729,
+  "next": 90.508
+ },
+ {
+  "text": "But where does that magnet figure come from?",
+  "start": 90.508,
+  "speechEnd": 92.529,
+  "next": 93.263
+ },
+ {
+  "text": "The research firm Adamas traces it to a single Pentagon report from 2012, never made public.",
+  "start": 93.263,
+  "speechEnd": 98.491,
+  "next": 98.969
+ },
+ {
+  "text": "So treat the number as a rough guide to the magnets inside, not a fact.",
+  "start": 98.969,
+  "speechEnd": 102.502,
+  "next": 103.629
+ },
+ {
+  "text": "The International Energy Agency says China mined about sixty percent of the world's rare earths in 2024.",
+  "start": 103.629,
+  "speechEnd": 109.249,
+  "next": 109.77
+ },
+ {
+  "text": "Yet it handled about ninety-one percent of the refining.",
+  "start": 109.77,
+  "speechEnd": 112.382,
+  "next": 112.967
+ },
+ {
+  "text": "How does one country control more than its own mines produce?",
+  "start": 112.967,
+  "speechEnd": 116.114,
+  "next": 116.46
+ },
+ {
+  "text": "Picture the supply chain as three stops. A mine. A separation plant. A magnet factory.",
+  "start": 117.06,
+  "speechEnd": 123.555,
+  "next": 124.34
+ },
+ {
+  "text": "Plenty of countries have the ore, so the mine's the easy stop.",
+  "start": 124.34,
+  "speechEnd": 127.761,
+  "next": 128.585
+ },
+ {
+  "text": "The middle stop is the separation plant, where mixed powder gets split apart one metal at a time.",
+  "start": 128.585,
+  "speechEnd": 134.295,
+  "next": 134.969
+ },
+ {
+  "text": "Rock goes in at one end. Jars of single-metal oxide come out the other.",
+  "start": 134.969,
+  "speechEnd": 138.602,
+  "next": 139.092
+ },
+ {
+  "text": "Then the oxide's melted into alloy, pressed into blocks, and cut into magnets.",
+  "start": 139.092,
+  "speechEnd": 144.442,
+  "next": 145.481
+ },
+ {
+  "text": "For the heavy metals like dysprosium, one industry estimate puts China near ninety-nine percent.",
+  "start": 145.481,
+  "speechEnd": 151.349,
+  "next": 152.202
+ },
+ {
+  "text": "Lynas, an Australian company, began separating dysprosium in Malaysia in May 2025.",
+  "start": 152.202,
+  "speechEnd": 157.789,
+  "next": 158.449
+ },
+ {
+  "text": "Fastmarkets reports it made eight tonnes of dysprosium and terbium in the first three months of 2026.",
+  "start": 158.449,
+  "speechEnd": 164.194,
+  "next": 164.93
+ },
+ {
+  "text": "In 2024, China shipped about fourteen tonnes of those two to Japan alone. That's every single month.",
+  "start": 164.93,
+  "speechEnd": 171.199,
+  "next": 172.248
+ },
+ {
+  "text": "Eight tonnes in three months. Fourteen tonnes a month.",
+  "start": 172.248,
+  "speechEnd": 174.809,
+  "next": 175.66
+ },
+ {
+  "text": "That's the gap that lets a licence form in Beijing stop a car factory in Chicago.",
+  "start": 175.66,
+  "speechEnd": 180.659,
+  "next": 181.811
+ },
+ {
+  "text": "So how did that licence form actually work?",
+  "start": 181.811,
+  "speechEnd": 184.398,
+  "next": 184.79
+ },
+ {
+  "text": "In April 2025, China began requiring export licences for seven medium and heavy rare earths, and for magnets made from them.",
+  "start": 185.39,
+  "speechEnd": 193.773,
+  "next": 194.487
+ },
+ {
+  "text": "Every shipment needed a stamp of approval from the commerce ministry in Beijing.",
+  "start": 194.487,
+  "speechEnd": 198.321,
+  "next": 199.192
+ },
+ {
+  "text": "Ford's chief executive, Jim Farley, said the applications were being approved one at a time.",
+  "start": 199.192,
+  "speechEnd": 204.846,
+  "next": 205.29
+ },
+ {
+  "text": "He called the supply hand to mouth. Ford had already shut one factory for about a week.",
+  "start": 205.29,
+  "speechEnd": 210.661,
+  "next": 211.38
+ },
+ {
+  "text": "In June, China gave temporary licences to the magnet suppliers of the three biggest American carmakers, according to Reuters.",
+  "start": 211.38,
+  "speechEnd": 218.551,
+  "next": 219.331
+ },
+ {
+  "text": "Suzuki halted its Swift line from the twenty-sixth of May, Reuters reported. Some European supplier plants shut too.",
+  "start": 219.331,
+  "speechEnd": 226.218,
+  "next": 226.8
+ },
+ {
+  "text": "On the ninth of October 2025, Beijing went further.",
+  "start": 226.8,
+  "speechEnd": 230.67,
+  "next": 231.392
+ },
+ {
+  "text": "Law firms read the new rule this way. A product made anywhere would need a Chinese licence. The trigger was one part in a thousand of Chinese rare earths in its value.",
+  "start": 231.392,
+  "speechEnd": 242.389,
+  "next": 243.273
+ },
+ {
+  "text": "China's commerce ministry said the scope was limited, and promised easier licensing.",
+  "start": 243.273,
+  "speechEnd": 247.725,
+  "next": 248.495
+ },
+ {
+  "text": "Twenty-one days later, Trump and Xi met in Busan, South Korea.",
+  "start": 248.495,
+  "speechEnd": 252.366,
+  "next": 252.923
+ },
+ {
+  "text": "China agreed to suspend that expansion for one year.",
+  "start": 252.923,
+  "speechEnd": 255.945,
+  "next": 256.543
+ },
+ {
+  "text": "Washington paused its own rule on the affiliates of blacklisted companies.",
+  "start": 256.543,
+  "speechEnd": 260.343,
+  "next": 260.907
+ },
+ {
+  "text": "It looked like a clean swap of tariffs for metals.",
+  "start": 260.907,
+  "speechEnd": 263.528,
+  "next": 264.222
+ },
+ {
+  "text": "But the pause covered only the new expansion. The April licences didn't go away.",
+  "start": 264.222,
+  "speechEnd": 269.289,
+  "next": 270.029
+ },
+ {
+  "text": "So did the magnets actually start flowing again?",
+  "start": 270.029,
+  "speechEnd": 273.16,
+  "next": 273.16
+ },
+ {
+  "text": "In mid-May 2026, Trump flew to Beijing for a summit with Xi.",
+  "start": 273.76,
+  "speechEnd": 277.613,
+  "next": 278.42
+ },
+ {
+  "text": "Afterwards, the White House said China had pledged to ease its limits on rare earth processing equipment.",
+  "start": 278.42,
+  "speechEnd": 283.442,
+  "next": 284.344
+ },
+ {
+  "text": "China's commerce ministry then published its own summary of the summit. Rare earths weren't in it.",
+  "start": 284.344,
+  "speechEnd": 289.515,
+  "next": 290.462
+ },
+ {
+  "text": "Mining.com reported that Trump left Beijing with no rare earth deal confirmed.",
+  "start": 290.462,
+  "speechEnd": 294.503,
+  "next": 295.261
+ },
+ {
+  "text": "Two readouts of the same meeting. One page mentions the rare earths. The other doesn't.",
+  "start": 295.261,
+  "speechEnd": 300.017,
+  "next": 301.001
+ },
+ {
+  "text": "Last week, Trump and Xi met again, in Shenzhen.",
+  "start": 301.001,
+  "speechEnd": 303.882,
+  "next": 304.765
+ },
+ {
+  "text": "They agreed to draft a stability action plan, CNBC reported.",
+  "start": 304.765,
+  "speechEnd": 308.556,
+  "next": 309.374
+ },
+ {
+  "text": "Beijing's summary left out rare earths again. The January deadline wasn't settled in public.",
+  "start": 309.374,
+  "speechEnd": 314.105,
+  "next": 314.851
+ },
+ {
+  "text": "Analysts say shipments remain far below the levels from before the trade war.",
+  "start": 314.851,
+  "speechEnd": 318.202,
+  "next": 319.09
+ },
+ {
+  "text": "So which readout should you believe? Use the customs data, which records what actually shipped.",
+  "start": 319.09,
+  "speechEnd": 324.296,
+  "next": 324.65
+ },
+ {
+  "text": "A year after Busan, analysts at the Center for Strategic and International Studies went through China's customs numbers.",
+  "start": 325.25,
+  "speechEnd": 331.3,
+  "next": 332.037
+ },
+ {
+  "text": "In the ten months after the deal, total exports of these materials fell only two and a half percent.",
+  "start": 332.037,
+  "speechEnd": 337.404,
+  "next": 338.115
+ },
+ {
+  "text": "But combined shipments to the United States and Japan fell fifty-eight percent.",
+  "start": 338.115,
+  "speechEnd": 343.2,
+  "next": 343.938
+ },
+ {
+  "text": "The total barely moved. The destinations did.",
+  "start": 343.938,
+  "speechEnd": 346.607,
+  "next": 347.436
+ },
+ {
+  "text": "The monitoring group Global Trade Alert reads the same data differently. It argues China kept its word overall.",
+  "start": 347.436,
+  "speechEnd": 353.313,
+  "next": 354.367
+ },
+ {
+  "text": "CSIS also found magnet exports rose thirteen percent after the truce. American imports of them fell eleven percent that same month.",
+  "start": 354.367,
+  "speechEnd": 362.628,
+  "next": 363.26
+ },
+ {
+  "text": "Shipments to Europe jumped sixty percent.",
+  "start": 363.26,
+  "speechEnd": 365.513,
+  "next": 366.436
+ },
+ {
+  "text": "So why would Beijing extend a pause, yet keep the squeeze on?",
+  "start": 366.436,
+  "speechEnd": 370.067,
+  "next": 371.02
+ },
+ {
+  "text": "Japan shows the squeeze most clearly. On the sixth of January 2026, China barred dual-use exports to Japan's military.",
+  "start": 371.02,
+  "speechEnd": 378.662,
+  "next": 379.458
+ },
+ {
+  "text": "Analysts compare it to 2010, when a sea dispute with Japan reportedly held up magnet shipments too.",
+  "start": 379.458,
+  "speechEnd": 385.037,
+  "next": 385.834
+ },
+ {
+  "text": "Fastmarkets cites Chinese customs data showing no dysprosium oxide or terbium oxide reached Japan in 2026.",
+  "start": 385.834,
+  "speechEnd": 393.075,
+  "next": 393.792
+ },
+ {
+  "text": "TrendForce reports that Japan's dysprosium imports fell eighty-two percent in the first half of the year.",
+  "start": 393.792,
+  "speechEnd": 398.783,
+  "next": 400.004
+ },
+ {
+  "text": "China says the measures target military use and protect its national security.",
+  "start": 400.004,
+  "speechEnd": 404.259,
+  "next": 405.129
+ },
+ {
+  "text": "Tokyo calls the new export controls unacceptable.",
+  "start": 405.129,
+  "speechEnd": 407.505,
+  "next": 408.594
+ },
+ {
+  "text": "Now look at the price tags. Outside China, dysprosium oxide has climbed fast.",
+  "start": 408.594,
+  "speechEnd": 413.369,
+  "next": 414.043
+ },
+ {
+  "text": "Benchmark Minerals says the European price rose one hundred and fifty percent in the third quarter alone.",
+  "start": 414.043,
+  "speechEnd": 418.923,
+  "next": 419.808
+ },
+ {
+  "text": "S&P Global put the September average price in Europe at thirty-five hundred dollars a kilogram.",
+  "start": 419.808,
+  "speechEnd": 424.509,
+  "next": 425.369
+ },
+ {
+  "text": "Platts assessed the price at forty-one hundred dollars in North America on the thirtieth of October.",
+  "start": 425.369,
+  "speechEnd": 430.216,
+  "next": 431.2
+ },
+ {
+  "text": "The same Benchmark review says Europe now pays about sixteen times the Chinese price for the same metal.",
+  "start": 431.2,
+  "speechEnd": 436.234,
+  "next": 437.199
+ },
+ {
+  "text": "So why would a metal cost sixteen times more outside China?",
+  "start": 437.199,
+  "speechEnd": 440.538,
+  "next": 441.503
+ },
+ {
+  "text": "Analysts point to two reasons. Chinese supply is tightly licensed, and new magnet makers are bidding for every kilogram left.",
+  "start": 441.503,
+  "speechEnd": 448.219,
+  "next": 448.62
+ },
+ {
+  "text": "Now the other end of those nine days. On the first of January 2027, a Pentagon rule takes effect.",
+  "start": 449.22,
+  "speechEnd": 455.925,
+  "next": 456.65
+ },
+ {
+  "text": "Trade press describes it this way. Defense contractors can't deliver products with certain magnets mined or processed in China.",
+  "start": 456.65,
+  "speechEnd": 463.379,
+  "next": 464.2
+ },
+ {
+  "text": "The rule also covers tungsten and tantalum. A contractor who can't certify its magnets could lose the contract.",
+  "start": 464.2,
+  "speechEnd": 470.497,
+  "next": 471.25
+ },
+ {
+  "text": "According to industry reports, they've asked for a second delay.",
+  "start": 471.25,
+  "speechEnd": 474.586,
+  "next": 475.379
+ },
+ {
+  "text": "Their argument is simple. A supply chain from mine to magnet doesn't exist yet outside China, they say.",
+  "start": 475.379,
+  "speechEnd": 481.199,
+  "next": 481.801
+ },
+ {
+  "text": "Can Washington build one in time?",
+  "start": 481.801,
+  "speechEnd": 483.286,
+  "next": 484.11
+ },
+ {
+  "text": "In July 2025, the Pentagon took a four hundred million dollar stake in MP Materials.",
+  "start": 484.11,
+  "speechEnd": 489.315,
+  "next": 489.935
+ },
+ {
+  "text": "MP runs the Mountain Pass mine in California.",
+  "start": 489.935,
+  "speechEnd": 492.189,
+  "next": 492.835
+ },
+ {
+  "text": "The Pentagon also promised a price floor of one hundred and ten dollars a kilogram for neodymium and praseodymium. It's a ten-year promise.",
+  "start": 492.835,
+  "speechEnd": 500.595,
+  "next": 501.183
+ },
+ {
+  "text": "One analysis said the Chinese price was under sixty at the time.",
+  "start": 501.183,
+  "speechEnd": 504.125,
+  "next": 505.0
+ },
+ {
+  "text": "MP's big new magnet plant is due to open in 2028. At full size, it should make ten thousand tonnes a year.",
+  "start": 505.0,
+  "speechEnd": 511.345,
+  "next": 511.949
+ },
+ {
+  "text": "That's more than a year after the ban begins.",
+  "start": 511.949,
+  "speechEnd": 514.298,
+  "next": 515.069
+ },
+ {
+  "text": "That's why those nine days matter. America's ban starts before its own supply exists. China's pause ends nine days later.",
+  "start": 515.069,
+  "speechEnd": 523.372,
+  "next": 524.059
+ },
+ {
+  "text": "But what will Beijing do on the tenth?",
+  "start": 524.059,
+  "speechEnd": 525.938,
+  "next": 526.23
+ },
+ {
+  "text": "First ending. Another extension.",
+  "start": 526.83,
+  "speechEnd": 529.008,
+  "next": 529.921
+ },
+ {
+  "text": "In September, Treasury Secretary Scott Bessent said he wasn't sure whether a bigger deal or another extension would follow.",
+  "start": 529.921,
+  "speechEnd": 537.124,
+  "next": 538.052
+ },
+ {
+  "text": "Second ending. The pause simply ends, and the controls snap back.",
+  "start": 538.052,
+  "speechEnd": 541.162,
+  "next": 541.663
+ },
+ {
+  "text": "The October 2025 export controls would return, with their one-part-in-a-thousand reach.",
+  "start": 541.663,
+  "speechEnd": 549.918,
+  "next": 550.615
+ },
+ {
+  "text": "Carmakers in Europe and Asia could need Chinese licences for cars they've already built.",
+  "start": 550.615,
+  "speechEnd": 555.223,
+  "next": 555.956
+ },
+ {
+  "text": "A repeat of the Chicago car factory stoppage isn't out of the question.",
+  "start": 555.956,
+  "speechEnd": 559.455,
+  "next": 560.434
+ },
+ {
+  "text": "Third ending. Nothing's announced. Licences just get slower.",
+  "start": 560.434,
+  "speechEnd": 564.993,
+  "next": 565.723
+ },
+ {
+  "text": "That's close to what the customs data already shows about magnet shipments.",
+  "start": 565.723,
+  "speechEnd": 569.216,
+  "next": 569.975
+ },
+ {
+  "text": "Analysts say that's why the mix looks odd. The pause keeps the talks alive. The licence form keeps the control.",
+  "start": 569.975,
+  "speechEnd": 574.482,
+  "next": 575.075
+ },
+ {
+  "text": "Beijing's view is different. It calls export controls a normal tool for national security and for non-proliferation duties.",
+  "start": 575.075,
+  "speechEnd": 584.716,
+  "next": 585.412
+ },
+ {
+  "text": "Washington and Tokyo see pressure that's applied one factory at a time.",
+  "start": 585.412,
+  "speechEnd": 589.448,
+  "next": 590.285
+ },
+ {
+  "text": "Can anyone simply build around Chinese magnets?",
+  "start": 590.285,
+  "speechEnd": 592.945,
+  "next": 593.742
+ },
+ {
+  "text": "Electrek reported in September that Tesla has built a new motor with no rare earths.",
+  "start": 593.742,
+  "speechEnd": 598.83,
+  "next": 599.487
+ },
+ {
+  "text": "Lynas is building a bigger heavy rare earth plant in Malaysia. Its first products are expected within two years.",
+  "start": 599.487,
+  "speechEnd": 605.705,
+  "next": 606.397
+ },
+ {
+  "text": "The research firm BMI says China's grip won't loosen for years.",
+  "start": 606.397,
+  "speechEnd": 609.894,
+  "next": 610.508
+ },
+ {
+  "text": "None of those magnets will be rolling out by the tenth of January.",
+  "start": 610.508,
+  "speechEnd": 613.308,
+  "next": 614.038
+ },
+ {
+  "text": "So watch three things before then. How fast licences get approved. The price of dysprosium. And whether a new leaders' meeting gets a date.",
+  "start": 614.038,
+  "speechEnd": 622.574,
+  "next": 623.312
+ },
+ {
+  "text": "Our forecast: another extension, announced by officials in Beijing, and soon.",
+  "start": 623.312,
+  "speechEnd": 627.588,
+  "next": 628.258
+ },
+ {
+  "text": "But each extension buys weeks. The new magnet plants need years.",
+  "start": 628.258,
+  "speechEnd": 632.161,
+  "next": 632.873
+ },
+ {
+  "text": "If you drive a new electric car, one of those magnets is probably already in your driveway.",
+  "start": 632.873,
+  "speechEnd": 637.204,
+  "next": 637.907
+ },
+ {
+  "text": "Nobody can say for sure which ending Beijing picks.",
+  "start": 637.907,
+  "speechEnd": 642.059,
+  "next": 642.683
+ },
+ {
+  "text": "The next date on the licence calendar is the tenth of January.",
+  "start": 642.683,
+  "speechEnd": 645.827,
+  "next": 646.2
+ }
+]
