@@ -16,6 +16,9 @@
    R-CUSTOM-MISSING, R-HEDGE-LINE, R-HEDGE-SCREEN). Works with --narration alone (no audio yet).
 No AI is called here: the thinking part (choosing the final shot list) is done by the producer session using this analysis; this script keeps it honest.
 """
+import os as _os, sys as _sys
+if _os.name == 'nt' and not _sys.flags.utf8_mode and __name__ == '__main__':   # Windows: default encoding is cp1252, our files are UTF-8
+    _sys.exit(__import__('subprocess').call([_sys.executable, '-X', 'utf8', *_sys.argv]))
 import argparse, json, re, sys, collections, pathlib
 
 # ---- thresholds (keep in sync with DIRECTOR-BRAIN.md) ----

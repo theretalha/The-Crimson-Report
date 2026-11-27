@@ -8,6 +8,9 @@ and caches it under out/seg/<hash>.mp4. The hash covers that chapter's scene dat
 so a data-only change re-renders only the chapters you touched; a code change re-renders everything (use --force to be safe after editing a prop).
 Then the segments are joined (ffmpeg concat, no re-encode) and the mastered audio is attached.
 """
+import os as _os, sys as _sys
+if _os.name == 'nt' and not _sys.flags.utf8_mode and __name__ == '__main__':   # Windows: default encoding is cp1252, our files are UTF-8
+    _sys.exit(__import__('subprocess').call([_sys.executable, '-X', 'utf8', *_sys.argv]))
 import argparse, hashlib, json, os, pathlib, subprocess, sys
 
 FPS = 30
@@ -18,11 +21,13 @@ ap.add_argument('--scenes-json', default='out/ep003-scenes.json'); ap.add_argume
 ap.add_argument('--ep', help='new episodes: NNN (exports cues+scenes with tools/export-ep.ts instead of the EP003 exporter)')
 a = ap.parse_args()
 env = dict(os.environ)
-env.setdefault('CRIMSON_BROWSER', '/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell')
+if os.path.exists('/opt/pw-browsers'): env.setdefault('CRIMSON_BROWSER', '/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell')
+env['PYTHONUTF8'] = '1'
+NPX = 'npx.cmd' if os.name == 'nt' else 'npx'
 
 # 1. scene data (full props, so any visual change changes the hash)
-if a.ep: subprocess.run(['npx', 'tsx', 'tools/export-ep.ts', a.ep, a.cues, a.scenes_json], check=True, env=env)
-else: subprocess.run(['npx', 'tsx', 'tools/export-scenes.ts', a.scenes_json], check=True, env=env)
+if a.ep: subprocess.run([NPX, 'tsx', 'tools/export-ep.ts', a.ep, a.cues, a.scenes_json], check=True, env=env)
+else: subprocess.run([NPX, 'tsx', 'tools/export-scenes.ts', a.scenes_json], check=True, env=env)
 scenes = json.load(open(a.scenes_json))
 cues = json.load(open(a.cues))['cues']
 assert len(scenes) == len(cues), (len(scenes), len(cues))
@@ -53,7 +58,7 @@ for k, ch in enumerate(chapters):
     if a.force or not seg.exists():
         for old in pathlib.Path('out/seg').glob(f'{k:02d}-*.mp4'): old.unlink()
         print(f'render chapter {k} {ch["chapter"]} frames {f0}-{f1}', flush=True)
-        subprocess.run(['npx', 'remotion', 'render', 'src/index.ts', a.comp, str(seg), f'--frames={f0}-{f1}', '--muted', '--crf=20', '--log=error'], check=True, env=env)
+        subprocess.run([NPX, 'remotion', 'render', 'src/index.ts', a.comp, str(seg), f'--frames={f0}-{f1}', '--muted', '--crf=20', '--log=error'], check=True, env=env)
         rendered += 1
     else:
         print(f'cached chapter {k} {ch["chapter"]}', flush=True)

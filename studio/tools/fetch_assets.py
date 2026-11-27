@@ -20,6 +20,9 @@ ASSETS-TODO.md format (tables whose first cell has the save-as name(s) in backti
   ## 2. Footage (Pexels) -> `studio/public/footage/`
   Search terms: `data center server racks`, `container port aerial`
 """
+import os as _os, sys as _sys
+if _os.name == 'nt' and not _sys.flags.utf8_mode and __name__ == '__main__':   # Windows: default encoding is cp1252, our files are UTF-8
+    _sys.exit(__import__('subprocess').call([_sys.executable, '-X', 'utf8', *_sys.argv]))
 import argparse, html, json, os, pathlib, re, shutil, sys, time, urllib.error, urllib.parse, urllib.request
 
 HERE = pathlib.Path(__file__).resolve().parent

@@ -13,6 +13,9 @@ retention-map.md format, one per line (L = narration line number, 0-based, as in
   L9  | CLOSE L2 | They were never meant to stay there.
   L9  | OPEN  | Who signed the order?
 """
+import os as _os, sys as _sys
+if _os.name == 'nt' and not _sys.flags.utf8_mode and __name__ == '__main__':   # Windows: default encoding is cp1252, our files are UTF-8
+    _sys.exit(__import__('subprocess').call([_sys.executable, '-X', 'utf8', *_sys.argv]))
 import argparse, collections, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent

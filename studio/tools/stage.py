@@ -12,6 +12,9 @@ Add --dry-run to print the commands without running them.
 Conventions for epNNN: episodes/NNN-slug/ (docs) · src/data/epNNN.ts exporting build(): Scene[] · composition id EPNNN in src/Root.tsx
 · src/props/custom/epNNN/ (custom props) · public/assets/epNNN/ (fetched assets) · audio-in/epNNN/ch00.wav ... (one WAV per chapter).
 """
+import os as _os, sys as _sys
+if _os.name == 'nt' and not _sys.flags.utf8_mode and __name__ == '__main__':   # Windows: default encoding is cp1252, our files are UTF-8
+    _sys.exit(__import__('subprocess').call([_sys.executable, '-X', 'utf8', *_sys.argv]))
 import argparse, glob, json, os, pathlib, re, shutil, subprocess, sys
 
 HERE = pathlib.Path(__file__).resolve().parent; STUDIO = HERE.parent; REPO = STUDIO.parent
@@ -21,6 +24,8 @@ env = dict(os.environ)
 if pathlib.Path('/opt/pw-browsers').exists():   # cloud container; on the laptop Remotion downloads its own browser
     env.setdefault('CRIMSON_BROWSER', '/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell')
 NPX = 'npx.cmd' if os.name == 'nt' else 'npx'
+PY = sys.executable            # same interpreter for every step (Windows has no 'python3')
+env['PYTHONUTF8'] = '1'
 
 
 def sh(*cmd, check=True, capture=False):
@@ -59,7 +64,7 @@ def skeleton_cues(n):
 
 def mix(n, cues):
     pathlib.Path(f'out/ep{n}').mkdir(parents=True, exist_ok=True)
-    sh('python3', 'tools/mix_audio.py', '--voice', f'public/audio/ep{n}.wav', '--cues', cues, '--timing', f'src/data/ep{n}-timing.json', '--out', f'out/ep{n}/mix.wav')
+    sh(PY, 'tools/mix_audio.py', '--voice', f'public/audio/ep{n}.wav', '--cues', cues, '--timing', f'src/data/ep{n}-timing.json', '--out', f'out/ep{n}/mix.wav')
     if DRY: return
     probe = subprocess.run(['ffmpeg', '-hide_banner', '-i', f'out/ep{n}/mix.wav', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr
     m = json.loads(re.search(r'\{[^{}]*"input_i"[^{}]*\}', probe, re.S).group(0))
@@ -72,9 +77,9 @@ def mix(n, cues):
 
 def stage_audio(n):
     ep_dir(n); need(f'audio-in/ep{n}', 'put one WAV per chapter here (ch00.wav, ch01.wav ...) from Google AI Studio')
-    sh('python3', 'tools/align_ep.py', n)
+    sh(PY, 'tools/align_ep.py', n)
     todo = ep_dir(n) / 'assets-todo.md'
-    sh('python3', 'tools/fetch_assets.py', '--ep', n, '--todo', todo if todo.exists() else 'ASSETS-TODO.md', check=False)  # never blocks: placeholders cover misses
+    sh(PY, 'tools/fetch_assets.py', '--ep', n, '--todo', todo if todo.exists() else 'ASSETS-TODO.md', check=False)  # never blocks: placeholders cover misses
     mix(n, skeleton_cues(n) if not DRY else 'out/skeleton.json')
     print(f'\nSTAGE 2 DONE. Voice, timing, assets and a draft master are ready. Next: say "render" (stage 3).')
 
@@ -90,7 +95,7 @@ def stage_check(n):
     need(f'src/data/ep{n}.ts', 'stage 3 writes the scene data file (export const build = (): Scene[] => ...)')
     sh(NPX, 'tsx', 'tools/export-ep.ts', n, f'out/ep{n}-cues.json', f'out/ep{n}-scenes.json')
     cf = json.load(open(d / 'episode.json')).get('custom_folder') if (d / 'episode.json').exists() else None   # fixtures only; real episodes use ep<NNN>
-    r = sh('python3', 'tools/director.py', '--narration', d / 'narration-tts.txt', '--timing', f'src/data/ep{n}-timing.json', '--cues', f'out/ep{n}-cues.json',
+    r = sh(PY, 'tools/director.py', '--narration', d / 'narration-tts.txt', '--timing', f'src/data/ep{n}-timing.json', '--cues', f'out/ep{n}-cues.json',
            '--ep', n, *(['--custom-folder', cf] if cf else []), '--shotlist', d / 'shot-list.md', '--out', f'out/ep{n}/director.json', '--md', d / 'director-analysis.md', '--strict', check=False)
     if r.returncode: bad.append('director.py --strict has violations (see output / director-analysis.md)')
     if not DRY:
@@ -132,7 +137,7 @@ def stage_ship(n):
     if not DRY and not pathlib.Path(f'out/ep{n}/APPROVED').exists(): sys.exit('REFUSED: the owner has not approved the stills yet (out/ep%s/APPROVED missing). Run stills, show them, wait.' % n)
     need(f'out/ep{n}/master.wav', f'run: python3 tools/stage.py remix {n}')
     print('NOTE: a full render takes a long time. The owner approved it, so go.')
-    sh('python3', 'tools/render_segments.py', '--ep', n, '--comp', f'EP{n}', '--cues', f'out/ep{n}-cues.json', '--scenes-json', f'out/ep{n}-scenes.json', '--audio', f'out/ep{n}/master.wav', '--out', f'out/ep{n}/EP{n}.mp4')
+    sh(PY, 'tools/render_segments.py', '--ep', n, '--comp', f'EP{n}', '--cues', f'out/ep{n}-cues.json', '--scenes-json', f'out/ep{n}-scenes.json', '--audio', f'out/ep{n}/master.wav', '--out', f'out/ep{n}/EP{n}.mp4')
     sj = pathlib.Path(f'out/ep{n}/shorts.json')
     for s in (json.load(open(sj)) if sj.exists() else []):
         pathlib.Path(s['out']).parent.mkdir(parents=True, exist_ok=True)

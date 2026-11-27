@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Self-test for the anti-reuse rules in director.py (no Remotion, no audio needed). Run from studio/:  python3 tools/test_director_rules.py"""
+import os as _os, sys as _sys
+if _os.name == 'nt' and not _sys.flags.utf8_mode and __name__ == '__main__':   # Windows: default encoding is cp1252, our files are UTF-8
+    _sys.exit(__import__('subprocess').call([_sys.executable, '-X', 'utf8', *_sys.argv]))
 import importlib.util, json, pathlib, sys, tempfile, collections
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent

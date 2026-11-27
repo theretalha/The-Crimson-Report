@@ -14,7 +14,7 @@ const browserExecutable = process.env.CRIMSON_BROWSER;
   const bad: {scene: number; frame: number; issues: string[]}[] = [];
   for (let i = 0; i < frames.length; i++) {
     let got: any = null;
-    await renderStill({composition, serveUrl, output: '/tmp/_probe.png', frame: frames[i], inputProps, puppeteerInstance: browser,
+    await renderStill({composition, serveUrl, output: 'out/_probe.png', frame: frames[i], inputProps, puppeteerInstance: browser,
       onBrowserLog: (l: any) => { if (String(l.text).startsWith('PROBE_RESULT')) got = JSON.parse(String(l.text).slice(13)); }});
     if (got?.issues?.length) bad.push({scene: i, frame: frames[i], issues: got.issues});
     if (i % 20 === 0) console.log(`checked ${i}/${frames.length}`);

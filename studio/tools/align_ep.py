@@ -8,6 +8,9 @@ Reads ../episodes/004-*/narration-tts.txt and audio-in/ep004/*.wav (sorted by na
   src/data/ep004-timing.json   (start / speechEnd / next per narration line, <tags> stripped)
   public/audio/ep004.wav       (all chapters joined with a 0.6 s gap; gitignored)
 """
+import os as _os, sys as _sys
+if _os.name == 'nt' and not _sys.flags.utf8_mode and __name__ == '__main__':   # Windows: default encoding is cp1252, our files are UTF-8
+    _sys.exit(__import__('subprocess').call([_sys.executable, '-X', 'utf8', *_sys.argv]))
 import argparse, collections, importlib.util, json, pathlib, subprocess, sys
 
 HERE = pathlib.Path(__file__).resolve().parent; STUDIO = HERE.parent
