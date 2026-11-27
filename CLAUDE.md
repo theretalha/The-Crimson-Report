@@ -1,1 +1,4 @@
 @AGENTS.md
+
+## Trigger: `start` (Stage 0, see AGENTS.md section 4)
+If the owner's message is just `start`: load the `crimson-topic-hunter` skill and follow it. Check today's date and the next episode number (`python3 studio/tools/next_ep.py`), research live trends for the past 7-14 days (YouTube documentary trends, Reuters, Bloomberg, WSJ, FT, breaking geopolitics/chips/macro/scandal stories), filter for The Crimson Forecast niche and a US audience, and present a ranked menu of 5 pitches (curiosity title under 65 characters, why it's hot now, visual prop potential, primary source availability High/Medium + 2 sources). Write NO script or episode file. Finish by asking: "Reply with the topic number (1-5) — or `EP <num>: <number>` — and I will immediately launch Stage 1 (Research, Retention Script, Custom Prop Plan & Shot List)." A reply of `2` or `EP 004: 2` maps that pitch straight into Stage 1 (`EP <num>: <topic>`).

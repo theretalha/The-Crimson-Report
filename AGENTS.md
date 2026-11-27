@@ -39,8 +39,16 @@ Skills: `.claude/skills/humanizer` (installed from blader/humanizer) and `.claud
 ## 3. Local asset fetcher
 `python3 tools/fetch_assets.py --ep NNN [--todo episodes/NNN-slug/assets-todo.md]` (run on the **laptop**; the cloud IP is rate-limited by Wikimedia). Reads the todo tables (format in the script header and `studio/ASSETS-TODO.md`), downloads free-licence Wikimedia Commons photos, maps, flags and government seals (licence-checked) and Pexels clips (`PEXELS_API_KEY` in the owner's own terminal; never ask for it in chat) into `studio/public/assets/epNNN/{photos,flags,maps,footage}/`, plus `manifest.json` and `CREDITS.md`. Anything it cannot fetch gets a placeholder at the same path (SVG for `.svg`, an "ASSET PENDING" card for photos), so renders and `probe.ts` never fail; the stage-3 gate reports remaining placeholders. Scenes reference `assets/epNNN/photos/x.jpg`.
 
-## 4. The 3-stage autonomous pipeline
+## 4. The autonomous pipeline: Stage 0 (`start`) + 3 stages
 `NNN` = three digits (EP 004 -> `004`). Conventions: `episodes/NNN-slug/` (docs) · `studio/src/data/epNNN.ts` exporting `build(): Scene[]` · composition id `EPNNN` registered in `src/Root.tsx` · `studio/src/props/custom/epNNN/` · `studio/public/assets/epNNN/` · `studio/audio-in/epNNN/ch00.wav...` (one WAV per `[CHAPTER]`). Driver: `studio/tools/stage.py` (`--dry-run` prints commands).
+
+### Stage 0: owner opens the project and types `start`
+Skill: `.claude/skills/crimson-topic-hunter` (mirrored in `.agent/skills/`). Do this BEFORE writing anything.
+1. `python3 studio/tools/next_ep.py` for today's date (late November 2026) and the next episode number (e.g. EP 004; EP 000 is a fixture and is ignored). Read `episodes/` so nothing repeats a covered story.
+2. Run live web research for the past 7-14 days: YouTube geopolitics/finance/tech documentary trends, plus Reuters, Bloomberg, WSJ, FT and breaking intelligence/macro stories. Filter strictly for the niche: geopolitics, military flashpoints, semiconductor/AI supply chains, macro/currency shocks, corporate scandals, for a US audience.
+3. Present a ranked menu of **5** documentary pitches. Each has: a curiosity-driven title under 65 characters (Johnny Harris / ColdFusion / Magnates Media style, no cheap clickbait), **why it's hot right now** (the exact November 2026 catalyst or viral angle), **visual prop potential** (what `Compose` and custom props can draw: tankers, submarine cables, missile batteries, stock charts ...), and **primary source availability** (`High`/`Medium` plus 2 verifiable sources). Save the menu to `episodes/topic-menu.md`.
+4. **Stop gate:** write no script. End with: "Reply with the topic number (1-5) — or `EP <num>: <number>` — and I will immediately launch Stage 1 (Research, Retention Script, Custom Prop Plan & Shot List)."
+5. When the owner replies `2` or `EP 004: 2`, map that pitch into Stage 1 (`EP <num>: <topic>`) at once and continue per Stage 1 below.
 
 ### Stage 1: owner says `EP <num>: <topic>`
 Research, then write everything, then **stop for manual Google AI Studio TTS**.
@@ -76,6 +84,7 @@ Needs on the machine that runs it: Python 3.9+ with `pip install -r studio/requi
 ## 5. Quick commands (run from `studio/`)
 | | |
 |---|---|
+| Stage 0: date + next episode number | `python3 tools/next_ep.py` |
 | all offline self-tests | `bash tools/test_all.sh` |
 | script lint | `python3 tools/script_lint.py ../episodes/NNN-slug` |
 | shot list vs narration | `python3 tools/director.py --narration ... --shotlist ... --ep NNN --strict` |
