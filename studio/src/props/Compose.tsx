@@ -7,6 +7,7 @@ import {ProIcon} from '../pro/ProIcon';
 import {BuildingArt, NameTape, PersonArt, Sign, type BuildingKind} from './art';
 import {Money, CoinStack, Route, Letter, Phone, Scales, Door, Table, Crowd, Rack, Crates} from './art2';
 import type {Ev} from '../templates/Recipes';
+import {CUSTOM, isCustom} from './custom';
 
 // The scene composer: a scene is a list of items placed on the 1920x1080 stage; each item appears on the narrated word `at`.
 // This is what the director's shot list compiles to. Items: board, card, building, person, string, calendar, tag, stamp, icon, arrow, chair, text.
@@ -36,10 +37,11 @@ const at = (s: S, word: string | number | undefined, lead = 0) => {
   return Math.max(0, frac * (s.speak ?? s.seconds * 0.9) + lead);
 };
 const HERO = ['card', 'building', 'person', 'chair', 'calendar', 'crates', 'rack', 'phone', 'letter', 'scales', 'route', 'door', 'table', 'crowd', 'stack', 'money', 'icon'];
+const isHero = (p: string) => HERO.includes(p) || !!CUSTOM[p]?.hero; // custom props (src/props/custom/epNNN) can be hero pictures too
 // Director rule R-EMPTY: the FIRST real picture of every scene is on screen within 0.25 s; later items keep their word timing.
 const tOf = (s: S, it: Item) => {
   const t = at(s, it.at, it.lead ?? 0);
-  return it === s.items.find((i) => HERO.includes(i.p)) ? Math.min(t, 0.25) : t;
+  return it === s.items.find((i) => isHero(i.p)) ? Math.min(t, 0.25) : t;
 };
 const INK = KC.black;
 const CARD_W = 250;
@@ -102,7 +104,7 @@ const Chair: React.FC<{it: Item}> = ({it}) => (
 
 export const COMPOSE = {
   // seconds until the first real picture is on screen (the director's rule: no scene starts empty)
-  firstReveal: (s: S): number => Math.min(99, ...s.items.filter((i) => HERO.includes(i.p)).map((i) => tOf(s, i))),
+  firstReveal: (s: S): number => Math.min(99, ...s.items.filter((i) => isHero(i.p)).map((i) => tOf(s, i))),
   events: (s: S): Ev[] => {
     const ev: Ev[] = [];
     s.items.forEach((it) => {
@@ -129,13 +131,14 @@ export const COMPOSE = {
       else if (it.p === 'crowd') for (let k = 0; k < 6; k++) ev.push({t: t + k * 0.2, kind: 'tick', db: -22, f: 880 * Math.pow(1.122, k)});
       else if (it.p === 'rack') ev.push({t, kind: 'paper', db: -16}, {t: t + 0.7, kind: 'ping', db: -16, f: 523.3});
       else if (it.p === 'crates') ev.push({t, kind: 'paper', db: -15}, {t: t + 0.25, kind: 'paper', db: -17, v: 1});
+      else if (CUSTOM[it.p]) ev.push(...CUSTOM[it.p].events(t, it));
     });
     return ev;
   },
   Comp: ({scene}: {scene: S}) => {
     const f = useCurrentFrame();
     const {fps, width: VW, height: VH} = useVideoConfig();
-    const svgItems = scene.items.filter((i) => ['board', 'card', 'building', 'person', 'string', 'calendar', 'tag', 'chair', 'text', 'money', 'stack', 'route', 'letter', 'phone', 'scales', 'door', 'table', 'crowd', 'rack', 'crates', 'ribbon'].includes(i.p));
+    const svgItems = scene.items.filter((i) => ['board', 'card', 'building', 'person', 'string', 'calendar', 'tag', 'chair', 'text', 'money', 'stack', 'route', 'letter', 'phone', 'scales', 'door', 'table', 'crowd', 'rack', 'crates', 'ribbon'].includes(i.p) || isCustom(i.p));
     const htmlItems = scene.items.filter((i) => ['stamp', 'icon', 'arrow'].includes(i.p));
     return (
       <AbsoluteFill style={{transform: `scale(${scene.seconds >= 4 ? 1 + 0.055 * Math.min(1, f / Math.max(1, scene.seconds * FPS)) : 1})`, transformOrigin: '50% 58%'}}>
@@ -144,8 +147,8 @@ export const COMPOSE = {
             const t0 = fr(tOf(scene, it));
             const pop = spring({frame: f - t0, fps, config: {damping: 12, stiffness: 150, mass: 0.75}});
             const vis = interpolate(f, [t0, t0 + 3], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-            const vzoom = VH > VW && ['card', 'building', 'person', 'chair', 'calendar', 'crates', 'rack', 'phone', 'letter', 'scales', 'door', 'icon', 'stack'].includes(it.p) ? 1.3 : VH > VW && it.p === 'tag' ? 1.3 : 1;
-            const s = (it.s ?? DEFAULT_S[it.p] ?? 1) * vzoom * (0.7 + 0.3 * Math.min(1.15, pop));
+            const vzoom = VH > VW && (CUSTOM[it.p]?.hero || ['card', 'building', 'person', 'chair', 'calendar', 'crates', 'rack', 'phone', 'letter', 'scales', 'door', 'icon', 'stack'].includes(it.p)) ? 1.3 : VH > VW && it.p === 'tag' ? 1.3 : 1;
+            const s = (it.s ?? DEFAULT_S[it.p] ?? CUSTOM[it.p]?.scale ?? 1) * vzoom * (0.7 + 0.3 * Math.min(1.15, pop));
             const fg = scene.mood === 'facts' ? INK : KC.cream;
             if (it.p === 'string') {
               const a = find(scene, it.from), b = find(scene, it.to);
@@ -198,6 +201,7 @@ export const COMPOSE = {
                 {it.p === 'crowd' && <Crowd f={f} t0={t0} fg={fg} to={it.total ?? 1000} label={it.label} />}
                 {it.p === 'rack' && <Rack f={f} t0={t0} slots={it.slots} missing={it.missing} label={it.label} />}
                 {it.p === 'crates' && <Crates f={f} t0={t0} n={it.n} sealed={it.sealed} />}
+                {CUSTOM[it.p] && React.createElement(CUSTOM[it.p].Comp, {f, t0, fg, it})}
                 {it.p === 'ribbon' && (
                   <g transform={`translate(${(1 - prog1(f, t0, 14)) * 700} 0)`}>
                     <rect x={-((it.text ?? '').length * 14.5 + 56)} y={-25} width={(it.text ?? '').length * 14.5 + 56} height={50} fill={KC.crimson} stroke={INK} strokeWidth={4} />

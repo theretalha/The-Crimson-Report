@@ -1,0 +1,42 @@
+{
+  "_doc": "Anti-reuse rules (AGENTS.md rule 1). A GENERIC compose prop may only be on screen when the narration line (or the scene's own caption) contains one of its `evidence` words. role: generic = needs evidence; neutral = labels/decoration, always allowed; person/card = checked by name or by kind. Custom props (src/props/custom/epNNN) carry their own `evidence` in code.",
+  "compose": {
+    "crates":   {"role": "generic", "evidence": "crates?|boxes|box|packages?|parcels?|shipments?|cartons?|pallets?"},
+    "rack":     {"role": "generic", "evidence": "servers?|racks?|data ?cent(?:er|re)s?"},
+    "building": {"role": "generic", "by_kind": {
+      "datacenter": "data ?cent(?:er|re)s?|server farm",
+      "tower": "tower|skyscraper|headquarters|hq|offices?",
+      "bank": "banks?|lender|central bank",
+      "whitehouse": "white house|oval office|west wing",
+      "capitol": "capitol|congress|senate|house of representatives|lawmakers",
+      "office": "offices?|headquarters|hq|company|firm|building|workplace",
+      "doj": "justice department|doj|prosecutors?|attorney general",
+      "commerce": "commerce department|commerce|export bureau|bis\\b",
+      "treasury": "treasury|sanctions? office|ofac"
+    }},
+    "person":   {"role": "person", "evidence": "person|man|woman|men|women|official|officer|agent|inspector|businesswoman|businessman|engineer|executive|guard|minister|president|senator|someone|investigator|prosecutor|ceo|boss|worker|soldier|captain|sailor|pilot"},
+    "card":     {"role": "card", "kind_building": true},
+    "chair":    {"role": "generic", "evidence": "chair|seat|resign(?:s|ed|ation)?|replaced|fired|stepped down|vacant|his job|her job|the job|ceo"},
+    "route":    {"role": "generic", "evidence": "route|shipped|shipping|ships?|smuggl\\w*|freight|cargo|transit|divert\\w*|flew|flight|delivered|moved|sent|passed through|trail|path"},
+    "door":     {"role": "generic", "evidence": "door|shut|closed|locked|slam\\w*|barred|blocked|refus\\w*|banned|cut off"},
+    "table":    {"role": "generic", "evidence": "table|board|boardroom|dinner|meeting|vote[ds]?|executives|directors|members"},
+    "crowd":    {"role": "generic", "evidence": "petition|signatures?|signed|people|protest\\w*|crowd|voters|workers|supporters|thousands|millions"},
+    "money":    {"role": "generic", "evidence": "money|dollars?|billions?|millions?|paid|payments?|cash|funds?|funding|\\$|profit\\w*|invest\\w*|loans?|sold|sale|bought|price|worth|cost"},
+    "stack":    {"role": "generic", "evidence": "money|dollars?|billions?|millions?|cash|funds?|funding|\\$|profit\\w*|worth|value|valuation|fortune"},
+    "letter":   {"role": "generic", "evidence": "memo|letters?|envelopes?|emails?|reports?|statements?|documents?|filings?|notes?|files?|transcripts?|testimony|wrote|written|signed order|order"},
+    "phone":    {"role": "generic", "evidence": "phone|posts?|tweets?|feed|app|messages?|social media|instagram|texts?|video call|call"},
+    "scales":   {"role": "generic", "evidence": "balance|weigh\\w*|scales?|versus|both sides|one side|other side|trade-?off|fair\\w*|double standard|on the one hand"},
+    "calendar": {"role": "neutral"},
+    "board":    {"role": "neutral"},
+    "string":   {"role": "neutral"},
+    "tag":      {"role": "neutral"},
+    "stamp":    {"role": "neutral"},
+    "arrow":    {"role": "neutral"},
+    "ribbon":   {"role": "neutral"},
+    "text":     {"role": "neutral"},
+    "icon":     {"role": "neutral"}
+  },
+  "allegation_re": "\\b(spy|spies|espionage|affair|bribe\\w*|smuggl\\w*|fraud\\w*|illegal\\w*|laundering|embezzl\\w*|corrupt\\w*|secret deal|accus\\w*|alleg\\w*|crime|criminal|scandal|cover-?up|leak\\w*|sabotag\\w*|assassinat\\w*)\\b",
+  "hedge_re": "\\b(reportedly|according to|alleged(?:ly)?|claims?|claimed|says|said|suspected|unconfirmed|unproven|denies|denied|reports? (?:say|said|claim)|sources?)\\b",
+  "on_screen_hedge_re": "ACCORDING TO REPORTS|UNCONFIRMED|ALLEGED|UNPROVEN|DENIED|CLAIMED"
+}

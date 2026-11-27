@@ -1,0 +1,26 @@
+[
+ {
+  "text": "A tanker sat anchored near the shore, and its engines were off.",
+  "start": 0.0,
+  "speechEnd": 3.2,
+  "next": 4.0
+ },
+ {
+  "text": "The captain stood alone on deck, and nobody answered the radio.",
+  "start": 4.0,
+  "speechEnd": 7.2,
+  "next": 8.0
+ },
+ {
+  "text": "A man in a grey coat walked down the pier with a sealed envelope.",
+  "start": 8.0,
+  "speechEnd": 11.2,
+  "next": 12.0
+ },
+ {
+  "text": "Reportedly, the captain had sold the cargo to a Chinese firm, according to Reuters.",
+  "start": 12.0,
+  "speechEnd": 15.2,
+  "next": 16.0
+ }
+]

@@ -1,0 +1,1 @@
+{"_doc": "Fixture only: lets the pipeline self-test reuse the reference custom prop folder. Real episodes use src/props/custom/epNNN.", "custom_folder": "_example"}

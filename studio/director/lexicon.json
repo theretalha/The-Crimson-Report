@@ -332,5 +332,260 @@
   }
  ],
  "date_re": "\\b(?:january|february|march|april|may|june|july|august|september|october|november|december)(?:\\s+\\d{1,2}(?:st|nd|rd|th)?(?!\\d))?(?:,?\\s+(?:19|20)\\d\\d)?\\b|\\b(?:19|20)\\d\\d\\b",
- "connect_re": "\\b(husband|wife|introduced|owns?|owned|bought|renamed|ownership|sister company|connected to|linked to|partner|invested)\\b"
+ "connect_re": "\\b(husband|wife|introduced|owns?|owned|bought|renamed|ownership|sister company|connected to|linked to|partner|invested)\\b",
+ "custom_entries": [
+  {
+   "id": "warship",
+   "cat": "object",
+   "re": "\\b(destroyers?|frigates?|warships?|battleships?|gunboats?|naval (?:ships?|fleet|vessels?)|navy ships?)\\b",
+   "custom": "warship",
+   "see": "grey warship on open water, bow wave, gun turret turning"
+  },
+  {
+   "id": "blockade",
+   "cat": "action",
+   "re": "\\b(blockades?|blockaded|naval blockade|cordon(?:ed)? off)\\b",
+   "custom": "blockade",
+   "see": "line of ships across a strait, a red line drawn across the water, traffic stopping"
+  },
+  {
+   "id": "carrier",
+   "cat": "object",
+   "re": "\\b(aircraft carriers?|carrier strike group|flight deck)\\b",
+   "custom": "aircraft-carrier",
+   "see": "carrier deck with jets, island tower, wake"
+  },
+  {
+   "id": "submarine",
+   "cat": "object",
+   "re": "\\b(submarines?|subs|nuclear sub\\w*|u-?boats?)\\b",
+   "custom": "submarine",
+   "see": "submarine surfacing, periscope up, sonar rings"
+  },
+  {
+   "id": "subcable",
+   "cat": "object",
+   "re": "\\b((?:sub|under)sea cables?|submarine cables?|fibre cables?|fiber cables?|internet cables?)\\b",
+   "custom": "submarine-cable",
+   "see": "cable on the sea floor between two coasts, a cut, data dots stopping"
+  },
+  {
+   "id": "tanker",
+   "cat": "object",
+   "re": "\\b(oil tankers?|tankers?|supertankers?|crude carriers?)\\b",
+   "custom": "oil-tanker",
+   "see": "oil tanker riding on the water, funnel smoking, deck hatches"
+  },
+  {
+   "id": "containership",
+   "cat": "object",
+   "re": "\\b(container ships?|cargo ships?|freighters?|cargo vessels?)\\b",
+   "custom": "container-ship",
+   "see": "container ship stacked with boxes, crane lifting one"
+  },
+  {
+   "id": "strait",
+   "cat": "place",
+   "re": "\\b(straits?|chokepoints?|narrow channel|shipping lanes?)\\b",
+   "custom": "strait-map",
+   "see": "narrow water between two coasts with ships queuing"
+  },
+  {
+   "id": "missile",
+   "cat": "object",
+   "re": "\\b(missiles?|missile batter(?:y|ies)|rocket launchers?|interceptors?|air defen[cs]e)\\b",
+   "custom": "missile-battery",
+   "see": "truck-mounted missile launcher raising, launch tube opening"
+  },
+  {
+   "id": "drone",
+   "cat": "object",
+   "re": "\\b(drones?|uavs?|unmanned aircraft)\\b",
+   "custom": "drone",
+   "see": "quadcopter or winged drone, camera gimbal, signal arcs"
+  },
+  {
+   "id": "jet",
+   "cat": "object",
+   "re": "\\b(fighter jets?|warplanes?|bombers?|fighter aircraft|jets?)\\b",
+   "custom": "fighter-jet",
+   "see": "jet banking across the sky, contrail drawing on"
+  },
+  {
+   "id": "helicopter",
+   "cat": "object",
+   "re": "\\b(helicopters?|choppers?)\\b",
+   "custom": "helicopter",
+   "see": "helicopter hovering, rotor blur"
+  },
+  {
+   "id": "tank",
+   "cat": "object",
+   "re": "\\b(battle tanks?|armou?red vehicles?|armou?red columns?)\\b",
+   "custom": "battle-tank",
+   "see": "tank rolling, turret turning"
+  },
+  {
+   "id": "wafer",
+   "cat": "object",
+   "re": "\\b(semiconductor wafers?|silicon wafers?|wafers?|lithography machines?|euv machines?)\\b",
+   "custom": "wafer",
+   "see": "silicon wafer with a die grid, laser tracing a circuit"
+  },
+  {
+   "id": "fab",
+   "cat": "place",
+   "re": "\\b(fabs?|foundr(?:y|ies)|chip factor(?:y|ies)|fabrication plants?|clean ?rooms?)\\b",
+   "custom": "chip-fab",
+   "see": "clean room with robot arm lifting a wafer"
+  },
+  {
+   "id": "rig",
+   "cat": "object",
+   "re": "\\b(oil rigs?|drilling rigs?|offshore platforms?|oil wells?)\\b",
+   "custom": "oil-rig",
+   "see": "offshore platform on legs, flare burning, derrick"
+  },
+  {
+   "id": "pipeline",
+   "cat": "object",
+   "re": "\\b(pipelines?|gas pipelines?|oil pipelines?)\\b",
+   "custom": "pipeline",
+   "see": "pipe running across the land, valve turning, flow dots stopping"
+  },
+  {
+   "id": "refinery",
+   "cat": "place",
+   "re": "\\b(refiner(?:y|ies)|oil depots?|storage tanks?)\\b",
+   "custom": "refinery",
+   "see": "refinery towers, flare stack, smoke"
+  },
+  {
+   "id": "satellite",
+   "cat": "object",
+   "re": "\\b(satellites?|space station|orbit(?:al)?)\\b",
+   "custom": "satellite",
+   "see": "satellite in orbit over a globe, solar panels unfolding"
+  },
+  {
+   "id": "rocket",
+   "cat": "object",
+   "re": "\\b(rockets? launch\\w*|launch ?pad|space ?craft|spacecraft)\\b",
+   "custom": "rocket-launch",
+   "see": "rocket lifting off the pad, smoke plume"
+  },
+  {
+   "id": "reactor",
+   "cat": "place",
+   "re": "\\b(nuclear (?:plants?|reactors?|power stations?)|reactors?|cooling towers?|enrichment (?:plants?|sites?))\\b",
+   "custom": "nuclear-plant",
+   "see": "cooling towers venting steam, reactor dome"
+  },
+  {
+   "id": "grid",
+   "cat": "object",
+   "re": "\\b(power grids?|power lines?|blackouts?|substations?|pylons?)\\b",
+   "custom": "power-grid",
+   "see": "pylons carrying lines, lights going out one by one"
+  },
+  {
+   "id": "grain",
+   "cat": "object",
+   "re": "\\b(wheat|grain silos?|grain shipments?|harvest|fertili[sz]er)\\b",
+   "custom": "grain-silo",
+   "see": "silo and wheat field, grain pouring into a truck"
+  },
+  {
+   "id": "mine",
+   "cat": "place",
+   "re": "\\b(mines?|mining sites?|lithium|cobalt|rare earths?|coal)\\b",
+   "custom": "mine",
+   "see": "open-pit mine with a haul truck, ore piles"
+  },
+  {
+   "id": "convoy",
+   "cat": "object",
+   "re": "\\b(truck convoys?|convoys?|lorries|trucks?)\\b",
+   "custom": "truck-convoy",
+   "see": "line of trucks driving across the road, dust"
+  },
+  {
+   "id": "train",
+   "cat": "object",
+   "re": "\\b(trains?|railways?|rail lines?|freight trains?)\\b",
+   "custom": "freight-train",
+   "see": "freight train crossing, wagons clicking by"
+  },
+  {
+   "id": "border",
+   "cat": "place",
+   "re": "\\b(border (?:wall|fence|crossing|post)|checkpoints?|customs (?:office|post|officers?))\\b",
+   "custom": "border-checkpoint",
+   "see": "barrier arm, guard booth, line of vehicles"
+  },
+  {
+   "id": "cranes",
+   "cat": "object",
+   "re": "\\b(port cranes?|harbou?r cranes?|docks?|dockyards?|shipyards?)\\b",
+   "custom": "port-crane",
+   "see": "gantry crane lifting a container from a ship"
+  },
+  {
+   "id": "antenna",
+   "cat": "object",
+   "re": "\\b(cell towers?|antennas?|radio masts?|5g towers?|radar (?:dish|station))\\b",
+   "custom": "antenna-tower",
+   "see": "tower with signal arcs pulsing outward"
+  },
+  {
+   "id": "turbine",
+   "cat": "object",
+   "re": "\\b(wind turbines?|wind farms?|solar (?:panels?|farms?)|solar park)\\b",
+   "custom": "turbine",
+   "see": "turbine blades turning, panels tilting to the sun"
+  },
+  {
+   "id": "gigafactory",
+   "cat": "place",
+   "re": "\\b(battery factor(?:y|ies)|gigafactor(?:y|ies)|car factor(?:y|ies)|assembly lines?)\\b",
+   "custom": "assembly-line",
+   "see": "assembly line with a robot arm, cells moving along"
+  },
+  {
+   "id": "airliner",
+   "cat": "object",
+   "re": "\\b(airliners?|airplanes?|aeroplanes?|planes?|cargo planes?|airfreight|airport runway)\\b",
+   "custom": "airliner",
+   "see": "plane taking off from a runway, shadow sliding"
+  },
+  {
+   "id": "ballot",
+   "cat": "object",
+   "re": "\\b(ballot boxes?|ballots?|polling stations?|voting booths?)\\b",
+   "custom": "ballot-box",
+   "see": "ballot dropping into a box, counter ticking"
+  },
+  {
+   "id": "prison",
+   "cat": "place",
+   "re": "\\b(prisons?|jail|cells?|handcuffs?|arrest(?:ed|s)?)\\b",
+   "custom": "handcuffs",
+   "see": "handcuffs closing, cell door"
+  },
+  {
+   "id": "gold",
+   "cat": "object",
+   "re": "\\b(gold bars?|bullion|gold reserves?|barrels? of oil|oil barrels?)\\b",
+   "custom": "bullion",
+   "see": "stack of gold bars or oil barrels, weight scale"
+  },
+  {
+   "id": "hospital",
+   "cat": "place",
+   "re": "\\b(hospitals?|clinics?|ambulances?|medicine shortage)\\b",
+   "custom": "hospital",
+   "see": "hospital front with a red cross, ambulance arriving"
+  }
+ ],
+ "_doc_custom": "custom_entries: physical things that NO built-in prop draws. A line that matches one needs a NEW custom prop in src/props/custom/epNNN/ (AGENTS.md rule 1). `custom` is the suggested slug; the real id is epNNN.<slug>."
 }

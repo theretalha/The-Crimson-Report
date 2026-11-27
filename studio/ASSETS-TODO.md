@@ -4,7 +4,9 @@ Why: the cloud session has a shared IP. Wikimedia rate-limits it, Reuters/AP/CNB
 The laptop has a normal home connection, so it can fetch these in minutes. Cloud and laptop share this repo through git.
 
 **Rule:** only free-licence or public-domain material. Keep the credit line for every photo (the video shows it in the source line).
-Save each file at the path shown, then `git add`, `git commit`, `git push` on branch `claude/brave-goodall-iikjfo`.
+Save each file at the path shown, then `git add`, `git commit`, `git push` on the current `claude/...` branch.
+
+**Automatic (new episodes):** `python3 tools/fetch_assets.py --ep NNN [--todo episodes/NNN-slug/assets-todo.md]` reads tables in this format and downloads everything into `studio/public/assets/epNNN/` (with placeholders for what it cannot fetch). This file is the EP 003 list and the format reference.
 
 ## 1. Photos (Wikimedia Commons) -> `studio/public/photos/`
 | Save as | Wikimedia file title (search it on commons.wikimedia.org) | Licence |
