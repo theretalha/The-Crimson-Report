@@ -104,3 +104,25 @@ export const ThumbD: React.FC = () => (
     <Stamp t="UNPROVEN" x={420} y={930} size={110} rot={-5} />
   </Base>
 );
+
+// D2: honeytrap concept with both photos (Jensen and Alice Huang as "named in reports"). Still a QUESTION + UNPROVEN stamp, no "spy" label.
+const NameBand: React.FC<{x: number; y: number; w: number; t: string; sub: string; rot?: number}> = ({x, y, w, t, sub, rot = 0}) => (
+  <div style={{position: 'absolute', left: x, top: y, width: w, background: C.black, padding: '8px 12px', textAlign: 'center', transform: `rotate(${rot}deg)`}}>
+    <div style={{fontFamily: F.head, fontWeight: 700, fontSize: 40, letterSpacing: 3, color: C.cream, lineHeight: 1}}>{t}</div>
+    <div style={{fontFamily: F.mono.toString(), fontSize: 20, color: C.ash, marginTop: 4}}>{sub}</div>
+  </div>
+);
+export const ThumbD2: React.FC = () => (
+  <Base>
+    <Photo src="photos/jensen-huang.jpg" x={690} y={130} w={500} h={560} rot={-3} />
+    <Photo src="photos/alice-huang.jpg" x={1250} y={130} w={500} h={560} rot={3} />
+    <NameBand x={706} y={640} w={450} t="JENSEN HUANG" sub="NVIDIA CEO" rot={-3} />
+    <NameBand x={1266} y={640} w={450} t="ALICE HUANG" sub="NAMED IN REPORTS" rot={3} />
+    <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
+      <g transform="translate(1220 905) rotate(-3) scale(0.82)"><Trap /></g>
+    </svg>
+    <Big t="HONEY" size={305} x={40} y={140} />
+    <Big t="TRAP?" size={305} x={40} y={430} color={C.crimson} />
+    <Stamp t="UNPROVEN" x={360} y={900} size={100} rot={-5} />
+  </Base>
+);
