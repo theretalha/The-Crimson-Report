@@ -32,3 +32,7 @@ Thumbnails (1280x720 PNG, under 2 MB, in `thumbnails/`; source: `studio/src/Thum
 ## Update (Nov 26): owner asked for a question mark and "who is behind" in the title
 - Thumbnail **B2** (`thumbnails/thumb-B2-fired-rehired-question.png`): same as B with a big crimson "?" in the photo corner, face left clear.
 - Title: do NOT promise "who is behind it". The video says nobody has proven who is behind it and that who leaked the story is unknown, so that promise would mislead viewers (early drop-off hurts reach) and implies a plot we cannot support. Use: **"Nvidia's CEO: Fired and Rehired in 10 Days. What Really Happened?"**
+
+## Thumbnail D: "HONEY TRAP?" (Nov 28, owner request)
+File: thumbnails/thumb-D-honeytrap-question.png. A baited mousetrap (heart + honey) over Jensen's photo, "UNPROVEN" stamp, always a question. No photo of Alice Huang.
+Risk notes: (1) the video never says "honeytrap"; if no outlet used the word about this case, the thumbnail introduces a claim the video does not make (misleading-metadata risk, early drop-off). (2) It hints at a sexual/romantic entrapment of a private person; the channel rule is to hedge allegations and avoid sexual framing. Use only as a Test-and-compare variant, not as the main thumbnail, and only if the video explains the claim.

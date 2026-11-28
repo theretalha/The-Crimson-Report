@@ -78,3 +78,29 @@ export const ThumbB2: React.FC = () => (
     <div style={{position: 'absolute', left: 60, bottom: 60, fontFamily: F.head, fontWeight: 700, fontSize: 92, letterSpacing: 6, color: C.black, background: C.cream, padding: '6px 34px', transform: 'rotate(-2deg)'}}>IN 10 DAYS</div>
   </Base>
 );
+
+// D: "HONEYTRAP?" concept. A baited mousetrap (heart + honey) beside Jensen's photo. Always a QUESTION with an UNPROVEN stamp; no photo of Alice Huang.
+const Trap: React.FC = () => (
+  <g>
+    <ellipse cx={0} cy={110} rx={300} ry={22} fill="#000" opacity={0.35} />
+    <rect x={-270} y={-90} width={540} height={190} rx={14} fill="#C79B63" stroke="#0A0A0A" strokeWidth={9} />
+    {[-60, -10, 40, 80].map((y) => <path key={y} d={`M -250 ${y} Q 0 ${y + 14} 250 ${y}`} fill="none" stroke="#9C743F" strokeWidth={4} opacity={0.7} />)}
+    <path d="M -210 -40 q 22 -46 44 0 q 22 46 44 0 q 22 -46 44 0 q 22 46 44 0" fill="none" stroke="#0A0A0A" strokeWidth={9} strokeLinecap="round" />
+    <path d="M -236 -50 L -236 -200 L 236 -200 L 236 -50" fill="none" stroke="#0A0A0A" strokeWidth={26} strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M -236 -50 L -236 -200 L 236 -200 L 236 -50" fill="none" stroke="#B9B9B9" strokeWidth={12} strokeLinecap="round" strokeLinejoin="round" />
+    <rect x={80} y={-30} width={140} height={90} rx={10} fill="#E8E4DA" stroke="#0A0A0A" strokeWidth={7} />
+    <path d="M 150 50 C 90 10, 100 -30, 128 -30 C 142 -30, 150 -18, 150 -10 C 150 -18, 158 -30, 172 -30 C 200 -30, 210 10, 150 50 Z" fill="#C4151C" stroke="#0A0A0A" strokeWidth={6} strokeLinejoin="round" />
+    <path d="M 60 -34 C 70 -20 120 -20 140 -34 C 170 -26 200 -24 232 -36 L 236 -10 C 226 6 214 10 206 -4 C 200 14 188 24 180 6 C 170 24 150 24 146 4 C 134 22 118 20 112 2 C 98 14 82 10 76 -4 C 66 6 56 0 60 -34 Z" fill="#F2A81D" stroke="#0A0A0A" strokeWidth={5} strokeLinejoin="round" />
+  </g>
+);
+export const ThumbD: React.FC = () => (
+  <Base>
+    <Photo src="photos/jensen-huang.jpg" x={1090} y={110} w={700} h={760} rot={3} />
+    <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
+      <g transform="translate(1390 930) rotate(-4) scale(0.95)"><Trap /></g>
+    </svg>
+    <Big t="HONEY" size={400} x={50} y={110} />
+    <Big t="TRAP?" size={400} x={50} y={450} color={C.crimson} />
+    <Stamp t="UNPROVEN" x={420} y={930} size={110} rot={-5} />
+  </Base>
+);
