@@ -200,6 +200,7 @@ def main():
 
         # sound events declared by recipe / chart scenes (placed on the narrated words and chart moments)
         for e in c.get("events", []):
+            if e["kind"] == "riser": continue   # owner rule (DIRECTOR-NOTES 15): never a riser, even if a prop declares one
             # thin out dense soft sounds so they never turn into a repeating pattern (owner dislikes irritating, repeated SFX)
             thin = {"paper": 0.7, "tick": 0.45, "ping": 0.6, "marker": 0.8}.get(e["kind"])
             tt = T + e["t"]

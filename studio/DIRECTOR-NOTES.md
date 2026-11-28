@@ -52,3 +52,9 @@ Same list is also saved in Claude memory (feedback notes for this repo).
     - Use `python3 tools/render_segments.py`: it renders per chapter and caches; a data-only change re-renders only the touched chapters. Use --force after editing prop code.
     - Do not start a render without telling the owner why it is needed and how long it will take; ask for all pending feedback first.
 
+## Workflow upgrades (Nov 27, 2026, owner instruction)
+19. NO LAZY PROP REUSE ("kaam chori"): never force a scene into crates / server racks / building / generic cards when that object is not in the narration line. A new physical thing gets a NEW custom prop (studio/src/props/custom/epNNN/) with draw-on strokes, depth, overshoot and sound events. director.py --strict flags violations.
+20. Scripts must hold attention: humanizer skill + retention rules (open loop every 60-90 s, every line a drawable physical action, 8-15 word spoken sentences, contractions, <short pause>/<long pause> tags, hedge + source on screen for every allegation). `tools/script_lint.py` checks it.
+21. Assets: `tools/fetch_assets.py` (run on the laptop) reads the todo tables and downloads free-licence Wikimedia Commons / Pexels material into `public/assets/epNNN/`, with placeholders so renders never fail.
+22. Pipeline: `EP <num>: <topic>` (stage 1, stop for manual TTS) -> `audio ready` (stage 2) -> `render` (stage 3: custom props, gates, keyframe stills, STOP for approval before any full render). See AGENTS.md.
+23. EP 003 and Curio are frozen: do not edit episodes/003-*, src/data/ep003*, src/stickman/.

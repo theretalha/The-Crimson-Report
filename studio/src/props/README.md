@@ -25,3 +25,5 @@ Keep drawings above y ~ 830 (captions sit at 890+). The mood decides ink colour:
 
 Every item also declares its sound events (see `Compose.tsx` `COMPOSE.events`), so the mix follows the picture. Add a prop = add it to `art*.tsx`, the switch in `Compose.tsx`, its events, then flip its status in `director/props.json`.
 Check: `python3 tools/director.py ... --strict` (rules) and `npx tsx tools/probe.ts` (text clipping; regenerate `out/probe-frames.txt` and run `export-cues.ts` with no argument first).
+
+**Custom props:** anything this table cannot draw is NOT forced into one of these items. Code a new prop in `custom/epNNN/` (see `custom/README.md` and AGENTS.md section 1). Compose items reach it with `p: 'epNNN.slug'`.

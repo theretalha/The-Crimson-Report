@@ -1,3 +1,5 @@
 node_modules
 out
 public/audio
+__pycache__
+audio-in

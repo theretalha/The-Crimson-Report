@@ -65,3 +65,8 @@ Every beat gets one entry. A beat with no entry, or an entry with PROP missing, 
 
 ## 9. Props
 `director/props.json` lists what can be drawn (built / partial / missing). Add a prop = build it in `src/templates`, register it as a recipe, add its sound events, test it with a still, then flip the status to `built`.
+
+## 10. No lazy prop reuse; custom props (Nov 27, 2026; enforced by director.py)
+A built-in prop may only be on screen when its evidence words are in the narration line (`director/reuse-rules.json`): crates need box/crate/package, a rack needs server/rack/data center, a building needs its own name, a name card needs the name.
+If a line names a physical thing no built-in prop draws (`director/lexicon.json` `custom_entries`: warship, blockade, tanker, submarine cable, missile battery, wafer, pipeline ...), code a custom prop in `src/props/custom/epNNN/` (draw-on, depth, overshoot, sound events). Never "make it fit" with crates, racks, buildings or icons.
+Rules: `R-REUSE`, `R-NOCUSTOM`, `R-CUSTOM-MISSING`, `R-CUSTOM-QUALITY`, plus shot-list checks `R-SHOT-MISSING`, `R-SHOT-INCOMPLETE`, `R-HEDGE-LINE`, `R-HEDGE-SCREEN`. Full workflow: `../AGENTS.md`.
